@@ -51,8 +51,9 @@
 		ED0F34EC29B0472000CB9437 /* Meeme */ = {
 			isa = PBXGroup;
 			children = (
+				ED0F34FC29B047CD00CB9437 /* Helpers */,
+				ED0F34FB29B047C000CB9437 /* Views */,
 				ED0F34ED29B0472000CB9437 /* MeemeApp.swift */,
-				ED0F34EF29B0472000CB9437 /* ContentView.swift */,
 				ED0F34F129B0472100CB9437 /* Assets.xcassets */,
 				ED0F34F329B0472100CB9437 /* Preview Content */,
 			);
@@ -65,6 +66,21 @@
 				ED0F34F429B0472100CB9437 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		ED0F34FB29B047C000CB9437 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				ED0F34EF29B0472000CB9437 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		ED0F34FC29B047CD00CB9437 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
