@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		423314D85CCC652B315E8B03 /* Pods_Meeme.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DD591404395CF84FED81C69 /* Pods_Meeme.framework */; };
 		ED0F34EE29B0472000CB9437 /* MeemeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0F34ED29B0472000CB9437 /* MeemeApp.swift */; };
 		ED0F34F229B0472100CB9437 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED0F34F129B0472100CB9437 /* Assets.xcassets */; };
 		ED0F34F529B0472100CB9437 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED0F34F429B0472100CB9437 /* Preview Assets.xcassets */; };
@@ -22,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1DD591404395CF84FED81C69 /* Pods_Meeme.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Meeme.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE33555F13680FA8FD7178AD /* Pods-Meeme.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meeme.debug.xcconfig"; path = "Target Support Files/Pods-Meeme/Pods-Meeme.debug.xcconfig"; sourceTree = "<group>"; };
 		ED0F34EA29B0472000CB9437 /* Meeme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Meeme.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED0F34ED29B0472000CB9437 /* MeemeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeemeApp.swift; sourceTree = "<group>"; };
 		ED0F34F129B0472100CB9437 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -35,6 +38,7 @@
 		ED0F350C29B0DE1600CB9437 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		ED0F350E29B0DE2000CB9437 /* StorageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageView.swift; sourceTree = "<group>"; };
 		ED0F351029B0DE2E00CB9437 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		EDFD9D911098949D4EE84A1E /* Pods-Meeme.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meeme.release.xcconfig"; path = "Target Support Files/Pods-Meeme/Pods-Meeme.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,17 +46,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				423314D85CCC652B315E8B03 /* Pods_Meeme.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00C085A75BA351A1DE0700D5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1DD591404395CF84FED81C69 /* Pods_Meeme.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8EC2703E13DE5455BD19646E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AE33555F13680FA8FD7178AD /* Pods-Meeme.debug.xcconfig */,
+				EDFD9D911098949D4EE84A1E /* Pods-Meeme.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		ED0F34E129B0472000CB9437 = {
 			isa = PBXGroup;
 			children = (
 				ED0F34EC29B0472000CB9437 /* Meeme */,
 				ED0F34EB29B0472000CB9437 /* Products */,
+				8EC2703E13DE5455BD19646E /* Pods */,
+				00C085A75BA351A1DE0700D5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -138,9 +163,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ED0F34F829B0472100CB9437 /* Build configuration list for PBXNativeTarget "Meeme" */;
 			buildPhases = (
+				63841D457D47400419BDCAFC /* [CP] Check Pods Manifest.lock */,
 				ED0F34E629B0472000CB9437 /* Sources */,
 				ED0F34E729B0472000CB9437 /* Frameworks */,
 				ED0F34E829B0472000CB9437 /* Resources */,
+				2877E704E639F1549AAF7CA3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -195,6 +222,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2877E704E639F1549AAF7CA3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Meeme/Pods-Meeme-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Meeme/Pods-Meeme-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Meeme/Pods-Meeme-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		63841D457D47400419BDCAFC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Meeme-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		ED0F34E629B0472000CB9437 /* Sources */ = {
@@ -333,6 +402,7 @@
 		};
 		ED0F34F929B0472100CB9437 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AE33555F13680FA8FD7178AD /* Pods-Meeme.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -362,6 +432,7 @@
 		};
 		ED0F34FA29B0472100CB9437 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EDFD9D911098949D4EE84A1E /* Pods-Meeme.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
