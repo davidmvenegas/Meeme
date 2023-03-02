@@ -8,17 +8,33 @@
 
 /* Begin PBXBuildFile section */
 		ED0F34EE29B0472000CB9437 /* MeemeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0F34ED29B0472000CB9437 /* MeemeApp.swift */; };
-		ED0F34F029B0472000CB9437 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0F34EF29B0472000CB9437 /* ContentView.swift */; };
 		ED0F34F229B0472100CB9437 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED0F34F129B0472100CB9437 /* Assets.xcassets */; };
 		ED0F34F529B0472100CB9437 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED0F34F429B0472100CB9437 /* Preview Assets.xcassets */; };
+		ED0F34FF29B0D94F00CB9437 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0F34FE29B0D94F00CB9437 /* SignUpView.swift */; };
+		ED0F350129B0DA8B00CB9437 /* LandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0F350029B0DA8B00CB9437 /* LandingView.swift */; };
+		ED0F350329B0DBAE00CB9437 /* ConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0F350229B0DBAE00CB9437 /* ConfirmationView.swift */; };
+		ED0F350529B0DD6A00CB9437 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0F350429B0DD6A00CB9437 /* LoginView.swift */; };
+		ED0F350829B0DDCF00CB9437 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0F350729B0DDCF00CB9437 /* HomeView.swift */; };
+		ED0F350A29B0DDE500CB9437 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0F350929B0DDE500CB9437 /* ImageView.swift */; };
+		ED0F350D29B0DE1600CB9437 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0F350C29B0DE1600CB9437 /* AccountView.swift */; };
+		ED0F350F29B0DE2000CB9437 /* StorageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0F350E29B0DE2000CB9437 /* StorageView.swift */; };
+		ED0F351129B0DE2E00CB9437 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0F351029B0DE2E00CB9437 /* AboutView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		ED0F34EA29B0472000CB9437 /* Meeme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Meeme.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED0F34ED29B0472000CB9437 /* MeemeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeemeApp.swift; sourceTree = "<group>"; };
-		ED0F34EF29B0472000CB9437 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		ED0F34F129B0472100CB9437 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED0F34F429B0472100CB9437 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		ED0F34FE29B0D94F00CB9437 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		ED0F350029B0DA8B00CB9437 /* LandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingView.swift; sourceTree = "<group>"; };
+		ED0F350229B0DBAE00CB9437 /* ConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationView.swift; sourceTree = "<group>"; };
+		ED0F350429B0DD6A00CB9437 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		ED0F350729B0DDCF00CB9437 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		ED0F350929B0DDE500CB9437 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
+		ED0F350C29B0DE1600CB9437 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
+		ED0F350E29B0DE2000CB9437 /* StorageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageView.swift; sourceTree = "<group>"; };
+		ED0F351029B0DE2E00CB9437 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +87,9 @@
 		ED0F34FB29B047C000CB9437 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				ED0F34EF29B0472000CB9437 /* ContentView.swift */,
+				ED0F34FD29B0D93300CB9437 /* Auth */,
+				ED0F350629B0DD9000CB9437 /* Core */,
+				ED0F350B29B0DDF900CB9437 /* Settings */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -81,6 +99,36 @@
 			children = (
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		ED0F34FD29B0D93300CB9437 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				ED0F350029B0DA8B00CB9437 /* LandingView.swift */,
+				ED0F350429B0DD6A00CB9437 /* LoginView.swift */,
+				ED0F34FE29B0D94F00CB9437 /* SignUpView.swift */,
+				ED0F350229B0DBAE00CB9437 /* ConfirmationView.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		ED0F350629B0DD9000CB9437 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				ED0F350729B0DDCF00CB9437 /* HomeView.swift */,
+				ED0F350929B0DDE500CB9437 /* ImageView.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		ED0F350B29B0DDF900CB9437 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				ED0F350C29B0DE1600CB9437 /* AccountView.swift */,
+				ED0F350E29B0DE2000CB9437 /* StorageView.swift */,
+				ED0F351029B0DE2E00CB9437 /* AboutView.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,7 +201,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED0F34F029B0472000CB9437 /* ContentView.swift in Sources */,
+				ED0F350129B0DA8B00CB9437 /* LandingView.swift in Sources */,
+				ED0F350329B0DBAE00CB9437 /* ConfirmationView.swift in Sources */,
+				ED0F34FF29B0D94F00CB9437 /* SignUpView.swift in Sources */,
+				ED0F350829B0DDCF00CB9437 /* HomeView.swift in Sources */,
+				ED0F351129B0DE2E00CB9437 /* AboutView.swift in Sources */,
+				ED0F350D29B0DE1600CB9437 /* AccountView.swift in Sources */,
+				ED0F350529B0DD6A00CB9437 /* LoginView.swift in Sources */,
+				ED0F350F29B0DE2000CB9437 /* StorageView.swift in Sources */,
+				ED0F350A29B0DDE500CB9437 /* ImageView.swift in Sources */,
 				ED0F34EE29B0472000CB9437 /* MeemeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

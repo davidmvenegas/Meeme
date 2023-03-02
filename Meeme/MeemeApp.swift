@@ -4,7 +4,7 @@ import SwiftUI
 struct MeemeApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SignUpView()
         }
     }
 }
