@@ -2,13 +2,15 @@ import SwiftUI
 
 struct ConfirmationView: View {
     
+    @EnvironmentObject var sessionManager: SessionManager
+    
     @State var confirmationCode = ""
     
-    let username: String
+    let email: String
     
     var body: some View {
         VStack {
-            Text("Username: \(username)")
+            Text("email: \(email)")
             TextField("Confirmation Code", text: $confirmationCode)
             Button("Sign Up", action: {})
         }

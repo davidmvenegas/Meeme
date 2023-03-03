@@ -5,7 +5,7 @@ import AmplifyPlugins
 @main
 struct MeemeApp: App {
     
-    @ObservedObject var sessionManager = SessionManger()
+    @ObservedObject var sessionManager = SessionManager()
     
     init() {
         configureAmplify()
@@ -16,12 +16,16 @@ struct MeemeApp: App {
             switch sessionManager.authState {
             case .login:
                 LoginView()
+                    .environmentObject(sessionManager)
             case .signUp:
                 SignUpView()
-            case .confirmCode(let username):
-                ConfirmationView(username: username)
+                    .environmentObject(sessionManager)
+            case .confirmCode(let email):
+                ConfirmationView(email: email)
+                    .environmentObject(sessionManager)
             case .session(let user):
                 HomeView(user: user)
+                    .environmentObject(sessionManager)
             }
         }
     }

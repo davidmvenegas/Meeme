@@ -2,6 +2,8 @@ import SwiftUI
 
 struct SignUpView: View {
     
+    @EnvironmentObject var sessionManager: SessionManager
+    
     @State var username = ""
     @State var email = ""
     @State var password = ""
