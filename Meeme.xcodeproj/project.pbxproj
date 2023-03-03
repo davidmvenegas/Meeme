@@ -20,6 +20,9 @@
 		ED0F350D29B0DE1600CB9437 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0F350C29B0DE1600CB9437 /* AccountView.swift */; };
 		ED0F350F29B0DE2000CB9437 /* StorageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0F350E29B0DE2000CB9437 /* StorageView.swift */; };
 		ED0F351129B0DE2E00CB9437 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0F351029B0DE2E00CB9437 /* AboutView.swift */; };
+		EDF1378529B103720018F98D /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = EDF1378329B103720018F98D /* awsconfiguration.json */; };
+		EDF1378629B103720018F98D /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = EDF1378429B103720018F98D /* amplifyconfiguration.json */; };
+		EDF1378829B228CC0018F98D /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF1378729B228CC0018F98D /* SessionManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +41,9 @@
 		ED0F350C29B0DE1600CB9437 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		ED0F350E29B0DE2000CB9437 /* StorageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageView.swift; sourceTree = "<group>"; };
 		ED0F351029B0DE2E00CB9437 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		EDF1378329B103720018F98D /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
+		EDF1378429B103720018F98D /* amplifyconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
+		EDF1378729B228CC0018F98D /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		EDFD9D911098949D4EE84A1E /* Pods-Meeme.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meeme.release.xcconfig"; path = "Target Support Files/Pods-Meeme/Pods-Meeme.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,7 +73,6 @@
 				AE33555F13680FA8FD7178AD /* Pods-Meeme.debug.xcconfig */,
 				EDFD9D911098949D4EE84A1E /* Pods-Meeme.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -92,6 +97,8 @@
 		ED0F34EC29B0472000CB9437 /* Meeme */ = {
 			isa = PBXGroup;
 			children = (
+				EDF1378429B103720018F98D /* amplifyconfiguration.json */,
+				EDF1378329B103720018F98D /* awsconfiguration.json */,
 				ED0F34FC29B047CD00CB9437 /* Helpers */,
 				ED0F34FB29B047C000CB9437 /* Views */,
 				ED0F34ED29B0472000CB9437 /* MeemeApp.swift */,
@@ -122,6 +129,7 @@
 		ED0F34FC29B047CD00CB9437 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				EDF1378729B228CC0018F98D /* SessionManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -218,6 +226,8 @@
 			files = (
 				ED0F34F529B0472100CB9437 /* Preview Assets.xcassets in Resources */,
 				ED0F34F229B0472100CB9437 /* Assets.xcassets in Resources */,
+				EDF1378529B103720018F98D /* awsconfiguration.json in Resources */,
+				EDF1378629B103720018F98D /* amplifyconfiguration.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +290,7 @@
 				ED0F350F29B0DE2000CB9437 /* StorageView.swift in Sources */,
 				ED0F350A29B0DDE500CB9437 /* ImageView.swift in Sources */,
 				ED0F34EE29B0472000CB9437 /* MeemeApp.swift in Sources */,
+				EDF1378829B228CC0018F98D /* SessionManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
