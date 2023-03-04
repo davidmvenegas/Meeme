@@ -9,6 +9,7 @@ struct MeemeApp: App {
     
     init() {
         configureAmplify()
+        sessionManager.getCurrentAuthState()
     }
     
     var body: some Scene {

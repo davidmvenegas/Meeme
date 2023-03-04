@@ -10,7 +10,7 @@ enum AuthState {
 final class SessionManager: ObservableObject {
     @Published var authState: AuthState = .login
     
-    func getCurrentAuthUser() {
+    func getCurrentAuthState() {
         if let user = Amplify.Auth.getCurrentUser() {
             authState = .session(user: user)
         } else {
@@ -26,14 +26,13 @@ final class SessionManager: ObservableObject {
         authState = .login
     }
     
-    func signUp(email: String, username: String, password: String) {
+    func signUp(email: String, password: String) {
         let atributes = [AuthUserAttribute(.email, value: email)]
         _ = AuthSignUpRequest.Options(userAttributes: atributes)
         
         Amplify.Auth.signUp(username: email, password: password) {
             [weak self] result in switch result {
             case .success(let signUpResult):
-                print("Sign up result: ", signUpResult)
                 switch signUpResult.nextStep {
                 case .done:
                     print("Finished signing up")
@@ -72,11 +71,24 @@ final class SessionManager: ObservableObject {
                 print("Successfully signed in: ", signInResult)
                 if (signInResult.isSignedIn) {
                     DispatchQueue.main.async {
-                        self?.getCurrentAuthUser()
+                        self?.getCurrentAuthState()
                     }
                 }
             case .failure(let error):
                 print("Sign in error: ", error)
+            }
+        }
+    }
+    
+    func signOut() {
+        Amplify.Auth.signOut { [weak self] result in
+            switch result {
+            case .success:
+                DispatchQueue.main.async {
+                    self?.getCurrentAuthState()
+                }
+            case .failure(let error):
+                print("Sign out error: ", error)
             }
         }
     }

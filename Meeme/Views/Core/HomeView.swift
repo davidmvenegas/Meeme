@@ -8,6 +8,11 @@ struct HomeView: View {
     let user: AuthUser
     
     var body: some View {
-        Text("HOME VIEW")
+        VStack {
+            Spacer()
+            Text("HOME VIEW")
+            Spacer()
+            Button("Sign Out", action: sessionManager.signOut)
+        }
     }
 }

@@ -4,22 +4,12 @@ struct SignUpView: View {
     
     @EnvironmentObject var sessionManager: SessionManager
     
-    @State var username = ""
     @State var email = ""
     @State var password = ""
     
     var body: some View {
         VStack {
             Spacer()
-            
-            TextField("Username", text: $username)
-                .textContentType(.username)
-                .autocorrectionDisabled(true)
-                .padding()
-                .overlay {
-                    RoundedRectangle(cornerRadius: 8, style: .continuous)
-                        .stroke(Color(UIColor.systemGray4), lineWidth: 2)
-                }
             
             TextField("Email", text: $email)
                 .autocapitalization(.none)
@@ -40,7 +30,7 @@ struct SignUpView: View {
                 }
             
             Button("Sign Up", action: {
-                sessionManager.signUp(email: email, username: username, password: password)
+                sessionManager.signUp(email: email, password: password)
             })
             
             Spacer()
