@@ -1,30 +1,22 @@
 import Amplify
 
 enum AuthState {
-    case signUp
-    case login
+    case unauthenticated
     case confirmCode(email: String)
     case session(user: AuthUser)
 }
 
 final class SessionManager: ObservableObject {
-    @Published var authState: AuthState = .login
+    @Published var authState: AuthState = .unauthenticated
     
     func getCurrentAuthState() {
         if let user = Amplify.Auth.getCurrentUser() {
             authState = .session(user: user)
         } else {
-            authState = .login
+            authState = .unauthenticated
         }
     }
     
-    func showSignUp() {
-        authState = .signUp
-    }
-
-    func showLogin() {
-        authState = .login
-    }
     
     func signUp(email: String, password: String) {
         let atributes = [AuthUserAttribute(.email, value: email)]
@@ -55,7 +47,7 @@ final class SessionManager: ObservableObject {
                 print("Code successfully confirmed: ", confirmResult)
                 if (confirmResult.isSignupComplete) {
                     DispatchQueue.main.async {
-                        self?.showLogin()
+                        self?.getCurrentAuthState() // Is not redirecting to Home, needs fixing
                     }
                 }
             case .failure(let error):

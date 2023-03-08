@@ -14,7 +14,8 @@ struct SignUpView: View {
             TextField("Email", text: $email)
                 .autocapitalization(.none)
                 .autocorrectionDisabled(true)
-                .textContentType(.emailAddress)
+                .textContentType(.username)
+                .keyboardType(.emailAddress)
                 .padding()
                 .overlay {
                     RoundedRectangle(cornerRadius: 8, style: .continuous)
@@ -22,7 +23,7 @@ struct SignUpView: View {
                 }
             
             SecureField("Password", text: $password)
-                .textContentType(.password)
+                .textContentType(.newPassword)
                 .padding()
                 .overlay {
                     RoundedRectangle(cornerRadius: 8, style: .continuous)
@@ -35,9 +36,9 @@ struct SignUpView: View {
             
             Spacer()
             
-            Button("Already have an account? Log in.", action: {
-                sessionManager.showLogin()
-            })
+            NavigationLink(destination: LoginView().environmentObject(sessionManager)) {
+                Text("Log in with existing account")
+            }
         }
         .padding()
     }

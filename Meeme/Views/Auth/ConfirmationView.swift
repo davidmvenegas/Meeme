@@ -14,6 +14,8 @@ struct ConfirmationView: View {
             
             TextField("Confirmation Code", text: $code)
                 .padding()
+                .textContentType(.oneTimeCode)
+                .keyboardType(.numberPad)
                 .overlay {
                     RoundedRectangle(cornerRadius: 8, style: .continuous)
                         .stroke(Color(UIColor.systemGray4), lineWidth: 2)

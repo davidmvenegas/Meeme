@@ -20,6 +20,7 @@
 		ED0F350D29B0DE1600CB9437 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0F350C29B0DE1600CB9437 /* AccountView.swift */; };
 		ED0F350F29B0DE2000CB9437 /* StorageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0F350E29B0DE2000CB9437 /* StorageView.swift */; };
 		ED0F351129B0DE2E00CB9437 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0F351029B0DE2E00CB9437 /* AboutView.swift */; };
+		EDA67E5729B7D69200A8938A /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA67E5629B7D69200A8938A /* ImageModel.swift */; };
 		EDF1378529B103720018F98D /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = EDF1378329B103720018F98D /* awsconfiguration.json */; };
 		EDF1378629B103720018F98D /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = EDF1378429B103720018F98D /* amplifyconfiguration.json */; };
 		EDF1378829B228CC0018F98D /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF1378729B228CC0018F98D /* SessionManager.swift */; };
@@ -41,6 +42,8 @@
 		ED0F350C29B0DE1600CB9437 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		ED0F350E29B0DE2000CB9437 /* StorageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageView.swift; sourceTree = "<group>"; };
 		ED0F351029B0DE2E00CB9437 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		ED9A2A0F29B3F6E4008FAD59 /* MeemeRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MeemeRelease.entitlements; sourceTree = "<group>"; };
+		EDA67E5629B7D69200A8938A /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
 		EDF1378329B103720018F98D /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
 		EDF1378429B103720018F98D /* amplifyconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 		EDF1378729B228CC0018F98D /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
@@ -97,9 +100,11 @@
 		ED0F34EC29B0472000CB9437 /* Meeme */ = {
 			isa = PBXGroup;
 			children = (
+				ED9A2A0F29B3F6E4008FAD59 /* MeemeRelease.entitlements */,
 				EDF1378429B103720018F98D /* amplifyconfiguration.json */,
 				EDF1378329B103720018F98D /* awsconfiguration.json */,
 				ED0F34FC29B047CD00CB9437 /* Helpers */,
+				EDA67E5029B7D26100A8938A /* Models */,
 				ED0F34FB29B047C000CB9437 /* Views */,
 				ED0F34ED29B0472000CB9437 /* MeemeApp.swift */,
 				ED0F34F129B0472100CB9437 /* Assets.xcassets */,
@@ -162,6 +167,14 @@
 				ED0F351029B0DE2E00CB9437 /* AboutView.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		EDA67E5029B7D26100A8938A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EDA67E5629B7D69200A8938A /* ImageModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,6 +300,7 @@
 				ED0F351129B0DE2E00CB9437 /* AboutView.swift in Sources */,
 				ED0F350D29B0DE1600CB9437 /* AccountView.swift in Sources */,
 				ED0F350529B0DD6A00CB9437 /* LoginView.swift in Sources */,
+				EDA67E5729B7D69200A8938A /* ImageModel.swift in Sources */,
 				ED0F350F29B0DE2000CB9437 /* StorageView.swift in Sources */,
 				ED0F350A29B0DDE500CB9437 /* ImageView.swift in Sources */,
 				ED0F34EE29B0472000CB9437 /* MeemeApp.swift in Sources */,
@@ -433,7 +447,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.davidmvenegas.Meeme;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.davidmvenegas.meeme-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -447,6 +461,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Meeme/MeemeRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Meeme/Preview Content\"";
@@ -463,7 +478,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.davidmvenegas.Meeme;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.davidmvenegas.meeme-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

@@ -10,12 +10,12 @@ struct LoginView: View {
     
     var body: some View {
         VStack {
-            Spacer()
             
             TextField("Email", text: $email)
                 .autocapitalization(.none)
                 .autocorrectionDisabled(true)
-                .textContentType(.emailAddress)
+                .textContentType(.username)
+                .keyboardType(.emailAddress)
                 .padding()
                 .overlay {
                     RoundedRectangle(cornerRadius: 8, style: .continuous)
@@ -34,11 +34,6 @@ struct LoginView: View {
                 sessionManager.login(email: email, password: password)
             })
             
-            Spacer()
-            
-            Button("Don't have an account? Sign up.", action: {
-                sessionManager.showSignUp()
-            })
         }
         .padding()
 

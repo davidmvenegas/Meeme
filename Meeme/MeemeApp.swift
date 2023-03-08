@@ -6,6 +6,7 @@ import AmplifyPlugins
 struct MeemeApp: App {
     
     @ObservedObject var sessionManager = SessionManager()
+    @StateObject var imageModel = ImageModel()
     
     init() {
         configureAmplify()
@@ -15,11 +16,8 @@ struct MeemeApp: App {
     var body: some Scene {
         WindowGroup {
             switch sessionManager.authState {
-            case .login:
-                LoginView()
-                    .environmentObject(sessionManager)
-            case .signUp:
-                SignUpView()
+            case .unauthenticated:
+                LandingView()
                     .environmentObject(sessionManager)
             case .confirmCode(let email):
                 ConfirmationView(email: email)
@@ -27,6 +25,8 @@ struct MeemeApp: App {
             case .session(let user):
                 HomeView(user: user)
                     .environmentObject(sessionManager)
+                    .environmentObject(imageModel)
+                    .navigationViewStyle(.stack)
             }
         }
     }
