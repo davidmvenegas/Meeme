@@ -7,96 +7,114 @@ struct HomeView: View {
     @EnvironmentObject var sessionManager: SessionManager
     @EnvironmentObject var imageModel: ImageModel
     
-    @State var selectedPhotoPickerImages: [PhotosPickerItem] = []
-    @State var selectedImages: [Image] = []
-    @State var isAddingPhotos: Bool = false
+    @State var selectedPhotosPickerImages: [PhotosPickerItem] = []
+    @State var selectedEditableImages: [Image] = []
     @State var searchText: String = ""
         
     let user: AuthUser
     // Button("Sign Out", action: sessionManager.signOut)
-
+    
+    func addImageFromPhotosPicker(image: PhotosPickerItem) {
+//        imageModel.addImage(MeemeImage(url: NEED_TO_UPLOAD_AND_GET_URL_HERE))
+    }
+    
     
     var body: some View {
         ZStack {
-            NavigationView {
-                ScrollView() {
-                    LazyVGrid(columns: Array(repeating: .init(.adaptive(minimum: 120, maximum: .infinity), spacing: 2), count: 3), spacing: 2) {
-//                        ForEach(Images.allCases, id: \.self) { image in
-//                            GridColumn(image: image, images: $selectedImages)
-//                        }
-                        ForEach(1..<50) { _ in
-                            AsyncImage(url: URL(string: "https://picsum.photos/600")) {
-                                image in image
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                                    .clipped()
-                                    .aspectRatio(1, contentMode: .fit)
-                            } placeholder: {
-                                ZStack {
-                                    RoundedRectangle(cornerRadius: 0)
-                                        .fill(.gray.opacity(0.5))
-                                        .aspectRatio(contentMode: .fill)
-                                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                                        .clipped()
-                                        .aspectRatio(1, contentMode: .fit)
-                                    ProgressView()
+            GridView
+        }
+    }
+
+    var GridView: some View {
+        NavigationView {
+            ScrollView() {
+                LazyVGrid(columns: Array(repeating: .init(.adaptive(minimum: 120, maximum: .infinity), spacing: 2), count: 3), spacing: 2) {
+                    //                        ForEach(Images.allCases, id: \.self) { image in
+                    //                            GridColumn(image: image, images: $selectedImages)
+                    //                        }
+                    ForEach(imageModel.meemeImages) { meemeImage in
+                        AsyncImage(url: meemeImage.url) {
+                            image in image
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                                .clipped()
+                                .aspectRatio(1, contentMode: .fit)
+                                .onTapGesture {
+                                    //                                            detail = ix
                                 }
-                            }
-                        }
-                        PhotosPicker(selection: $selectedPhotoPickerImages, matching: .images) {
+                        } placeholder: {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 0)
-                                    .fill(Color(.systemGray4))
+                                    .fill(.gray.opacity(0.5))
                                     .aspectRatio(contentMode: .fill)
                                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
                                     .clipped()
                                     .aspectRatio(1, contentMode: .fit)
-                                Image(systemName: "plus").font(.system(size: 22.5, weight: .medium))
-                                    .accentColor(.white.opacity(0.8))
+                                ProgressView()
                             }
                         }
                     }
-                }
-                .listStyle(.inset)
-                .navigationBarTitle("Meeme", displayMode: .large)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        HStack {
-                            Button(action: {}) {
-                                Text("Select").font(.system(size: 13, weight: .medium))
-                                    .padding(EdgeInsets(top: -1.75, leading: 0, bottom: -1.75, trailing: 0))
-                            }
-                            .foregroundColor(.white)
-                            .buttonStyle(.bordered)
-                            .cornerRadius(14)
+                    PhotosPicker(selection: $selectedPhotosPickerImages, maxSelectionCount: 100, matching: .any(of: [.images, .not(.livePhotos)])) {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 0)
+                                .fill(Color(.systemGray4))
+                                .aspectRatio(contentMode: .fill)
+                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                                .clipped()
+                                .aspectRatio(1, contentMode: .fit)
+                            Image(systemName: "plus").font(.system(size: 22.5, weight: .medium))
+                                .accentColor(.white.opacity(0.8))
                         }
                     }
-                    ToolbarItemGroup(placement: .navigationBarTrailing) {
-                        Menu {
-                            Button(action: {}) {
-                                Label("Create a file", systemImage: "doc")
-                            }
-                            Button(action: {}) {
-                                Label("Create a folder", systemImage: "folder")
-                            }
-                        }
-                        label: {
-                            Label("Add", systemImage: "ellipsis.circle")
-                                .accentColor(Color(.white))
+                    .onChange(of: selectedPhotosPickerImages) { newImages in
+                        for newImage in newImages {
+                            addImageFromPhotosPicker(image: newImage)
                         }
                     }
                 }
             }
-            .padding(EdgeInsets(top: 0, leading: -2, bottom: 0, trailing: -2))
-            .searchable(
-                text: $searchText,
-                placement: .navigationBarDrawer(displayMode: .always),
-                prompt: "Photos, People, Places..."
-            )
+            .listStyle(.inset)
+            .navigationBarTitle("Meeme", displayMode: .large)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    HStack {
+                        Button(action: {}) {
+                            Text("Select").font(.system(size: 13, weight: .medium))
+                                .padding(EdgeInsets(top: -1.75, leading: 0, bottom: -1.75, trailing: 0))
+                        }
+                        .foregroundColor(.white)
+                        .buttonStyle(.bordered)
+                        .cornerRadius(14)
+                    }
+                }
+                ToolbarItemGroup(placement: .navigationBarTrailing) {
+                    Menu {
+                        Button(action: {}) {
+                            Label("Create a file", systemImage: "doc")
+                        }
+                        Button(action: {}) {
+                            Label("Create a folder", systemImage: "folder")
+                        }
+                    }
+                label: {
+                    Label("Add", systemImage: "ellipsis.circle")
+                        .accentColor(Color(.white))
+                }
+                }
+            }
         }
+        .searchable(
+            text: $searchText,
+            placement: .navigationBarDrawer(displayMode: .always),
+            prompt: "Photos, People, Places..."
+        )
     }
+
 }
+
+
+
 
 //struct GridColumn: View {
 //
@@ -132,7 +150,7 @@ struct HomeView: View {
 //
 //    let user: AuthUser
 //
-//    @State var selectedPhotoPickerImages: [PhotosPickerItem] = []
+//    @State var selectedPhotosPickerImages: [PhotosPickerItem] = []
 //
 //    @State private var isAddingPhoto = false
 //    @State private var isEditing = false
@@ -170,7 +188,7 @@ struct HomeView: View {
 //        .navigationBarTitle("Meeme", displayMode: .large)
 //        .navigationBarTitleDisplayMode(.inline)
 //        .sheet(isPresented: $isAddingPhoto) {
-//            PhotosPicker(selection: $selectedPhotoPickerImages, matching: .images) {
+//            PhotosPicker(selection: $selectedPhotosPickerImages, matching: .images) {
 //                Text("Select Memes to Upload")
 //            }
 //        }
