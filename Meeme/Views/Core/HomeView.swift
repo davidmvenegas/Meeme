@@ -7,9 +7,11 @@ struct HomeView: View {
     @EnvironmentObject var sessionManager: SessionManager
     @EnvironmentObject var imageModel: ImageModel
     
-    @State var selectedPhotosPickerImages: [PhotosPickerItem] = []
-    @State var selectedEditableImages: [Image] = []
-    @State var searchText: String = ""
+    @State private var selectedPhotosPickerImages: [PhotosPickerItem] = []
+    @State private var selectedEditableImages: [MeemeImage] = []
+    @State private var focusedImage: MeemeImage? = nil
+    @State private var searchText: String = ""
+    
         
     let user: AuthUser
     // Button("Sign Out", action: sessionManager.signOut)
@@ -22,16 +24,18 @@ struct HomeView: View {
     var body: some View {
         ZStack {
             GridView
+            ImageView
         }
     }
-
+    
+    
+    
+    @ViewBuilder
     var GridView: some View {
         NavigationView {
             ScrollView() {
+                // IMAGES GRID
                 LazyVGrid(columns: Array(repeating: .init(.adaptive(minimum: 120, maximum: .infinity), spacing: 2), count: 3), spacing: 2) {
-                    //                        ForEach(Images.allCases, id: \.self) { image in
-                    //                            GridColumn(image: image, images: $selectedImages)
-                    //                        }
                     ForEach(imageModel.meemeImages) { meemeImage in
                         AsyncImage(url: meemeImage.url) {
                             image in image
@@ -41,7 +45,8 @@ struct HomeView: View {
                                 .clipped()
                                 .aspectRatio(1, contentMode: .fit)
                                 .onTapGesture {
-                                    //                                            detail = ix
+                                    focusedImage = meemeImage
+                                    print("Hey")
                                 }
                         } placeholder: {
                             ZStack {
@@ -55,6 +60,7 @@ struct HomeView: View {
                             }
                         }
                     }
+                    // PHOTO PICKER BUTTON
                     PhotosPicker(selection: $selectedPhotosPickerImages, maxSelectionCount: 100, matching: .any(of: [.images, .not(.livePhotos)])) {
                         ZStack {
                             RoundedRectangle(cornerRadius: 0)
@@ -63,7 +69,7 @@ struct HomeView: View {
                                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
                                 .clipped()
                                 .aspectRatio(1, contentMode: .fit)
-                            Image(systemName: "plus").font(.system(size: 22.5, weight: .medium))
+                            Image(systemName: "plus").font(.system(size: 23.5, weight: .medium))
                                 .accentColor(.white.opacity(0.8))
                         }
                     }
@@ -74,7 +80,7 @@ struct HomeView: View {
                     }
                 }
             }
-            .listStyle(.inset)
+            // NAVIGATION
             .navigationBarTitle("Meeme", displayMode: .large)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -97,20 +103,37 @@ struct HomeView: View {
                             Label("Create a folder", systemImage: "folder")
                         }
                     }
-                label: {
-                    Label("Add", systemImage: "ellipsis.circle")
-                        .accentColor(Color(.white))
-                }
+                    label: {
+                        Label("Add", systemImage: "ellipsis.circle")
+                            .accentColor(Color(.white))
+                    }
                 }
             }
         }
+        // SEARCH BAR
         .searchable(
             text: $searchText,
             placement: .navigationBarDrawer(displayMode: .always),
             prompt: "Photos, People, Places..."
         )
     }
-
+    
+    // FOCUSED IMAGE
+    @ViewBuilder
+    var ImageView: some View {
+        if let _ = focusedImage {
+            AsyncImage(url: URL(string: "https://hws.dev/paul.jpg")) {
+                image in image
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .onTapGesture {
+                        self.focusedImage = nil
+                    }
+            } placeholder: {
+                
+            }
+        }
+    }
 }
 
 
