@@ -2,10 +2,45 @@ import SwiftUI
 import Amplify
 import PhotosUI
 
+
+
+struct TransitionIsActiveKey: EnvironmentKey {
+    static let defaultValue = false
+}
+
+extension EnvironmentValues {
+    var transitionIsActive: Bool {
+        get { self[TransitionIsActiveKey.self] }
+        set { self[TransitionIsActiveKey.self] = newValue }
+    }
+}
+
+struct TransitionReader<Content: View>: View {
+    var content: (Bool) -> Content
+    @Environment(\.transitionIsActive) var active
+    
+    var body: some View {
+        content(active)
+    }
+}
+
+struct TransitionActive: ViewModifier {
+    var active: Bool
+    
+    func body(content: Content) -> some View {
+        content
+            .environment(\.transitionIsActive, active)
+    }
+}
+
+
 struct HomeView: View {
     
     @EnvironmentObject var sessionManager: SessionManager
     @EnvironmentObject var imageModel: ImageModel
+    
+    @Namespace private var gridNamespace
+    @Namespace private var imageNamespace
     
     @State private var selectedPhotosPickerImages: [PhotosPickerItem] = []
     @State private var selectedEditableImages: [MeemeImage] = []
@@ -23,23 +58,29 @@ struct HomeView: View {
     
     var body: some View {
         ZStack {
-            GridView
-            ImageView
+            GridView.opacity(focusedImage == nil ? 1 : 0)
+            DetailView
         }
+        .animation(.default.speed(1), value: focusedImage)
     }
     
     
-    
+    // GRID VIEW
     @ViewBuilder
     var GridView: some View {
         NavigationView {
             ScrollView() {
-                // IMAGES GRID
+                // IMAGES
                 LazyVGrid(columns: Array(repeating: .init(.adaptive(minimum: 120, maximum: .infinity), spacing: 2), count: 3), spacing: 2) {
                     ForEach(imageModel.meemeImages) { meemeImage in
                         AsyncImage(url: meemeImage.url) {
                             image in image
                                 .resizable()
+                                .matchedGeometryEffect(
+                                    id: meemeImage.id,
+                                    in: gridNamespace,
+                                    isSource: true
+                                )
                                 .aspectRatio(contentMode: .fill)
                                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
                                 .clipped()
@@ -60,7 +101,7 @@ struct HomeView: View {
                             }
                         }
                     }
-                    // PHOTO PICKER BUTTON
+                    // PHOTO PICKER
                     PhotosPicker(selection: $selectedPhotosPickerImages, maxSelectionCount: 100, matching: .any(of: [.images, .not(.livePhotos)])) {
                         ZStack {
                             RoundedRectangle(cornerRadius: 0)
@@ -118,23 +159,47 @@ struct HomeView: View {
         )
     }
     
-    // FOCUSED IMAGE
+    
+    
+    // DETAIL VIEW
     @ViewBuilder
-    var ImageView: some View {
-        if let _ = focusedImage {
-            AsyncImage(url: URL(string: "https://hws.dev/paul.jpg")) {
-                image in image
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .onTapGesture {
-                        self.focusedImage = nil
+    var DetailView: some View {
+        if let meemeImage = focusedImage {
+            // IMAGE
+            ZStack {
+                TransitionReader { active in
+                    AsyncImage(url: URL(string: "https://hws.dev/paul.jpg")) {
+                        image in image
+                            .resizable()
+                            .mask {
+                                Rectangle().aspectRatio(1, contentMode: active ? .fit : .fill)
+                            }
+                            .matchedGeometryEffect(
+                                id: meemeImage.id,
+                                in: active ? gridNamespace : imageNamespace,
+                                isSource: false
+                            )
+                            .aspectRatio(contentMode: .fit)
+                            .onTapGesture {
+                                self.focusedImage = nil
+                            }
+                    } placeholder: {
+                        
                     }
-            } placeholder: {
-                
+                }
             }
+            .zIndex(2)
+            .id(meemeImage.id)
+            .transition(
+                .modifier(
+                    active: TransitionActive(active: true),
+                    identity: TransitionActive(active: false)
+                )
+            )
         }
     }
 }
+
 
 
 
@@ -185,7 +250,7 @@ struct HomeView: View {
 //            LazyVGrid(columns: [.init(.adaptive(minimum: 100, maximum: .infinity), spacing: 3)], spacing: 3) {
 //                ForEach(imageModel.meemeImages) { image in
 //                    GeometryReader { geo in
-//                        NavigationLink(destination: ImageView()) {
+//                        NavigationLink(destination: DetailView()) {
 //                            GridImage(size: geo.size.width, image: image)
 //                        }
 //                    }
