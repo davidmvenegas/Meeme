@@ -11,26 +11,31 @@ struct MeemeApp: App {
     
     init() {
         configureAmplify()
-        // sessionModel.fetchAuthState()
     }
     
     
     var body: some Scene {
         WindowGroup {
-            switch sessionModel.authState {
-            case .unauthenticated:
-                LandingView()
-                    .environmentObject(sessionModel)
-            case .confirmCode(let email):
-                ConfirmationView(email: email)
-                    .environmentObject(sessionModel)
-            case .session(let user):
-                HomeView(user: user)
-                    .environmentObject(sessionModel)
-                    .environmentObject(imageModel)
+            VStack {
+                switch sessionModel.authState {
+                case .unauthenticated:
+                    LandingView()
+                        .environmentObject(sessionModel)
+                case .confirmCode(let email):
+                    ConfirmationView(email: email)
+                        .environmentObject(sessionModel)
+                case .session(let user):
+                    HomeView(user: user)
+                        .environmentObject(sessionModel)
+                        .environmentObject(imageModel)
+                }
+            }
+            .task {
+                await sessionModel.fetchAuthState()
             }
         }
     }
+    
     
     private func configureAmplify() {
         do {

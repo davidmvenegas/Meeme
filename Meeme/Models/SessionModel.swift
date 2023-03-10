@@ -67,10 +67,23 @@ final class SessionModel: ObservableObject {
                 confirmationCode: code
             )
             if (confirmSignUpResult.isSignUpComplete) {
-                await self.fetchAuthState() // Is not redirecting to Home, needs fixing
+                await self.fetchAuthState()
             }
         } catch let error as AuthError {
             print("An error occurred while confirming sign up: \(error)")
+        } catch {
+            print("Unexpected error: \(error)")
+        }
+    }
+    
+    
+    // RESEND CONFIRMATION CODE
+    func resendCode() async {
+        do {
+            let deliveryDetails = try await Amplify.Auth.resendConfirmationCode(forUserAttributeKey: .email)
+            print("Resend code sent to - \(deliveryDetails)")
+        } catch let error as AuthError {
+            print("Resend code failed with error: \(error)")
         } catch {
             print("Unexpected error: \(error)")
         }
@@ -114,7 +127,7 @@ final class SessionModel: ObservableObject {
             if revokeTokenError != nil {print("Revoke token error: \(String(describing: revokeTokenError))")}
 
         case .failed(let error):
-            print("SignOut failed with \(error)")
+            print("SignOut failed with error: \(error)")
         }
     }
 }

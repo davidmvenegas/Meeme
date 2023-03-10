@@ -148,6 +148,11 @@ struct HomeView: View {
                         Button(action: {}) {
                             Label("Create a folder", systemImage: "folder")
                         }
+                        Button(action: {}) {
+                            Label("Log out", systemImage: "")
+                        }
+                        .buttonStyle(.bordered)
+                        .foregroundColor(.red)
                     }
                     label: {
                         Label("Add", systemImage: "ellipsis.circle")
