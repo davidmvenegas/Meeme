@@ -14,6 +14,15 @@
     "categories": {
       "auth": {
         "meeme82411b80": {}
+      },
+      "function": {
+        "S3Trigger6a45ffbe": {
+          "deploymentBucketName": "amplify-meeme-dev-95018-deployment",
+          "s3Key": "amplify-builds/S3Trigger6a45ffbe-573877697033566d454d-build.zip"
+        }
+      },
+      "storage": {
+        "MeemeImages": {}
       }
     }
   }

@@ -2,7 +2,7 @@ import SwiftUI
 
 struct LandingView: View {
     
-    @EnvironmentObject var sessionManager: SessionManager
+    @EnvironmentObject var sessionModel: SessionModel
     
     var body: some View {
         NavigationStack {
@@ -12,7 +12,7 @@ struct LandingView: View {
                     Text("LANDING VIEW")
                         .padding()
                     
-                    NavigationLink(destination: SignUpView().environmentObject(sessionManager)) {
+                    NavigationLink(destination: SignUpView().environmentObject(sessionModel)) {
                         Text("Continue with Email")
                     }
                     

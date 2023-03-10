@@ -2,7 +2,7 @@ import SwiftUI
 
 struct LoginView: View {
     
-    @EnvironmentObject var sessionManager: SessionManager
+    @EnvironmentObject var sessionModel: SessionModel
     
     @State var email = ""
     @State var password = ""
@@ -31,7 +31,9 @@ struct LoginView: View {
                 }
             
             Button("Login", action: {
-                sessionManager.login(email: email, password: password)
+                Task {
+                    await sessionModel.signIn(email: email, password: password)
+                }
             })
             
         }

@@ -36,7 +36,7 @@ struct TransitionActive: ViewModifier {
 
 struct HomeView: View {
     
-    @EnvironmentObject var sessionManager: SessionManager
+    @EnvironmentObject var sessionModel: SessionModel
     @EnvironmentObject var imageModel: ImageModel
     
     @Namespace private var gridNamespace
@@ -47,12 +47,17 @@ struct HomeView: View {
     @State private var focusedImage: MeemeImage? = nil
     @State private var searchText: String = ""
     
-        
-    let user: AuthUser
-    // Button("Sign Out", action: sessionManager.signOut)
     
-    func addImageFromPhotosPicker(image: PhotosPickerItem) {
-//        imageModel.addImage(MeemeImage(url: NEED_TO_UPLOAD_AND_GET_URL_HERE))
+    let user: AuthUser
+    // Button("Sign Out", action: sessionModel.signOut)
+    
+    
+    func uploadImageToCloud(imageSelected: PhotosPickerItem) {
+        Task {
+            if let imageData = try? await imageSelected.loadTransferable(type: Data.self) {
+                imageModel.handleUploadMeemeToCloud(imageData: imageData)
+            }
+        }
     }
     
     
@@ -61,7 +66,7 @@ struct HomeView: View {
             GridView.opacity(focusedImage == nil ? 1 : 0)
             DetailView
         }
-        .animation(.default.speed(1), value: focusedImage)
+        .animation(.default, value: focusedImage)
     }
     
     
@@ -116,7 +121,7 @@ struct HomeView: View {
                     }
                     .onChange(of: selectedPhotosPickerImages) { newImages in
                         for newImage in newImages {
-                            addImageFromPhotosPicker(image: newImage)
+                            uploadImageToCloud(imageSelected: newImage)
                         }
                     }
                 }
@@ -157,6 +162,7 @@ struct HomeView: View {
             placement: .navigationBarDrawer(displayMode: .always),
             prompt: "Photos, People, Places..."
         )
+        .zIndex(1)
     }
     
     
@@ -233,7 +239,7 @@ struct HomeView: View {
 //
 //struct HomeView: View {
 //
-//    @EnvironmentObject var sessionManager: SessionManager
+//    @EnvironmentObject var sessionModel: SessionModel
 //    @EnvironmentObject var imageModel: ImageModel
 //
 //    let user: AuthUser

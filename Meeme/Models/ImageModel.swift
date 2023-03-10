@@ -1,5 +1,6 @@
-import Foundation
 import SwiftUI
+import Amplify
+
 
 struct MeemeImage: Identifiable {
     let id = UUID()
@@ -7,7 +8,7 @@ struct MeemeImage: Identifiable {
 }
 
 extension MeemeImage: Equatable {
-    static func ==(lhs: MeemeImage, rhs: MeemeImage) -> Bool {
+    static func == (lhs: MeemeImage, rhs: MeemeImage) -> Bool {
         return lhs.id == rhs.id && lhs.id == rhs.id
     }
 }
@@ -22,11 +23,23 @@ class ImageModel: ObservableObject {
         }
     }
     
-    func addImage(_ mImage: MeemeImage) {
-        meemeImages.insert(mImage, at: 0)
+    func handleUploadMeemeToCloud(imageData: Data) {
+//        let timestamp = String(DateFormater.createTimestamp())
+        
+//        Amplify.Storage.uploadData(key: timestamp, data: imageData) { result in
+//            switch result {
+//            case .success(let uploadData):
+//                print(uploadData)
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
+//        meemeImages.insert(mImage, at: 0)
     }
     
-    func removeImage(_ mImage: MeemeImage) {
+    
+    
+    func removeImage(mImage: MeemeImage) {
         if let index = meemeImages.firstIndex(of: mImage) {
             meemeImages.remove(at: index)
         }

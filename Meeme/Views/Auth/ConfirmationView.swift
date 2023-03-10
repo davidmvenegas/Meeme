@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ConfirmationView: View {
     
-    @EnvironmentObject var sessionManager: SessionManager
+    @EnvironmentObject var sessionModel: SessionModel
     
     @State var code = ""
     
@@ -22,10 +22,12 @@ struct ConfirmationView: View {
                 }
             
             Button("Confirm", action: {
-                sessionManager.confirm(
-                    email: email,
-                    code: code
-                )
+                Task {
+                    await sessionModel.confirmSignUp(
+                        email: email,
+                        code: code
+                    )
+                }
             })
         }
         .padding()

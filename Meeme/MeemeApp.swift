@@ -1,32 +1,33 @@
 import SwiftUI
 import Amplify
-import AmplifyPlugins
+import AWSCognitoAuthPlugin
+import AWSS3StoragePlugin
 
 @main
 struct MeemeApp: App {
     
-    @ObservedObject var sessionManager = SessionManager()
+    @StateObject var sessionModel = SessionModel()
     @StateObject var imageModel = ImageModel()
     
     init() {
         configureAmplify()
-        sessionManager.getCurrentAuthState()
+        // sessionModel.fetchAuthState()
     }
+    
     
     var body: some Scene {
         WindowGroup {
-            switch sessionManager.authState {
+            switch sessionModel.authState {
             case .unauthenticated:
                 LandingView()
-                    .environmentObject(sessionManager)
+                    .environmentObject(sessionModel)
             case .confirmCode(let email):
                 ConfirmationView(email: email)
-                    .environmentObject(sessionManager)
+                    .environmentObject(sessionModel)
             case .session(let user):
                 HomeView(user: user)
-                    .environmentObject(sessionManager)
+                    .environmentObject(sessionModel)
                     .environmentObject(imageModel)
-                    .navigationViewStyle(.stack)
             }
         }
     }
@@ -34,6 +35,7 @@ struct MeemeApp: App {
     private func configureAmplify() {
         do {
             try Amplify.add(plugin: AWSCognitoAuthPlugin())
+            try Amplify.add(plugin: AWSS3StoragePlugin())
             try Amplify.configure()
             print("Amplify configured successfully")
         } catch {
