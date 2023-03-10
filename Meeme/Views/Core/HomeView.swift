@@ -55,7 +55,7 @@ struct HomeView: View {
     func uploadImageToCloud(imageSelected: PhotosPickerItem) {
         Task {
             if let imageData = try? await imageSelected.loadTransferable(type: Data.self) {
-                imageModel.handleUploadMeemeToCloud(imageData: imageData)
+                await imageModel.handleUploadMeemeToCloud(imageData: imageData)
             }
         }
     }
@@ -148,7 +148,11 @@ struct HomeView: View {
                         Button(action: {}) {
                             Label("Create a folder", systemImage: "folder")
                         }
-                        Button(action: {}) {
+                        Button(action: {
+                            Task {
+                                await sessionModel.signOut()
+                            }
+                        }) {
                             Label("Log out", systemImage: "")
                         }
                         .buttonStyle(.bordered)

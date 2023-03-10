@@ -1,0 +1,14 @@
+{
+  "resourceName": "MeemeDatabase",
+  "tableName": "users",
+  "partitionKey": {
+    "fieldName": "id",
+    "fieldType": "string"
+  },
+  "sortKey": {
+    "fieldName": "timestamp",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

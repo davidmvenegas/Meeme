@@ -2,6 +2,7 @@ import SwiftUI
 import Amplify
 import AWSCognitoAuthPlugin
 import AWSS3StoragePlugin
+import AWSAPIPlugin
 
 @main
 struct MeemeApp: App {
@@ -10,7 +11,15 @@ struct MeemeApp: App {
     @StateObject var imageModel = ImageModel()
     
     init() {
-        configureAmplify()
+        do {
+            try Amplify.add(plugin: AWSCognitoAuthPlugin())
+            try Amplify.add(plugin: AWSS3StoragePlugin())
+            try Amplify.add(plugin: AWSAPIPlugin())
+            try Amplify.configure()
+            print("Amplify configured successfully")
+        } catch {
+            print("Could not initialize Amplify: ", error)
+        }
     }
     
     
@@ -38,13 +47,6 @@ struct MeemeApp: App {
     
     
     private func configureAmplify() {
-        do {
-            try Amplify.add(plugin: AWSCognitoAuthPlugin())
-            try Amplify.add(plugin: AWSS3StoragePlugin())
-            try Amplify.configure()
-            print("Amplify configured successfully")
-        } catch {
-            print("Could not initialize Amplify: ", error)
-        }
+        
     }
 }

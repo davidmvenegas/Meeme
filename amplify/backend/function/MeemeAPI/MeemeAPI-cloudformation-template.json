@@ -2,14 +2,27 @@
   "AWSTemplateFormatVersion": "2010-09-09",
   "Description": "{\"createdOn\":\"Mac\",\"createdBy\":\"Amplify\",\"createdWith\":\"10.8.1\",\"stackType\":\"function-Lambda\",\"metadata\":{}}",
   "Parameters": {
-    "env": {
-      "Type": "String"
+    "CloudWatchRule": {
+      "Type": "String",
+      "Default": "NONE",
+      "Description": " Schedule Expression"
     },
     "deploymentBucketName": {
       "Type": "String"
     },
+    "env": {
+      "Type": "String"
+    },
     "s3Key": {
       "Type": "String"
+    },
+    "storageMeemeDatabaseName": {
+      "Type": "String",
+      "Default": "storageMeemeDatabaseName"
+    },
+    "storageMeemeDatabaseArn": {
+      "Type": "String",
+      "Default": "storageMeemeDatabaseArn"
     }
   },
   "Conditions": {
@@ -30,16 +43,24 @@
         "aws:asset:property": "Code"
       },
       "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "deploymentBucketName"
+          },
+          "S3Key": {
+            "Ref": "s3Key"
+          }
+        },
         "Handler": "index.handler",
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "S3Trigger6a45ffbe",
+            "MeemeAPI",
             {
               "Fn::Join": [
                 "",
                 [
-                  "S3Trigger6a45ffbe",
+                  "MeemeAPI",
                   "-",
                   {
                     "Ref": "env"
@@ -53,6 +74,9 @@
           "Variables": {
             "ENV": {
               "Ref": "env"
+            },
+            "REGION": {
+              "Ref": "AWS::Region"
             }
           }
         },
@@ -63,15 +87,8 @@
           ]
         },
         "Runtime": "nodejs14.x",
-        "Timeout": 25,
-        "Code": {
-          "S3Bucket": {
-            "Ref": "deploymentBucketName"
-          },
-          "S3Key": {
-            "Ref": "s3Key"
-          }
-        }
+        "Layers": [],
+        "Timeout": 25
       }
     },
     "LambdaExecutionRole": {
@@ -80,12 +97,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "S3Trigger6a45ffbeLambdaRole6a45ffbe",
+            "meemeLambdaRolea4908755",
             {
               "Fn::Join": [
                 "",
                 [
-                  "S3Trigger6a45ffbeLambdaRole6a45ffbe",
+                  "meemeLambdaRolea4908755",
                   "-",
                   {
                     "Ref": "env"
@@ -151,6 +168,34 @@
                   }
                 ]
               }
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "dynamodb:DescribeTable",
+                "dynamodb:GetItem",
+                "dynamodb:Query",
+                "dynamodb:Scan",
+                "dynamodb:PutItem",
+                "dynamodb:UpdateItem",
+                "dynamodb:DeleteItem"
+              ],
+              "Resource": [
+                {
+                  "Ref": "storageMeemeDatabaseArn"
+                },
+                {
+                  "Fn::Join": [
+                    "/",
+                    [
+                      {
+                        "Ref": "storageMeemeDatabaseArn"
+                      },
+                      "index/*"
+                    ]
+                  ]
+                }
+              ]
             }
           ]
         }

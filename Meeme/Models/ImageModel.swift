@@ -23,17 +23,23 @@ class ImageModel: ObservableObject {
         }
     }
     
-    func handleUploadMeemeToCloud(imageData: Data) {
-//        let timestamp = String(DateFormater.createTimestamp())
-        
-//        Amplify.Storage.uploadData(key: timestamp, data: imageData) { result in
-//            switch result {
-//            case .success(let uploadData):
-//                print(uploadData)
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
+    func handleUploadMeemeToCloud(imageData: Data) async {
+        do {
+            let timestamp = String(DateFormater.createTimestamp())
+            let uploadTask = Amplify.Storage.uploadData(
+                key: timestamp,
+                data: imageData
+            )
+            Task {
+                for await progress in await uploadTask.progress {
+                    print("Progress: \(progress)")
+                }
+            }
+            let value = try await uploadTask.value
+            print("Upload completed: \(value)")
+        } catch {
+            print(error)
+        }
 //        meemeImages.insert(mImage, at: 0)
     }
     

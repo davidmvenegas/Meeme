@@ -119,7 +119,7 @@ final class SessionModel: ObservableObject {
 
         switch signOutResult {
         case .complete:
-            print("Signed out successfully")
+            await self.fetchAuthState()
 
         case let .partial(revokeTokenError, globalSignOutError, hostedUIError):
             if (hostedUIError != nil) {print("HostedUI error: \(String(describing: hostedUIError))")}

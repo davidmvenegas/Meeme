@@ -1,6 +1,22 @@
 {
+  "api": {
+    "MeemeAPI": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "MeemeAPI"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
   "auth": {
-    "meeme82411b80": {
+    "meeme125f43a7": {
       "customAuth": false,
       "dependsOn": [],
       "frontendAuthConfig": {
@@ -28,31 +44,70 @@
     }
   },
   "function": {
-    "S3Trigger6a45ffbe": {
+    "MeemeAPI": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributeEnvMap": {
+            "Arn": "TABLE_ARN",
+            "Name": "TABLE_NAME"
+          },
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "storage",
+          "resourceName": "MeemeDatabase"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "S3Trigger8bbf7bbe": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     }
   },
   "parameters": {
-    "AMPLIFY_function_S3Trigger6a45ffbe_deploymentBucketName": {
+    "AMPLIFY_function_MeemeAPI_deploymentBucketName": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "S3Trigger6a45ffbe"
+          "resourceName": "MeemeAPI"
         }
       ]
     },
-    "AMPLIFY_function_S3Trigger6a45ffbe_s3Key": {
+    "AMPLIFY_function_MeemeAPI_s3Key": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "S3Trigger6a45ffbe"
+          "resourceName": "MeemeAPI"
+        }
+      ]
+    },
+    "AMPLIFY_function_S3Trigger8bbf7bbe_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "S3Trigger8bbf7bbe"
+        }
+      ]
+    },
+    "AMPLIFY_function_S3Trigger8bbf7bbe_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "S3Trigger8bbf7bbe"
         }
       ]
     }
   },
   "storage": {
+    "MeemeDatabase": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
     "MeemeImages": {
       "dependsOn": [
         {
@@ -62,7 +117,7 @@
             "LambdaExecutionRole"
           ],
           "category": "function",
-          "resourceName": "S3Trigger6a45ffbe"
+          "resourceName": "S3Trigger8bbf7bbe"
         }
       ],
       "providerPlugin": "awscloudformation",

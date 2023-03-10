@@ -1,7 +1,7 @@
 {
   "resourceName": "MeemeImages",
-  "policyUUID": "0f449574",
-  "bucketName": "meeme-images-bucket",
+  "policyUUID": "dcc028ca",
+  "bucketName": "meeme-images",
   "storageAccess": "auth",
   "guestAccess": [],
   "authAccess": [
@@ -9,6 +9,6 @@
     "READ",
     "DELETE"
   ],
-  "triggerFunction": "S3Trigger6a45ffbe",
+  "triggerFunction": "S3Trigger8bbf7bbe",
   "groupAccess": {}
 }

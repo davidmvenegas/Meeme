@@ -1,28 +1,36 @@
 {
-  "dev": {
+  "meeme": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-meeme-dev-95018-authRole",
-      "UnauthRoleArn": "arn:aws:iam::658335654746:role/amplify-meeme-dev-95018-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::658335654746:role/amplify-meeme-dev-95018-authRole",
+      "AuthRoleName": "amplify-meeme-meeme-32229-authRole",
+      "UnauthRoleArn": "arn:aws:iam::658335654746:role/amplify-meeme-meeme-32229-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::658335654746:role/amplify-meeme-meeme-32229-authRole",
       "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-meeme-dev-95018-deployment",
-      "UnauthRoleName": "amplify-meeme-dev-95018-unauthRole",
-      "StackName": "amplify-meeme-dev-95018",
-      "StackId": "arn:aws:cloudformation:us-east-1:658335654746:stack/amplify-meeme-dev-95018/8dfcc2b0-b909-11ed-be4e-127c41fefec1",
-      "AmplifyAppId": "d1t2r4ozo3thi0"
+      "DeploymentBucketName": "amplify-meeme-meeme-32229-deployment",
+      "UnauthRoleName": "amplify-meeme-meeme-32229-unauthRole",
+      "StackName": "amplify-meeme-meeme-32229",
+      "StackId": "arn:aws:cloudformation:us-east-1:658335654746:stack/amplify-meeme-meeme-32229/b3540190-bf1c-11ed-9aa2-0a65de19d607",
+      "AmplifyAppId": "d1rr075e1fyncu"
     },
     "categories": {
       "auth": {
-        "meeme82411b80": {}
+        "meeme125f43a7": {}
       },
       "function": {
-        "S3Trigger6a45ffbe": {
-          "deploymentBucketName": "amplify-meeme-dev-95018-deployment",
-          "s3Key": "amplify-builds/S3Trigger6a45ffbe-573877697033566d454d-build.zip"
+        "S3Trigger8bbf7bbe": {
+          "deploymentBucketName": "amplify-meeme-meeme-32229-deployment",
+          "s3Key": "amplify-builds/S3Trigger8bbf7bbe-4a4576495264646b7562-build.zip"
+        },
+        "MeemeAPI": {
+          "deploymentBucketName": "amplify-meeme-meeme-32229-deployment",
+          "s3Key": "amplify-builds/MeemeAPI-4877674a764455505166-build.zip"
         }
       },
       "storage": {
-        "MeemeImages": {}
+        "MeemeImages": {},
+        "MeemeDatabase": {}
+      },
+      "api": {
+        "MeemeAPI": {}
       }
     }
   }
