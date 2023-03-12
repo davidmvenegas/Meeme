@@ -6,25 +6,36 @@ struct LandingView: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
+            ZStack {
+                Color("appBackground").edgesIgnoringSafeArea(.all)
                 VStack {
-                    
-                    Text("LANDING VIEW")
-                        .padding()
-                    
-                    NavigationLink(destination: SignUpView().environmentObject(sessionModel)) {
-                        Text("Continue with Email")
+                    NavigationLink(destination: SignUpView(sessionModel: sessionModel).toolbarRole(.editor).environmentObject(sessionModel)) {
+                        HStack(spacing: 10) {
+                            Text("Continue with Email")
+                                .font(.headline)
+                        }
+                        .frame(maxWidth: .infinity, minHeight: 35)
                     }
+                    .buttonStyle(.borderedProminent)
                     
                     Text("OR")
                         .padding()
                     
-                    NavigationLink(destination: LoginView()) {
-                        Text("Log in with existing account")
+                    NavigationLink(destination: SignInView().toolbarRole(.editor)) {
+                        HStack(spacing: 10) {
+                            Text("Log in with existing account")
+                                .font(.headline)
+                        }
+                        .frame(maxWidth: .infinity, minHeight: 35)
                     }
+                    .buttonStyle(.borderedProminent)
+                    .tint(Color("grayButton"))
                 }
+                .navigationTitle("Join Meeme")
+                .navigationBarTitleDisplayMode(.inline)
+                .padding(.horizontal)
             }
-            .navigationTitle("Join Meeme")
         }
+        .navigationViewStyle(.stack)
     }
 }

@@ -21,13 +21,14 @@
 		ED0F34FF29B0D94F00CB9437 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0F34FE29B0D94F00CB9437 /* SignUpView.swift */; };
 		ED0F350129B0DA8B00CB9437 /* LandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0F350029B0DA8B00CB9437 /* LandingView.swift */; };
 		ED0F350329B0DBAE00CB9437 /* ConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0F350229B0DBAE00CB9437 /* ConfirmationView.swift */; };
-		ED0F350529B0DD6A00CB9437 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0F350429B0DD6A00CB9437 /* LoginView.swift */; };
+		ED0F350529B0DD6A00CB9437 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0F350429B0DD6A00CB9437 /* SignInView.swift */; };
 		ED0F350829B0DDCF00CB9437 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0F350729B0DDCF00CB9437 /* HomeView.swift */; };
 		ED0F350D29B0DE1600CB9437 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0F350C29B0DE1600CB9437 /* AccountView.swift */; };
 		ED0F350F29B0DE2000CB9437 /* StorageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0F350E29B0DE2000CB9437 /* StorageView.swift */; };
 		ED0F351129B0DE2E00CB9437 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0F351029B0DE2E00CB9437 /* AboutView.swift */; };
 		ED70F86F29BB3CE9002AC798 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = ED70F86D29BB3CE9002AC798 /* amplifyconfiguration.json */; };
 		ED70F87029BB3CE9002AC798 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = ED70F86E29BB3CE9002AC798 /* awsconfiguration.json */; };
+		ED96281429BE2A5600BE00EB /* FloatingLabelTextFieldSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = ED96281329BE2A5600BE00EB /* FloatingLabelTextFieldSwiftUI */; };
 		EDA67E5729B7D69200A8938A /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA67E5629B7D69200A8938A /* ImageModel.swift */; };
 		EDA67E6A29BAD1FC00A8938A /* DateFormater.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA67E6929BAD1FC00A8938A /* DateFormater.swift */; };
 		EDF1378829B228CC0018F98D /* SessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF1378729B228CC0018F98D /* SessionModel.swift */; };
@@ -40,13 +41,15 @@
 		ED0F34FE29B0D94F00CB9437 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		ED0F350029B0DA8B00CB9437 /* LandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingView.swift; sourceTree = "<group>"; };
 		ED0F350229B0DBAE00CB9437 /* ConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationView.swift; sourceTree = "<group>"; };
-		ED0F350429B0DD6A00CB9437 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		ED0F350429B0DD6A00CB9437 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		ED0F350729B0DDCF00CB9437 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		ED0F350C29B0DE1600CB9437 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		ED0F350E29B0DE2000CB9437 /* StorageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageView.swift; sourceTree = "<group>"; };
 		ED0F351029B0DE2E00CB9437 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		ED70F86D29BB3CE9002AC798 /* amplifyconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = amplifyconfiguration.json; path = AmplifyConfig/amplifyconfiguration.json; sourceTree = "<group>"; };
 		ED70F86E29BB3CE9002AC798 /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = awsconfiguration.json; path = AmplifyConfig/awsconfiguration.json; sourceTree = "<group>"; };
+		ED7F85E529BDF6A400A33AD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		ED96280E29BE14A100BE00EB /* Meeme.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Meeme.entitlements; sourceTree = "<group>"; };
 		EDA67E5629B7D69200A8938A /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
 		EDA67E6929BAD1FC00A8938A /* DateFormater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormater.swift; sourceTree = "<group>"; };
 		EDF1378729B228CC0018F98D /* SessionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionModel.swift; sourceTree = "<group>"; };
@@ -64,6 +67,7 @@
 				ED0DED4129BADEFC00F30F44 /* AWSAPIPlugin in Frameworks */,
 				ED0DED4929BADEFC00F30F44 /* AWSPinpointAnalyticsPlugin in Frameworks */,
 				ED0DED4729BADEFC00F30F44 /* AWSLocationGeoPlugin in Frameworks */,
+				ED96281429BE2A5600BE00EB /* FloatingLabelTextFieldSwiftUI in Frameworks */,
 				ED0DED4329BADEFC00F30F44 /* AWSCognitoAuthPlugin in Frameworks */,
 				ED0DED4F29BADEFC00F30F44 /* AWSS3StoragePlugin in Frameworks */,
 			);
@@ -93,8 +97,11 @@
 		ED0F34EC29B0472000CB9437 /* Meeme */ = {
 			isa = PBXGroup;
 			children = (
-				ED0F34FC29B047CD00CB9437 /* Helpers */,
+				ED96280E29BE14A100BE00EB /* Meeme.entitlements */,
+				ED7F85E529BDF6A400A33AD9 /* Info.plist */,
 				EDA67E5029B7D26100A8938A /* Models */,
+				ED0F34FC29B047CD00CB9437 /* Helpers */,
+				ED96281529BE536800BE00EB /* Components */,
 				ED0F34FB29B047C000CB9437 /* Views */,
 				ED0F34ED29B0472000CB9437 /* MeemeApp.swift */,
 				ED0F34F129B0472100CB9437 /* Assets.xcassets */,
@@ -124,7 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				ED0F350029B0DA8B00CB9437 /* LandingView.swift */,
-				ED0F350429B0DD6A00CB9437 /* LoginView.swift */,
+				ED0F350429B0DD6A00CB9437 /* SignInView.swift */,
 				ED0F34FE29B0D94F00CB9437 /* SignUpView.swift */,
 				ED0F350229B0DBAE00CB9437 /* ConfirmationView.swift */,
 			);
@@ -147,6 +154,13 @@
 				ED0F351029B0DE2E00CB9437 /* AboutView.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		ED96281529BE536800BE00EB /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		EDA67E5029B7D26100A8938A /* Models */ = {
@@ -184,6 +198,7 @@
 				ED0DED4C29BADEFC00F30F44 /* AWSPluginsCore */,
 				ED0DED4E29BADEFC00F30F44 /* AWSS3StoragePlugin */,
 				ED0DED5029BADEFC00F30F44 /* Amplify */,
+				ED96281329BE2A5600BE00EB /* FloatingLabelTextFieldSwiftUI */,
 			);
 			productName = Meeme;
 			productReference = ED0F34EA29B0472000CB9437 /* Meeme.app */;
@@ -215,6 +230,7 @@
 			mainGroup = ED0F34E129B0472000CB9437;
 			packageReferences = (
 				ED0DED3F29BADEFC00F30F44 /* XCRemoteSwiftPackageReference "amplify-swift" */,
+				ED96281229BE2A5600BE00EB /* XCRemoteSwiftPackageReference "FloatingLabelTextFieldSwiftUI" */,
 			);
 			productRefGroup = ED0F34EB29B0472000CB9437 /* Products */;
 			projectDirPath = "";
@@ -249,7 +265,7 @@
 				ED0F350829B0DDCF00CB9437 /* HomeView.swift in Sources */,
 				ED0F351129B0DE2E00CB9437 /* AboutView.swift in Sources */,
 				ED0F350D29B0DE1600CB9437 /* AccountView.swift in Sources */,
-				ED0F350529B0DD6A00CB9437 /* LoginView.swift in Sources */,
+				ED0F350529B0DD6A00CB9437 /* SignInView.swift in Sources */,
 				EDA67E5729B7D69200A8938A /* ImageModel.swift in Sources */,
 				ED0F350F29B0DE2000CB9437 /* StorageView.swift in Sources */,
 				ED0F34EE29B0472000CB9437 /* MeemeApp.swift in Sources */,
@@ -380,13 +396,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Meeme/Meeme.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = TQ5H7S99UR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = Meeme/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -409,14 +426,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Meeme/MeemeRelease.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Meeme/Meeme.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = TQ5H7S99UR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = Meeme/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -428,6 +446,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.davidmvenegas.meeme-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -464,6 +483,14 @@
 			requirement = {
 				branch = main;
 				kind = branch;
+			};
+		};
+		ED96281229BE2A5600BE00EB /* XCRemoteSwiftPackageReference "FloatingLabelTextFieldSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishanraja/FloatingLabelTextFieldSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -513,6 +540,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = ED0DED3F29BADEFC00F30F44 /* XCRemoteSwiftPackageReference "amplify-swift" */;
 			productName = Amplify;
+		};
+		ED96281329BE2A5600BE00EB /* FloatingLabelTextFieldSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ED96281229BE2A5600BE00EB /* XCRemoteSwiftPackageReference "FloatingLabelTextFieldSwiftUI" */;
+			productName = FloatingLabelTextFieldSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

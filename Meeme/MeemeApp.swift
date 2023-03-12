@@ -11,27 +11,15 @@ struct MeemeApp: App {
     @StateObject var imageModel = ImageModel()
     
     init() {
-        do {
-            try Amplify.add(plugin: AWSCognitoAuthPlugin())
-            try Amplify.add(plugin: AWSS3StoragePlugin())
-            try Amplify.add(plugin: AWSAPIPlugin())
-            try Amplify.configure()
-            print("Amplify configured successfully")
-        } catch {
-            print("Could not initialize Amplify: ", error)
-        }
+        configureAmplify()
     }
-    
     
     var body: some Scene {
         WindowGroup {
-            VStack {
+            ZStack {
                 switch sessionModel.authState {
                 case .unauthenticated:
                     LandingView()
-                        .environmentObject(sessionModel)
-                case .confirmCode(let email):
-                    ConfirmationView(email: email)
                         .environmentObject(sessionModel)
                 case .session(let user):
                     HomeView(user: user)
@@ -47,6 +35,14 @@ struct MeemeApp: App {
     
     
     private func configureAmplify() {
-        
+        do {
+            try Amplify.add(plugin: AWSCognitoAuthPlugin())
+            try Amplify.add(plugin: AWSS3StoragePlugin())
+            try Amplify.add(plugin: AWSAPIPlugin())
+            try Amplify.configure()
+            print("Amplify configured successfully")
+        } catch {
+            print("Could not initialize Amplify: ", error)
+        }
     }
 }

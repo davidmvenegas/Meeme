@@ -23,7 +23,8 @@
         "MeemeAPI": {
           "deploymentBucketName": "amplify-meeme-meeme-32229-deployment",
           "s3Key": "amplify-builds/MeemeAPI-4877674a764455505166-build.zip"
-        }
+        },
+        "MeemeDatabase": {}
       },
       "storage": {
         "MeemeImages": {},

@@ -5,13 +5,13 @@ import AWSCognitoAuthPlugin
 
 enum AuthState {
     case unauthenticated
-    case confirmCode(email: String)
     case session(user: AuthUser)
 }
 
 
 final class SessionModel: ObservableObject {
     @Published var authState: AuthState = .unauthenticated
+    @Published var hasConfirmCode: Bool = false
     
     
     // FETCH AUTH STATE
@@ -46,7 +46,7 @@ final class SessionModel: ObservableObject {
             if case let .confirmUser(details, _, _) = signUpResult.nextStep {
                 print(details ?? "No details")
                 DispatchQueue.main.async {
-                    self.authState = .confirmCode(email: email)
+                    self.hasConfirmCode = true
                 }
             } else {
                 print("SignUp Complete")
@@ -67,6 +67,7 @@ final class SessionModel: ObservableObject {
                 confirmationCode: code
             )
             if (confirmSignUpResult.isSignUpComplete) {
+                self.hasConfirmCode = false
                 await self.fetchAuthState()
             }
         } catch let error as AuthError {
