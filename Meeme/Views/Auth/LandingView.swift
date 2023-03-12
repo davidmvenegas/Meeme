@@ -9,7 +9,8 @@ struct LandingView: View {
             ZStack {
                 Color("appBackground").edgesIgnoringSafeArea(.all)
                 VStack {
-                    NavigationLink(destination: SignUpView(sessionModel: sessionModel).toolbarRole(.editor).environmentObject(sessionModel)) {
+
+                    NavigationLink(destination: SignUpView().toolbarRole(.editor).environmentObject(sessionModel)) {
                         HStack(spacing: 10) {
                             Text("Continue with Email")
                                 .font(.headline)
@@ -17,10 +18,9 @@ struct LandingView: View {
                         .frame(maxWidth: .infinity, minHeight: 35)
                     }
                     .buttonStyle(.borderedProminent)
-                    
-                    Text("OR")
-                        .padding()
-                    
+
+                    Text("OR").padding()
+
                     NavigationLink(destination: SignInView().toolbarRole(.editor)) {
                         HStack(spacing: 10) {
                             Text("Log in with existing account")
@@ -30,6 +30,7 @@ struct LandingView: View {
                     }
                     .buttonStyle(.borderedProminent)
                     .tint(Color("grayButton"))
+
                 }
                 .navigationTitle("Join Meeme")
                 .navigationBarTitleDisplayMode(.inline)
