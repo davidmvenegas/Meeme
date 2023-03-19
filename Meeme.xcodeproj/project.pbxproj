@@ -28,7 +28,7 @@
 		ED46730A29BEA1BC0026ACA1 /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED46730929BEA1BC0026ACA1 /* AuthModel.swift */; };
 		ED70F86F29BB3CE9002AC798 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = ED70F86D29BB3CE9002AC798 /* amplifyconfiguration.json */; };
 		ED70F87029BB3CE9002AC798 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = ED70F86E29BB3CE9002AC798 /* awsconfiguration.json */; };
-		ED96281929BE85DC00BE00EB /* ForgotPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED96281829BE85DC00BE00EB /* ForgotPassword.swift */; };
+		ED96281929BE85DC00BE00EB /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED96281829BE85DC00BE00EB /* ForgotPasswordView.swift */; };
 		EDA67E5729B7D69200A8938A /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA67E5629B7D69200A8938A /* ImageModel.swift */; };
 		EDA67E6A29BAD1FC00A8938A /* DateFormater.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA67E6929BAD1FC00A8938A /* DateFormater.swift */; };
 /* End PBXBuildFile section */
@@ -49,7 +49,7 @@
 		ED70F86E29BB3CE9002AC798 /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = awsconfiguration.json; path = AmplifyConfig/awsconfiguration.json; sourceTree = "<group>"; };
 		ED7F85E529BDF6A400A33AD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		ED96280E29BE14A100BE00EB /* Meeme.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Meeme.entitlements; sourceTree = "<group>"; };
-		ED96281829BE85DC00BE00EB /* ForgotPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassword.swift; sourceTree = "<group>"; };
+		ED96281829BE85DC00BE00EB /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		EDA67E5629B7D69200A8938A /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
 		EDA67E6929BAD1FC00A8938A /* DateFormater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormater.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -130,7 +130,7 @@
 				ED0F350029B0DA8B00CB9437 /* LandingView.swift */,
 				ED0F350429B0DD6A00CB9437 /* SignInView.swift */,
 				ED0F34FE29B0D94F00CB9437 /* SignUpView.swift */,
-				ED96281829BE85DC00BE00EB /* ForgotPassword.swift */,
+				ED96281829BE85DC00BE00EB /* ForgotPasswordView.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -258,7 +258,7 @@
 				ED0F350F29B0DE2000CB9437 /* StorageView.swift in Sources */,
 				ED0F34EE29B0472000CB9437 /* MeemeApp.swift in Sources */,
 				EDA67E6A29BAD1FC00A8938A /* DateFormater.swift in Sources */,
-				ED96281929BE85DC00BE00EB /* ForgotPassword.swift in Sources */,
+				ED96281929BE85DC00BE00EB /* ForgotPasswordView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

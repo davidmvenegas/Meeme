@@ -17,7 +17,7 @@ struct SignInView: View {
     @State private var isLoading: Bool = false
     @State private var errorMessage: String = ""
 
-    @State private var hasForgotPassword: Bool = false
+    @State private var showForgotPasswordSheet: Bool = false
 
     
     private func handleSubmit() {
@@ -29,12 +29,12 @@ struct SignInView: View {
             focusedField = nil
             isLoading = true
             Task {
-                await signIn()
+                await handleSignIn()
             }
         }
     }
 
-    func signIn() async {
+    func handleSignIn() async {
         do {
             _ = try await Amplify.Auth.signIn(
                 username: email,
@@ -95,7 +95,7 @@ struct SignInView: View {
                     .padding(.top, 10)
                     .padding(.bottom, 18)
                     .onTapGesture {
-                        hasForgotPassword = true
+                        showForgotPasswordSheet = true
                     }
 
                 Button(action: handleSubmit) {
@@ -128,8 +128,8 @@ struct SignInView: View {
                     }
                 )
             }
-            .sheet(isPresented: $hasForgotPassword) {
-                ForgotPassword()
+            .sheet(isPresented: $showForgotPasswordSheet) {
+                ForgotPasswordView()
             }
         }
     }

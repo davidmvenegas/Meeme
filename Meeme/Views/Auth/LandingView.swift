@@ -21,7 +21,7 @@ struct LandingView: View {
 
                     NavigationLink(destination: SignInView().toolbarRole(.editor)) {
                         HStack(spacing: 10) {
-                            Text("Log in with existing account")
+                            Text("Sign in with existing account")
                                 .font(.headline)
                         }
                         .frame(maxWidth: .infinity, minHeight: 35)

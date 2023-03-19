@@ -35,12 +35,12 @@ struct SignUpView: View {
             focusedField = nil
             isLoading = true
             Task {
-                await signUp()
+                await handleSignUp()
             }
         }
     }
     
-    func signUp() async {
+    func handleSignUp() async {
         let userAttributes = [
             AuthUserAttribute(.givenName, value: firstName),
             AuthUserAttribute(.familyName, value: lastName)
