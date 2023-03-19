@@ -3,8 +3,6 @@ import Amplify
 
 struct SignInView: View {
 
-    @EnvironmentObject var sessionModel: SessionModel
-    
     enum Field {
         case email
         case password
@@ -14,10 +12,11 @@ struct SignInView: View {
 
     @State private var email: String = ""
     @State private var password: String = ""
-    @State private var errorMessage: String = ""
     
     @State private var isError: Bool = false
     @State private var isLoading: Bool = false
+    @State private var errorMessage: String = ""
+
     @State private var hasForgotPassword: Bool = false
 
     
@@ -37,26 +36,28 @@ struct SignInView: View {
 
     func signIn() async {
         do {
-            let signInResult = try await Amplify.Auth.signIn(
+            _ = try await Amplify.Auth.signIn(
                 username: email,
                 password: password
             )
-            if signInResult.isSignedIn {
-                await sessionModel.fetchAuthState()
-            }
-        } catch (let error as AuthError) {
+
+        } catch let error as AuthError {
             isError = true
             isLoading = false
-            errorMessage = error.localizedDescription
+            switch error {
+                case .service(let errorDescription, _, _):
+                    errorMessage = errorDescription
+                default:
+                    errorMessage = "Unexpected error occurred"
+            }
         } catch {
             isError = true
             isLoading = false
-            errorMessage = error.localizedDescription
+            errorMessage = "Unexpected error occurred"
         }
     }
 
-    
-    
+
     var body: some View {
         ZStack {
             Color("appBackground").edgesIgnoringSafeArea(.all)
@@ -121,13 +122,15 @@ struct SignInView: View {
             .alert(isPresented: $isError) {
                 Alert(
                     title: Text(errorMessage),
-                    dismissButton: .default(Text("Got it!")) {
+                    dismissButton: .default(Text("OK")) {
                         isError = false
                         errorMessage = ""
                     }
                 )
             }
-            .sheet(item: $hasForgotPassword, content: )
+            .sheet(isPresented: $hasForgotPassword) {
+                ForgotPassword()
+            }
         }
     }
 }

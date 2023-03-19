@@ -36,7 +36,6 @@ struct TransitionActive: ViewModifier {
 
 struct HomeView: View {
     
-    @EnvironmentObject var sessionModel: SessionModel
     @EnvironmentObject var imageModel: ImageModel
     
     @Namespace private var gridNamespace

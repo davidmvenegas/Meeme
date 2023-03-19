@@ -2,15 +2,13 @@ import SwiftUI
 
 struct LandingView: View {
     
-    @EnvironmentObject var sessionModel: SessionModel
-    
     var body: some View {
         NavigationStack {
             ZStack {
                 Color("appBackground").edgesIgnoringSafeArea(.all)
                 VStack {
 
-                    NavigationLink(destination: SignUpView().toolbarRole(.editor).environmentObject(sessionModel)) {
+                    NavigationLink(destination: SignUpView().toolbarRole(.editor)) {
                         HStack(spacing: 10) {
                             Text("Continue with Email")
                                 .font(.headline)

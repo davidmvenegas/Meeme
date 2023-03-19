@@ -3,8 +3,6 @@ import Amplify
 
 struct SignUpView: View {
 
-    @EnvironmentObject var sessionModel: SessionModel
-
     enum Field {
         case firstName
         case lastName
@@ -49,25 +47,26 @@ struct SignUpView: View {
         ]
         let options = AuthSignUpRequest.Options(userAttributes: userAttributes)
         do {
-            let signUpResult = try await Amplify.Auth.signUp(
+            _ = try await Amplify.Auth.signUp(
                 username: email,
                 password: password,
                 options: options
             )
-            if signUpResult.isSignUpComplete {
-                await sessionModel.fetchAuthState()
-            }
-        } catch (let error as AuthError) {
+        } catch let error as AuthError {
             isError = true
             isLoading = false
-            errorMessage = error.localizedDescription
+            switch error {
+                case .service(let errorDescription, _, _):
+                    errorMessage = errorDescription
+                default:
+                    errorMessage = "Unexpected error occurred"
+            }
         } catch {
             isError = true
             isLoading = false
-            errorMessage = error.localizedDescription
+            errorMessage = "Unexpected error occurred"
         }
     }
-
 
     var body: some View {
         ZStack {
