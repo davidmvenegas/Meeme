@@ -1,0 +1,14 @@
+{
+  "resourceName": "MeemeStorage",
+  "policyUUID": "35cfac68",
+  "bucketName": "meeme-storage",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "S3Triggerf0f35bc7",
+  "groupAccess": {}
+}

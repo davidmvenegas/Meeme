@@ -1,0 +1,29 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-meeme-dev-40741-authRole",
+      "UnauthRoleArn": "arn:aws:iam::658335654746:role/amplify-meeme-dev-40741-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::658335654746:role/amplify-meeme-dev-40741-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-meeme-dev-40741-deployment",
+      "UnauthRoleName": "amplify-meeme-dev-40741-unauthRole",
+      "StackName": "amplify-meeme-dev-40741",
+      "StackId": "arn:aws:cloudformation:us-east-1:658335654746:stack/amplify-meeme-dev-40741/4aa18ff0-c6f6-11ed-a52f-12f02da049d1",
+      "AmplifyAppId": "d2zqfpytqd1aqs"
+    },
+    "categories": {
+      "auth": {
+        "meeme7dc1bb98": {}
+      },
+      "function": {
+        "S3Triggerf0f35bc7": {
+          "deploymentBucketName": "amplify-meeme-dev-40741-deployment",
+          "s3Key": "amplify-builds/S3Triggerf0f35bc7-463845395636554f4177-build.zip"
+        }
+      },
+      "storage": {
+        "MeemeStorage": {}
+      }
+    }
+  }
+}

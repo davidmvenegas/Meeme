@@ -77,7 +77,6 @@ struct HomeView: View {
                                     .aspectRatio(1, contentMode: .fit)
                                     .onTapGesture {
                                         focusedImage = meemeImage
-                                        print("Hey")
                                     }
                             } placeholder: {
                                 ZStack {
@@ -163,7 +162,7 @@ struct HomeView: View {
         if let meemeImage = focusedImage {
             ZStack {
                 TransitionReader { active in
-                    AsyncImage(url: URL(string: "https://hws.dev/paul.jpg")) {
+                    AsyncImage(url: meemeImage.url) {
                         image in image
                             .resizable()
                             .mask {
