@@ -35,14 +35,13 @@ struct TransitionActive: ViewModifier {
 
 
 struct HomeView: View {
-    
+
     @EnvironmentObject var imageService: ImageService
-    
+
     @Namespace private var gridNamespace
     @Namespace private var imageNamespace
     
     @State private var selectedPhotosPickerImages: [PhotosPickerItem] = []
-    @State private var selectedEditableImages: [MeemeImage] = []
     @State private var focusedImage: MeemeImage? = nil
     @State private var searchText: String = ""
     

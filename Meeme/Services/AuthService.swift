@@ -1,5 +1,7 @@
 import Amplify
 import Combine
+import Foundation
+
 
 class AuthService: ObservableObject {
     @Published var isAuthenticated = false
@@ -8,13 +10,15 @@ class AuthService: ObservableObject {
         _ = Amplify.Hub.listen(to: .auth) { payload in
             switch payload.eventName {
                 case HubPayload.EventName.Auth.signedIn:
-                    self.isAuthenticated = true
-                case HubPayload.EventName.Auth.sessionExpired:
-                    self.isAuthenticated = false
-                case HubPayload.EventName.Auth.signedOut:
-                    self.isAuthenticated = false
-                case HubPayload.EventName.Auth.userDeleted:
-                    self.isAuthenticated = false
+                    DispatchQueue.main.async {
+                        self.isAuthenticated = true
+                    }
+                case HubPayload.EventName.Auth.sessionExpired,
+                     HubPayload.EventName.Auth.signedOut,
+                     HubPayload.EventName.Auth.userDeleted:
+                    DispatchQueue.main.async {
+                        self.isAuthenticated = false
+                    }
                 default:
                     break
             }

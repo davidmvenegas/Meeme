@@ -6,6 +6,7 @@ import AWSAPIPlugin
 
 @main
 struct MeemeApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
     init() {
         do {
@@ -27,9 +28,23 @@ struct MeemeApp: App {
     
     struct ContentView: View {
         @ObservedObject var authService = AuthService()
-        @ObservedObject var imageService = ImageService()
-        
+        @ObservedObject var imageService: ImageService
+
         @State private var isSessionChecked = false
+
+        init() {
+            let container = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
+            container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+                if let error = error as NSError? {
+                    fatalError("Unresolved error \(error), \(error.userInfo)")
+                }
+            })
+            let context = container.viewContext
+            self.imageService = ImageService(context: context)
+            DispatchQueue.main.async { [imageService] in
+                _ = imageService
+            }
+        }
 
         var body: some View {
             if !isSessionChecked {
