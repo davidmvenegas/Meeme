@@ -2,7 +2,6 @@ import SwiftUI
 import Amplify
 import AWSCognitoAuthPlugin
 import AWSS3StoragePlugin
-import AWSAPIPlugin
 
 @main
 struct MeemeApp: App {
@@ -11,7 +10,6 @@ struct MeemeApp: App {
         do {
             try Amplify.add(plugin: AWSCognitoAuthPlugin())
             try Amplify.add(plugin: AWSS3StoragePlugin())
-            try Amplify.add(plugin: AWSAPIPlugin())
             try Amplify.configure()
             print("Initialized Amplify")
         } catch {
