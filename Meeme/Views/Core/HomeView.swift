@@ -36,7 +36,7 @@ struct TransitionActive: ViewModifier {
 
 struct HomeView: View {
 
-    @EnvironmentObject var imageService: ImageService
+    @EnvironmentObject var imageController: ImageController
 
     @Namespace private var gridNamespace
     @Namespace private var imageNamespace
@@ -62,7 +62,7 @@ struct HomeView: View {
             NavigationView {
                 ScrollView() {
                     LazyVGrid(columns: Array(repeating: .init(.adaptive(minimum: 120, maximum: .infinity), spacing: 2), count: 3), spacing: 2) {
-                        ForEach(imageService.meemeImages) { meemeImage in
+                        ForEach(imageController.meemeImages) { meemeImage in
                             AsyncImage(url: meemeImage.url) {
                                 image in image
                                     .resizable()
@@ -107,7 +107,7 @@ struct HomeView: View {
                             for newImage in newImages {
                                 Task {
                                     if let imageData = try? await newImage.loadTransferable(type: Data.self) {
-                                        await imageService.handleUploadMeemeToCloud(imageData: imageData)
+                                        await imageController.handleUploadMeemeToCloud(imageData: imageData)
                                     }
                                 }
                             }

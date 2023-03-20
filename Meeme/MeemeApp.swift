@@ -6,7 +6,6 @@ import AWSAPIPlugin
 
 @main
 struct MeemeApp: App {
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
     init() {
         do {
@@ -27,36 +26,24 @@ struct MeemeApp: App {
     }
     
     struct ContentView: View {
-        @ObservedObject var authService = AuthService()
-        @ObservedObject var imageService: ImageService
+        @Environment(\.managedObjectContext) private var viewContext
+
+        @ObservedObject var authController = AuthController()
+        @ObservedObject var imageController = ImageController(context: PersistenceController.shared.container.viewContext)
 
         @State private var isSessionChecked = false
-
-        init() {
-            let container = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
-            container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-                if let error = error as NSError? {
-                    fatalError("Unresolved error \(error), \(error.userInfo)")
-                }
-            })
-            let context = container.viewContext
-            self.imageService = ImageService(context: context)
-            DispatchQueue.main.async { [imageService] in
-                _ = imageService
-            }
-        }
 
         var body: some View {
             if !isSessionChecked {
                 ProgressView()
                     .onAppear(perform: checkSession)
-            } else if authService.isAuthenticated {
+            } else if authController.isAuthenticated {
                 HomeView()
-                    .environmentObject(authService)
-                    .environmentObject(imageService)
+                    .environmentObject(authController)
+                    .environmentObject(imageController)
             } else {
                 LandingView()
-                    .environmentObject(authService)
+                    .environmentObject(authController)
             }
         }
 
@@ -64,7 +51,7 @@ struct MeemeApp: App {
             Task {
                 do {
                     let session = try await Amplify.Auth.fetchAuthSession()
-                    authService.isAuthenticated = session.isSignedIn
+                    authController.isAuthenticated = session.isSignedIn
                 } catch {
                     print("Failed to fetch auth session: \(error)")
                 }

@@ -3,7 +3,7 @@ import Combine
 import Foundation
 
 
-class AuthService: ObservableObject {
+class AuthController: ObservableObject {
     @Published var isAuthenticated = false
     
     init() {

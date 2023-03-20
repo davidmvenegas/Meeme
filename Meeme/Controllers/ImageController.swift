@@ -15,7 +15,7 @@ extension MeemeImage: Equatable {
     }
 }
 
-class ImageService: ObservableObject {
+class ImageController: ObservableObject {
     
     @Published var meemeImages: [MeemeImage] = []
 
