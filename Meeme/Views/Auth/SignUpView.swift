@@ -2,6 +2,7 @@ import SwiftUI
 import Amplify
 
 struct SignUpView: View {
+    @EnvironmentObject var authState: AuthState
 
     enum Field {
         case firstName
@@ -47,11 +48,16 @@ struct SignUpView: View {
         ]
         let options = AuthSignUpRequest.Options(userAttributes: userAttributes)
         do {
+            // SIGN UP
             _ = try await Amplify.Auth.signUp(
                 username: email,
                 password: password,
                 options: options
             )
+            // SIGN IN
+            let authResult = try await Amplify.Auth.signIn(username: email, password: password)
+            authState.isAuthenticated = authResult.isSignedIn
+
         } catch let error as AuthError {
             isError = true
             isLoading = false
@@ -71,93 +77,97 @@ struct SignUpView: View {
     var body: some View {
         ZStack {
             Color("appBackground").edgesIgnoringSafeArea(.all)
-            VStack(spacing: 20) {
-                Spacer()
-
-                HStack(spacing: 14) {
-                    TextField("First Name", text: $firstName)
-                        .textContentType(.givenName)
-                        .keyboardType(.namePhonePad)
-                        .focused($focusedField, equals: .firstName)
-                        .onSubmit { focusedField = .lastName }
+            ScrollView {
+                Rectangle()
+                    .frame(height: 200)
+                    .opacity(0)
+                VStack(spacing: 20) {
+                    Spacer()
+                    HStack(spacing: 14) {
+                        TextField("First Name", text: $firstName)
+                            .textContentType(.givenName)
+                            .keyboardType(.namePhonePad)
+                            .focused($focusedField, equals: .firstName)
+                            .onSubmit { focusedField = .lastName }
+                            .submitLabel(.next)
+                            .padding()
+                            .cornerRadius(8)
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 8, style: .continuous)
+                                    .stroke(focusedField == .firstName ? Color.blue : Color(UIColor.systemGray4), lineWidth: 2)
+                            }
+                        TextField("Last Name", text: $lastName)
+                            .textContentType(.familyName)
+                            .keyboardType(.namePhonePad)
+                            .focused($focusedField, equals: .lastName)
+                            .onSubmit { focusedField = .email }
+                            .submitLabel(.next)
+                            .padding()
+                            .cornerRadius(8)
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 8, style: .continuous)
+                                    .stroke(focusedField == .lastName ? Color.blue : Color(UIColor.systemGray4), lineWidth: 2)
+                            }
+                    }
+                    
+                    TextField("Email", text: $email)
+                        .textContentType(.username)
+                        .keyboardType(.emailAddress)
+                        .textInputAutocapitalization(.never)
+                        .focused($focusedField, equals: .email)
+                        .onSubmit { focusedField = .password }
                         .submitLabel(.next)
                         .padding()
                         .cornerRadius(8)
                         .overlay {
                             RoundedRectangle(cornerRadius: 8, style: .continuous)
-                                .stroke(focusedField == .firstName ? Color.blue : Color(UIColor.systemGray4), lineWidth: 2)
+                                .stroke(focusedField == .email ? Color.blue : Color(UIColor.systemGray4), lineWidth: 2)
                         }
-                    TextField("Last Name", text: $lastName)
-                        .textContentType(.familyName)
-                        .keyboardType(.namePhonePad)
-                        .focused($focusedField, equals: .lastName)
-                        .onSubmit { focusedField = .email }
-                        .submitLabel(.next)
+                    
+                    
+                    SecureField("Password", text: $password)
+                        .textInputAutocapitalization(.never)
+                        .textContentType(.newPassword)
+                        .focused($focusedField, equals: .password)
+                        .onSubmit { focusedField = nil }
+                        .submitLabel(.continue)
                         .padding()
                         .cornerRadius(8)
                         .overlay {
                             RoundedRectangle(cornerRadius: 8, style: .continuous)
-                                .stroke(focusedField == .lastName ? Color.blue : Color(UIColor.systemGray4), lineWidth: 2)
+                                .stroke(focusedField == .password ? Color.blue : Color(UIColor.systemGray4), lineWidth: 2)
                         }
-                }
-
-                TextField("Email", text: $email)
-                    .textContentType(.username)
-                    .keyboardType(.emailAddress)
-                    .textInputAutocapitalization(.never)
-                    .focused($focusedField, equals: .email)
-                    .onSubmit { focusedField = .password }
-                    .submitLabel(.next)
-                    .padding()
-                    .cornerRadius(8)
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 8, style: .continuous)
-                            .stroke(focusedField == .email ? Color.blue : Color(UIColor.systemGray4), lineWidth: 2)
-                    }
-
-
-                SecureField("Password", text: $password)
-                    .textInputAutocapitalization(.never)
-                    .textContentType(.newPassword)
-                    .focused($focusedField, equals: .password)
-                    .onSubmit { focusedField = nil }
-                    .submitLabel(.continue)
-                    .padding()
-                    .cornerRadius(8)
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 8, style: .continuous)
-                            .stroke(focusedField == .password ? Color.blue : Color(UIColor.systemGray4), lineWidth: 2)
-                    }
-
-
-                Button(action: handleSubmit) {
-                    HStack(spacing: 10) {
-                        Text("Sign Up")
-                            .font(.headline)
-                        if isLoading {
-                            ProgressView()
+                    
+                    
+                    Button(action: handleSubmit) {
+                        HStack(spacing: 10) {
+                            Text("Sign Up")
+                                .font(.headline)
+                            if isLoading {
+                                ProgressView()
+                            }
                         }
+                        .frame(maxWidth: .infinity, minHeight: 35)
                     }
-                    .frame(maxWidth: .infinity, minHeight: 35)
+                    .buttonStyle(.borderedProminent)
+                    
+                    Spacer()
                 }
-                .buttonStyle(.borderedProminent)
-                
-                Spacer()
-            }
-            .padding()
-            .navigationTitle("Sign Up")
-            .navigationViewStyle(.stack)
-            .autocorrectionDisabled(true)
-            .onSubmit(handleSubmit)
-            .disabled(isLoading)
-            .alert(isPresented: $isError) {
-                Alert(
-                    title: Text(errorMessage),
-                    dismissButton: .default(Text("Got it!")) {
-                        isError = false
-                        errorMessage = ""
-                    }
-                )
+                .padding()
+                .navigationTitle("Sign Up")
+                .navigationViewStyle(.stack)
+                .autocorrectionDisabled(true)
+                .onSubmit(handleSubmit)
+                .disabled(isLoading)
+                .alert(isPresented: $isError) {
+                    Alert(
+                        title: Text(errorMessage),
+                        dismissButton: .default(Text(errorMessage)) {
+                            isError = false
+                            errorMessage = ""
+                        }
+                    )
+                }
             }
         }
     }

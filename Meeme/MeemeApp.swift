@@ -28,15 +28,38 @@ struct MeemeApp: App {
     struct ContentView: View {
         @ObservedObject var authState = AuthState()
         @ObservedObject var imageModel = ImageModel()
+        
+        @State private var isSessionChecked = false
 
         var body: some View {
-            if authState.isAuthenticated {
+            if !isSessionChecked {
+                ProgressView()
+                    .onAppear(perform: checkSession)
+            } else if authState.isAuthenticated {
                 HomeView()
                     .environmentObject(authState)
                     .environmentObject(imageModel)
             } else {
                 LandingView()
                     .environmentObject(authState)
+            }
+        }
+
+        private func checkSession() {
+            Task {
+                do {
+                    let session = try await Amplify.Auth.fetchAuthSession()
+                    if (session.isSignedIn) {
+                        print("SIGNED IN BABY")
+                        authState.isAuthenticated = true
+                    } else {
+                        print("NOT SIGNED IN")
+                        authState.isAuthenticated = false
+                    }
+                } catch {
+                    print("Failed to fetch auth session: \(error)")
+                }
+                isSessionChecked = true
             }
         }
     }
