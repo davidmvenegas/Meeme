@@ -1,20 +1,4 @@
 {
-  "api": {
-    "MeemeAPI": {
-      "dependsOn": [
-        {
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "category": "function",
-          "resourceName": "MeemeAPI"
-        }
-      ],
-      "providerPlugin": "awscloudformation",
-      "service": "API Gateway"
-    }
-  },
   "auth": {
     "meeme125f43a7": {
       "customAuth": false,
@@ -44,25 +28,6 @@
     }
   },
   "function": {
-    "MeemeAPI": {
-      "build": true,
-      "dependsOn": [
-        {
-          "attributeEnvMap": {
-            "Arn": "TABLE_ARN",
-            "Name": "TABLE_NAME"
-          },
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "category": "storage",
-          "resourceName": "MeemeDatabase"
-        }
-      ],
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    },
     "S3Trigger8bbf7bbe": {
       "build": true,
       "providerPlugin": "awscloudformation",
@@ -104,10 +69,6 @@
     }
   },
   "storage": {
-    "MeemeDatabase": {
-      "providerPlugin": "awscloudformation",
-      "service": "DynamoDB"
-    },
     "MeemeImages": {
       "dependsOn": [
         {

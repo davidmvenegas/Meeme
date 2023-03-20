@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0BA22C98540DEF32DC30A6BE /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = F32B6A37C9F75A4329A7B505 /* amplifyconfiguration.json */; };
+		B3837A018EBD0E4BDEB151A0 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = B1C6100EDEC1E245CC01FE7D /* awsconfiguration.json */; };
 		B55F4DB3E820F4DE96ADD539 /* Pods_Meeme.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 340FADBE2774CE58F1F37813 /* Pods_Meeme.framework */; };
 		ED0DED4129BADEFC00F30F44 /* AWSAPIPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = ED0DED4029BADEFC00F30F44 /* AWSAPIPlugin */; };
 		ED0DED4329BADEFC00F30F44 /* AWSCognitoAuthPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = ED0DED4229BADEFC00F30F44 /* AWSCognitoAuthPlugin */; };
@@ -29,8 +31,6 @@
 		ED3A52D029C834B70005DD6D /* PersistanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3A52CF29C834B70005DD6D /* PersistanceController.swift */; };
 		ED3DC74329C8129800C00565 /* MeemeImageModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ED3DC74129C8129800C00565 /* MeemeImageModel.xcdatamodeld */; };
 		ED46730A29BEA1BC0026ACA1 /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED46730929BEA1BC0026ACA1 /* AuthController.swift */; };
-		ED70F86F29BB3CE9002AC798 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = ED70F86D29BB3CE9002AC798 /* amplifyconfiguration.json */; };
-		ED70F87029BB3CE9002AC798 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = ED70F86E29BB3CE9002AC798 /* awsconfiguration.json */; };
 		ED96281929BE85DC00BE00EB /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED96281829BE85DC00BE00EB /* ForgotPasswordView.swift */; };
 		EDA67E5729B7D69200A8938A /* ImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA67E5629B7D69200A8938A /* ImageController.swift */; };
 		EDA67E6A29BAD1FC00A8938A /* DateFormater.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA67E6929BAD1FC00A8938A /* DateFormater.swift */; };
@@ -41,6 +41,7 @@
 		1C254048BF9C83FCB4B5C9E9 /* Pods-Meeme.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meeme.release.xcconfig"; path = "Target Support Files/Pods-Meeme/Pods-Meeme.release.xcconfig"; sourceTree = "<group>"; };
 		340FADBE2774CE58F1F37813 /* Pods_Meeme.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Meeme.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		40FCB84EEB7E84C50BDF3F41 /* Pods-Meeme.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meeme.debug.xcconfig"; path = "Target Support Files/Pods-Meeme/Pods-Meeme.debug.xcconfig"; sourceTree = "<group>"; };
+		B1C6100EDEC1E245CC01FE7D /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
 		ED0F34EA29B0472000CB9437 /* Meeme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Meeme.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED0F34ED29B0472000CB9437 /* MeemeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeemeApp.swift; sourceTree = "<group>"; };
 		ED0F34F129B0472100CB9437 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -54,14 +55,13 @@
 		ED3A52CF29C834B70005DD6D /* PersistanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceController.swift; sourceTree = "<group>"; };
 		ED3DC74229C8129800C00565 /* MeemeImageModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MeemeImageModel.xcdatamodel; sourceTree = "<group>"; };
 		ED46730929BEA1BC0026ACA1 /* AuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthController.swift; sourceTree = "<group>"; };
-		ED70F86D29BB3CE9002AC798 /* amplifyconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = amplifyconfiguration.json; path = Meeme/amplifyconfiguration.json; sourceTree = "<group>"; };
-		ED70F86E29BB3CE9002AC798 /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = awsconfiguration.json; path = Meeme/awsconfiguration.json; sourceTree = "<group>"; };
 		ED7F85E529BDF6A400A33AD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		ED96280E29BE14A100BE00EB /* Meeme.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Meeme.entitlements; sourceTree = "<group>"; };
 		ED96281829BE85DC00BE00EB /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		EDA67E5629B7D69200A8938A /* ImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageController.swift; sourceTree = "<group>"; };
 		EDA67E6929BAD1FC00A8938A /* DateFormater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormater.swift; sourceTree = "<group>"; };
 		EDCD0CE329C8241D0023CE87 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		F32B6A37C9F75A4329A7B505 /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,24 +86,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		226354E3D4A022A3D15BC670 /* AmplifyConfig */ = {
+			isa = PBXGroup;
+			children = (
+				B1C6100EDEC1E245CC01FE7D /* awsconfiguration.json */,
+				F32B6A37C9F75A4329A7B505 /* amplifyconfiguration.json */,
+			);
+			name = AmplifyConfig;
+			sourceTree = "<group>";
+		};
 		D7D8CBEDA4A9F4E4C74ACB5B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				40FCB84EEB7E84C50BDF3F41 /* Pods-Meeme.debug.xcconfig */,
 				1C254048BF9C83FCB4B5C9E9 /* Pods-Meeme.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
 		ED0F34E129B0472000CB9437 = {
 			isa = PBXGroup;
 			children = (
-				ED70F86D29BB3CE9002AC798 /* amplifyconfiguration.json */,
-				ED70F86E29BB3CE9002AC798 /* awsconfiguration.json */,
 				ED0F34EC29B0472000CB9437 /* Meeme */,
 				ED0F34EB29B0472000CB9437 /* Products */,
 				EDCD0CE229C8241D0023CE87 /* Frameworks */,
+				226354E3D4A022A3D15BC670 /* AmplifyConfig */,
 				D7D8CBEDA4A9F4E4C74ACB5B /* Pods */,
 			);
 			sourceTree = "<group>";
@@ -280,8 +287,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED0F34F229B0472100CB9437 /* Assets.xcassets in Resources */,
-				ED70F86F29BB3CE9002AC798 /* amplifyconfiguration.json in Resources */,
-				ED70F87029BB3CE9002AC798 /* awsconfiguration.json in Resources */,
+				B3837A018EBD0E4BDEB151A0 /* awsconfiguration.json in Resources */,
+				0BA22C98540DEF32DC30A6BE /* amplifyconfiguration.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,9 +325,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Meeme/Pods-Meeme-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Meeme/Pods-Meeme-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
