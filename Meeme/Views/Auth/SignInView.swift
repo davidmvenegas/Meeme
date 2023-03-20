@@ -44,9 +44,11 @@ struct SignInView: View {
         } catch let error as AuthError {
             isError = true
             isLoading = false
-            switch error {
-                case .service(let errorDescription, _, _):
-                    errorMessage = errorDescription
+            switch (error.errorDescription) {
+                case ("User does not exist."):
+                    errorMessage = "An account with this email does not exist"
+                case ("Incorrect username or password."):
+                    errorMessage = "Password is incorrect"
                 default:
                     errorMessage = "Unexpected error occurred"
             }
@@ -85,7 +87,7 @@ struct SignInView: View {
                         .textContentType(.password)
                         .focused($focusedField, equals: .password)
                         .onSubmit { focusedField = nil }
-                        .submitLabel(.continue)
+                        .submitLabel(.go)
                         .padding()
                         .cornerRadius(8)
                         .overlay {

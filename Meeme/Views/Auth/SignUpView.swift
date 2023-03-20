@@ -48,23 +48,26 @@ struct SignUpView: View {
         ]
         let options = AuthSignUpRequest.Options(userAttributes: userAttributes)
         do {
-            // SIGN UP
             _ = try await Amplify.Auth.signUp(
                 username: email,
                 password: password,
                 options: options
             )
-            // SIGN IN
             let authResult = try await Amplify.Auth.signIn(username: email, password: password)
             authState.isAuthenticated = authResult.isSignedIn
 
         } catch let error as AuthError {
             isError = true
             isLoading = false
-            switch error {
-                case .service(let errorDescription, _, _):
-                    errorMessage = errorDescription
+            switch (error.errorDescription) {
+                case ("Username should be an email."):
+                    errorMessage = "Please enter a valid email address"
+                case ("An account with the given email already exists."):
+                    errorMessage = "An account with this email already exists"
+                case ("Password did not conform with policy: Password not long enough"):
+                    errorMessage = "Password must be at least 6 characters long"
                 default:
+                    print("Unexpected error: \(error.errorDescription)")
                     errorMessage = "Unexpected error occurred"
             }
         } catch {
@@ -130,7 +133,7 @@ struct SignUpView: View {
                         .textContentType(.newPassword)
                         .focused($focusedField, equals: .password)
                         .onSubmit { focusedField = nil }
-                        .submitLabel(.continue)
+                        .submitLabel(.go)
                         .padding()
                         .cornerRadius(8)
                         .overlay {
@@ -162,7 +165,7 @@ struct SignUpView: View {
                 .alert(isPresented: $isError) {
                     Alert(
                         title: Text(errorMessage),
-                        dismissButton: .default(Text(errorMessage)) {
+                        dismissButton: .default(Text("OK")) {
                             isError = false
                             errorMessage = ""
                         }

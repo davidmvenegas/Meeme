@@ -49,13 +49,7 @@ struct MeemeApp: App {
             Task {
                 do {
                     let session = try await Amplify.Auth.fetchAuthSession()
-                    if (session.isSignedIn) {
-                        print("SIGNED IN BABY")
-                        authState.isAuthenticated = true
-                    } else {
-                        print("NOT SIGNED IN")
-                        authState.isAuthenticated = false
-                    }
+                    authState.isAuthenticated = session.isSignedIn
                 } catch {
                     print("Failed to fetch auth session: \(error)")
                 }
