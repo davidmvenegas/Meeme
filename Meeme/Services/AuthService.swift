@@ -1,7 +1,7 @@
 import Amplify
 import Combine
 
-class AuthState: ObservableObject {
+class AuthService: ObservableObject {
     @Published var isAuthenticated = false
     
     init() {

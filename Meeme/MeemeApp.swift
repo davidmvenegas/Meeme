@@ -26,8 +26,8 @@ struct MeemeApp: App {
     }
     
     struct ContentView: View {
-        @ObservedObject var authState = AuthState()
-        @ObservedObject var imageModel = ImageModel()
+        @ObservedObject var authService = AuthService()
+        @ObservedObject var imageService = ImageService()
         
         @State private var isSessionChecked = false
 
@@ -35,13 +35,13 @@ struct MeemeApp: App {
             if !isSessionChecked {
                 ProgressView()
                     .onAppear(perform: checkSession)
-            } else if authState.isAuthenticated {
+            } else if authService.isAuthenticated {
                 HomeView()
-                    .environmentObject(authState)
-                    .environmentObject(imageModel)
+                    .environmentObject(authService)
+                    .environmentObject(imageService)
             } else {
                 LandingView()
-                    .environmentObject(authState)
+                    .environmentObject(authService)
             }
         }
 
@@ -49,7 +49,7 @@ struct MeemeApp: App {
             Task {
                 do {
                     let session = try await Amplify.Auth.fetchAuthSession()
-                    authState.isAuthenticated = session.isSignedIn
+                    authService.isAuthenticated = session.isSignedIn
                 } catch {
                     print("Failed to fetch auth session: \(error)")
                 }

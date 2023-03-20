@@ -36,7 +36,7 @@ struct TransitionActive: ViewModifier {
 
 struct HomeView: View {
     
-    @EnvironmentObject var imageModel: ImageModel
+    @EnvironmentObject var imageService: ImageService
     
     @Namespace private var gridNamespace
     @Namespace private var imageNamespace
@@ -45,15 +45,6 @@ struct HomeView: View {
     @State private var selectedEditableImages: [MeemeImage] = []
     @State private var focusedImage: MeemeImage? = nil
     @State private var searchText: String = ""
-    
-    
-    func uploadImageToCloud(imageSelected: PhotosPickerItem) {
-        Task {
-            if let imageData = try? await imageSelected.loadTransferable(type: Data.self) {
-                await imageModel.handleUploadMeemeToCloud(imageData: imageData)
-            }
-        }
-    }
     
     
     var body: some View {
@@ -65,7 +56,6 @@ struct HomeView: View {
     }
     
     
-    // GRID VIEW
     @ViewBuilder
     var GridView: some View {
         ZStack {
@@ -73,7 +63,7 @@ struct HomeView: View {
             NavigationView {
                 ScrollView() {
                     LazyVGrid(columns: Array(repeating: .init(.adaptive(minimum: 120, maximum: .infinity), spacing: 2), count: 3), spacing: 2) {
-                        ForEach(imageModel.meemeImages) { meemeImage in
+                        ForEach(imageService.meemeImages) { meemeImage in
                             AsyncImage(url: meemeImage.url) {
                                 image in image
                                     .resizable()
@@ -116,7 +106,11 @@ struct HomeView: View {
                         }
                         .onChange(of: selectedPhotosPickerImages) { newImages in
                             for newImage in newImages {
-                                uploadImageToCloud(imageSelected: newImage)
+                                Task {
+                                    if let imageData = try? await newImage.loadTransferable(type: Data.self) {
+                                        await imageService.handleUploadMeemeToCloud(imageData: imageData)
+                                    }
+                                }
                             }
                         }
                     }
