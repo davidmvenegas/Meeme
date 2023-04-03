@@ -1,7 +1,7 @@
 import SwiftUI
 import Amplify
 import AWSCognitoAuthPlugin
-import AWSPredictionsPlugin
+
 
 @main
 struct MeemeApp: App {
@@ -9,7 +9,6 @@ struct MeemeApp: App {
     init() {
         do {
             try Amplify.add(plugin: AWSCognitoAuthPlugin())
-            try Amplify.add(plugin: AWSPredictionsPlugin())
             try Amplify.configure()
             print("Initialized Amplify")
         } catch {

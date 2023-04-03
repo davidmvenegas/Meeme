@@ -3,7 +3,6 @@ import Amplify
 import PhotosUI
 
 
-
 struct TransitionIsActiveKey: EnvironmentKey {
     static let defaultValue = false
 }

@@ -18,11 +18,5 @@ export type AmplifyDependentResourcesAttributes = {
       "Name": "string",
       "Region": "string"
     }
-  },
-  "predictions": {
-    "meemeIdentifier": {
-      "format": "string",
-      "region": "string"
-    }
   }
 }
