@@ -33,6 +33,7 @@ class ImageController: ObservableObject {
     func loadMeemeImages() {
         do {
             let currentUserId = GlobalState.shared.currentUser!.userId
+            print("currentUserId", currentUserId)
             let fetchRequest: NSFetchRequest<MeemeImageEntity> = MeemeImageEntity.fetchRequest()
             fetchRequest.predicate = NSPredicate(format: "ownerId == %@", currentUserId)
             let results = try context.fetch(fetchRequest)
