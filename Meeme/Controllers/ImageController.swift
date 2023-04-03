@@ -25,7 +25,26 @@ class ImageController: ObservableObject {
         self.context = context
         self.loadMeemeImages()
     }
-    
+
+
+    func loadMeemeImages() {
+        do {
+            let fetchRequest: NSFetchRequest<MeemeImageEntity> = MeemeImageEntity.fetchRequest()
+            let results = try context.fetch(fetchRequest)
+            for result in results {
+                let meemeImage = MeemeImage(
+                    id: result.id!,
+                    key: result.key!,
+                    url: result.url != nil ? URL(string: result.url!) : nil
+                )
+                self.meemeImages.append(meemeImage)
+            }
+        } catch {
+            print("Error loading meeme images: \(error.localizedDescription)")
+        }
+    }
+
+
     func handleUploadMeemeToCloud(imageData: Data) async {
         do {
             let timestamp = String(DateFormater.createTimestamp())
@@ -48,26 +67,8 @@ class ImageController: ObservableObject {
             print(error)
         }
     }
-    
-    func loadMeemeImages() {
-        do {
-            let fetchRequest: NSFetchRequest<MeemeImageEntity> = MeemeImageEntity.fetchRequest()
-            let results = try context.fetch(fetchRequest)
-            for result in results {
-                let meemeImage = MeemeImage(
-                    id: result.id!,
-                    key: result.key!,
-                    url: result.url != nil ? URL(string: result.url!) : nil
-                )
-                self.meemeImages.append(meemeImage)
-            }
-        } catch {
-            print("Error loading meeme images: \(error.localizedDescription)")
-        }
-    }
 
 
-    
     func saveMeemeImages() {
         for meemeImage in meemeImages {
             let meemeImageEntity = MeemeImageEntity(context: context)

@@ -19,10 +19,10 @@ export type AmplifyDependentResourcesAttributes = {
       "Region": "string"
     }
   },
-  "storage": {
-    "MeemeStorage": {
-      "BucketName": "string",
-      "Region": "string"
+  "predictions": {
+    "meemeIdentifier": {
+      "format": "string",
+      "region": "string"
     }
   }
 }

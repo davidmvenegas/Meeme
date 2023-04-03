@@ -52,21 +52,13 @@
       ]
     }
   },
-  "storage": {
-    "MeemeStorage": {
-      "dependsOn": [
-        {
-          "attributes": [
-            "Name",
-            "Arn",
-            "LambdaExecutionRole"
-          ],
-          "category": "function",
-          "resourceName": "S3Triggerf0f35bc7"
-        }
-      ],
+  "predictions": {
+    "meemeIdentifier": {
+      "dependsOn": [],
+      "identifyType": "identifyText",
       "providerPlugin": "awscloudformation",
-      "service": "S3"
+      "service": "Rekognition"
     }
-  }
+  },
+  "storage": {}
 }

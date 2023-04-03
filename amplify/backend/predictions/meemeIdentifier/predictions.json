@@ -1,0 +1,22 @@
+{
+    "default": {
+        "identify": {
+            "default": {
+                "identifyEntities": true,
+                "identifyLabels": true,
+                "identifyText": true,
+                "identifyDoc": true,
+                "maxEntities": 50,
+                "maxLabels": 50,
+                "minConfidence": 70
+            }
+        },
+        "convert": {
+            "default": {
+                "access": "public",
+                "outputType": "text/plain",
+                "format": "txt"
+            }
+        }
+    }
+}
