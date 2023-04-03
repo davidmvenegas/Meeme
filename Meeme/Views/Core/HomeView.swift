@@ -105,7 +105,7 @@ struct HomeView: View {
                             for newImage in newImages {
                                 Task {
                                     if let imageData = try? await newImage.loadTransferable(type: Data.self) {
-                                        await imageController.handleUploadMeemeToCloud(imageData: imageData)
+                                        await imageController.uploadMeemeImage(imageData: imageData)
                                     }
                                 }
                             }
@@ -136,7 +136,6 @@ struct HomeView: View {
                             Button(action: {Task { await Amplify.Auth.signOut() }}) {
                                 Label("Log out", systemImage: "")
                             }
-                            .buttonStyle(.bordered)
                             .foregroundColor(.red)
                         }
                     label: {

@@ -2,7 +2,6 @@ import SwiftUI
 import Amplify
 import AWSCognitoAuthPlugin
 
-
 @main
 struct MeemeApp: App {
 

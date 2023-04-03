@@ -1,4 +1,5 @@
 import SwiftUI
+import Vision
 import Amplify
 import CoreData
 
@@ -7,6 +8,7 @@ struct MeemeImage: Identifiable {
     let id: String
     let key: String
     let url: URL?
+    let labels: String
 }
 
 extension MeemeImage: Equatable {
@@ -35,7 +37,8 @@ class ImageController: ObservableObject {
                 let meemeImage = MeemeImage(
                     id: result.id!,
                     key: result.key!,
-                    url: result.url != nil ? URL(string: result.url!) : nil
+                    url: result.url != nil ? URL(string: result.url!) : nil,
+                    labels: result.labels!
                 )
                 self.meemeImages.append(meemeImage)
             }
@@ -45,28 +48,45 @@ class ImageController: ObservableObject {
     }
 
 
-    func handleUploadMeemeToCloud(imageData: Data) async {
+    func uploadMeemeImage(imageData: Data) async {
         do {
-            let timestamp = String(DateFormater.createTimestamp())
-            let uploadTask = Amplify.Storage.uploadData(
-                key: timestamp,
-                data: imageData
-            )
-            Task {
-                for await progress in await uploadTask.progress {
-                    print("Progress: \(progress)")
+            guard let ciImage = CIImage(data: imageData),
+                  let orientation = CGImagePropertyOrientation(rawValue: UInt32(ciImage.properties["Orientation"] as? Int ?? 1))
+            else {
+                print("Error processing image")
+                return
+            }
+
+            let textRequest = VNRecognizeTextRequest { request, error in
+                DispatchQueue.main.async {
+                    guard let observations = request.results as? [VNRecognizedTextObservation] else {
+                        print("Error recognizing text: \(error?.localizedDescription ?? "Unknown error")")
+                        return
+                    }
+
+                    let labels = observations.compactMap { observation in
+                        return observation.topCandidates(1).first?.string
+                    }
+
+                    let timestamp = String(DateFormater.createTimestamp())
+                    let newImage = MeemeImage(id: UUID().uuidString, key: timestamp, url: nil, labels: "")
+                    let meemeImageEntity = MeemeImageEntity(context: self.context)
+                    meemeImageEntity.id = newImage.id
+                    meemeImageEntity.key = newImage.key
+                    meemeImageEntity.url = newImage.url?.absoluteString
+                    meemeImageEntity.labels = labels.joined(separator: ", ")
+                    self.meemeImages.append(newImage)
+                    self.saveMeemeImages()
                 }
             }
-            let value = try await uploadTask.value
-            print("Upload completed: \(value)")
-            let url = try await Amplify.Storage.getURL(key: timestamp)
-            let newImage = MeemeImage(id: UUID().uuidString, key: timestamp, url: url)
-            self.meemeImages.append(newImage)
-            self.saveMeemeImages()
+
+            let imageRequestHandler = VNImageRequestHandler(ciImage: ciImage, orientation: orientation, options: [:])
+            try imageRequestHandler.perform([textRequest])
         } catch {
-            print(error)
+            print("Error processing image: \(error.localizedDescription)")
         }
     }
+
 
 
     func saveMeemeImages() {
@@ -75,6 +95,7 @@ class ImageController: ObservableObject {
             meemeImageEntity.id = meemeImage.id
             meemeImageEntity.key = meemeImage.key
             meemeImageEntity.url = meemeImage.url?.absoluteString
+            meemeImageEntity.labels = meemeImage.labels
         }
         do {
             try context.save()
