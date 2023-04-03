@@ -25,8 +25,7 @@ struct MeemeApp: App {
         @Environment(\.managedObjectContext) private var viewContext
 
         @ObservedObject var authController = AuthController()
-        @ObservedObject var imageController = ImageController(context: PersistenceController.shared.container.viewContext)
-
+        @State private var imageController: ImageController?
         @State private var isSessionChecked = false
 
         var body: some View {
@@ -36,7 +35,7 @@ struct MeemeApp: App {
             } else if authController.isAuthenticated {
                 HomeView()
                     .environmentObject(authController)
-                    .environmentObject(imageController)
+                    .environmentObject(imageController!)
             } else {
                 LandingView()
                     .environmentObject(authController)
@@ -47,7 +46,14 @@ struct MeemeApp: App {
             Task {
                 do {
                     let session = try await Amplify.Auth.fetchAuthSession()
-                    authController.isAuthenticated = session.isSignedIn
+                    if session.isSignedIn {
+                        authController.isAuthenticated = true
+                        GlobalState.shared.currentUser = try await Amplify.Auth.getCurrentUser()
+                        imageController = ImageController(context: PersistenceController.shared.container.viewContext)
+                    } else {
+                        authController.isAuthenticated = false
+                        GlobalState.shared.currentUser = nil
+                    }
                 } catch {
                     print("Failed to fetch auth session: \(error)")
                 }

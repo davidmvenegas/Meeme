@@ -5,7 +5,7 @@ import Foundation
 
 class AuthController: ObservableObject {
     @Published var isAuthenticated = false
-    
+
     init() {
         _ = Amplify.Hub.listen(to: .auth) { payload in
             switch payload.eventName {

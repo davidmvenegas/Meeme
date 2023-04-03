@@ -2,6 +2,7 @@ import SwiftUI
 import Amplify
 
 struct SignUpView: View {
+
     @EnvironmentObject var authController: AuthController
 
     enum Field {
@@ -53,7 +54,12 @@ struct SignUpView: View {
                 password: password,
                 options: options
             )
-            let authResult = try await Amplify.Auth.signIn(username: email, password: password)
+
+            let authResult = try await Amplify.Auth.signIn(
+                username: email,
+                password: password
+            )
+            
             authController.isAuthenticated = authResult.isSignedIn
 
         } catch let error as AuthError {

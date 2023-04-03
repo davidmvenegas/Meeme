@@ -50,12 +50,12 @@ struct SignInView: View {
                 case ("Incorrect username or password."):
                     errorMessage = "Password is incorrect"
                 default:
-                    errorMessage = "Unexpected error occurred"
+                    errorMessage = "An unexpected error occurred"
             }
         } catch {
             isError = true
             isLoading = false
-            errorMessage = "Unexpected error occurred"
+            errorMessage = "An unexpected error occurred"
         }
     }
 

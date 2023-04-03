@@ -3,40 +3,11 @@ import Amplify
 import PhotosUI
 
 
-struct TransitionIsActiveKey: EnvironmentKey {
-    static let defaultValue = false
-}
-
-extension EnvironmentValues {
-    var transitionIsActive: Bool {
-        get { self[TransitionIsActiveKey.self] }
-        set { self[TransitionIsActiveKey.self] = newValue }
-    }
-}
-
-struct TransitionReader<Content: View>: View {
-    var content: (Bool) -> Content
-    @Environment(\.transitionIsActive) var active
-    
-    var body: some View {
-        content(active)
-    }
-}
-
-struct TransitionActive: ViewModifier {
-    var active: Bool
-    
-    func body(content: Content) -> some View {
-        content
-            .environment(\.transitionIsActive, active)
-    }
-}
-
-
 struct HomeView: View {
-
+    
+    @EnvironmentObject var authController: AuthController
     @EnvironmentObject var imageController: ImageController
-
+    
     @Namespace private var gridNamespace
     @Namespace private var imageNamespace
     
@@ -48,7 +19,7 @@ struct HomeView: View {
     var body: some View {
         ZStack {
             GridView.opacity(focusedImage == nil ? 1 : 0)
-            DetailView
+            // DetailView goes here
         }
         .animation(.default, value: focusedImage)
     }
@@ -105,7 +76,10 @@ struct HomeView: View {
                             for newImage in newImages {
                                 Task {
                                     if let imageData = try? await newImage.loadTransferable(type: Data.self) {
-                                        await imageController.uploadMeemeImage(imageData: imageData)
+                                        await imageController.uploadMeemeImage(
+                                            imageData: imageData,
+                                            ownerId: GlobalState.shared.currentUser!.userId
+                                        )
                                     }
                                 }
                             }
@@ -128,10 +102,10 @@ struct HomeView: View {
                     ToolbarItemGroup(placement: .navigationBarTrailing) {
                         Menu {
                             Button(action: {}) {
-                                Label("Create a file", systemImage: "doc")
+                                Label("Action One", systemImage: "doc")
                             }
                             Button(action: {}) {
-                                Label("Create a folder", systemImage: "folder")
+                                Label("Action Two", systemImage: "folder")
                             }
                             Button(action: {Task { await Amplify.Auth.signOut() }}) {
                                 Label("Log out", systemImage: "")
@@ -139,9 +113,9 @@ struct HomeView: View {
                             .foregroundColor(.red)
                         }
                     label: {
-                        Label("Add", systemImage: "ellipsis.circle")
+                        Label("Menu", systemImage: "ellipsis.circle")
                             .accentColor(Color(.white))
-                        }
+                    }
                     }
                 }
             }
@@ -151,43 +125,6 @@ struct HomeView: View {
                 prompt: "Photos, People, Places..."
             )
             .zIndex(1)
-        }
-    }
-    
-    
-    @ViewBuilder
-    var DetailView: some View {
-        if let meemeImage = focusedImage {
-            ZStack {
-                TransitionReader { active in
-                    AsyncImage(url: meemeImage.url) {
-                        image in image
-                            .resizable()
-                            .mask {
-                                Rectangle().aspectRatio(1, contentMode: active ? .fit : .fill)
-                            }
-                            .matchedGeometryEffect(
-                                id: meemeImage.id,
-                                in: active ? gridNamespace : imageNamespace,
-                                isSource: false
-                            )
-                            .aspectRatio(contentMode: .fit)
-                            .onTapGesture {
-                                self.focusedImage = nil
-                            }
-                    } placeholder: {
-                        
-                    }
-                }
-            }
-            .zIndex(2)
-            .id(meemeImage.id)
-            .transition(
-                .modifier(
-                    active: TransitionActive(active: true),
-                    identity: TransitionActive(active: false)
-                )
-            )
         }
     }
 }
