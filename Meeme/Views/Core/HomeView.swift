@@ -1,10 +1,8 @@
-import SwiftUI
 import Amplify
 import PhotosUI
-
+import SwiftUI
 
 struct HomeView: View {
-    
     @EnvironmentObject var authController: AuthController
     @EnvironmentObject var imageController: ImageController
     
@@ -15,20 +13,18 @@ struct HomeView: View {
     @State private var focusedImage: MeemeImage? = nil
     @State private var searchText: String = ""
     
-    
     var body: some View {
         ZStack {
             GridView
         }
     }
     
-
     @ViewBuilder
     var GridView: some View {
         ZStack {
             Color("appBackground").edgesIgnoringSafeArea(.all)
             NavigationView {
-                ScrollView() {
+                ScrollView {
                     LazyVGrid(columns: Array(repeating: .init(.adaptive(minimum: 120, maximum: .infinity), spacing: 2), count: 3), spacing: 2) {
                         ForEach(imageController.meemeImages) { meemeImage in
                             AsyncImage(url: meemeImage.url) {
@@ -100,14 +96,14 @@ struct HomeView: View {
                                 Button(action: {}) {
                                     Label("Action Two", systemImage: "folder")
                                 }
-                                Button(action: {Task { await Amplify.Auth.signOut() }}) {
+                                Button(action: { Task { await Amplify.Auth.signOut() }}) {
                                     Label("Log out", systemImage: "")
                                 }
                                 .foregroundColor(.red)
                             }
                         label: {
-                            Label("Menu", systemImage: "ellipsis.circle")
-                                .accentColor(Color(.white))
+                                Label("Menu", systemImage: "ellipsis.circle")
+                                    .accentColor(Color(.white))
                             }
                         }
                     }

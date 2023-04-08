@@ -1,10 +1,9 @@
-import SwiftUI
 import Amplify
 import AWSCognitoAuthPlugin
+import SwiftUI
 
 @main
 struct MeemeApp: App {
-
     init() {
         do {
             try Amplify.add(plugin: AWSCognitoAuthPlugin())
@@ -22,7 +21,6 @@ struct MeemeApp: App {
     }
 
     struct ContentView: View {
-
         @ObservedObject var authController = AuthController()
         @State var isSessionChecked = false
 

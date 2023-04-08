@@ -1,5 +1,5 @@
-import SwiftUI
 import Amplify
+import SwiftUI
 
 struct ForgotPasswordView: View {
     @Environment(\.presentationMode) var presentationMode

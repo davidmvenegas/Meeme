@@ -1,8 +1,7 @@
-import SwiftUI
 import Amplify
+import SwiftUI
 
 struct SignInView: View {
-
     enum Field {
         case email
         case password
@@ -12,14 +11,13 @@ struct SignInView: View {
 
     @State private var email: String = ""
     @State private var password: String = ""
-    
+
     @State private var isError: Bool = false
     @State private var isLoading: Bool = false
     @State private var errorMessage: String = ""
 
     @State private var showForgotPasswordSheet: Bool = false
 
-    
     private func handleSubmit() {
         if email.isEmpty {
             focusedField = .email
@@ -44,10 +42,10 @@ struct SignInView: View {
         } catch let error as AuthError {
             isError = true
             isLoading = false
-            switch (error.errorDescription) {
-                case ("User does not exist."):
+            switch error.errorDescription {
+                case "User does not exist.":
                     errorMessage = "An account with this email does not exist"
-                case ("Incorrect username or password."):
+                case "Incorrect username or password.":
                     errorMessage = "Password is incorrect"
                 default:
                     errorMessage = "An unexpected error occurred"
@@ -59,7 +57,6 @@ struct SignInView: View {
         }
     }
 
-
     var body: some View {
         ZStack {
             Color("appBackground").edgesIgnoringSafeArea(.all)
@@ -69,7 +66,7 @@ struct SignInView: View {
                     .opacity(0)
                 VStack(spacing: 20) {
                     Spacer()
-                    
+
                     TextField("Email", text: $email)
                         .textContentType(.username)
                         .keyboardType(.emailAddress)
@@ -82,7 +79,7 @@ struct SignInView: View {
                             RoundedRectangle(cornerRadius: 8, style: .continuous)
                                 .stroke(focusedField == .email ? Color.blue : Color(UIColor.systemGray4), lineWidth: 2)
                         }
-                    
+
                     SecureField("Password", text: $password)
                         .textContentType(.password)
                         .focused($focusedField, equals: .password)
@@ -94,7 +91,7 @@ struct SignInView: View {
                             RoundedRectangle(cornerRadius: 8, style: .continuous)
                                 .stroke(focusedField == .password ? Color.blue : Color(UIColor.systemGray4), lineWidth: 2)
                         }
-                    
+
                     Text("Forgot Password?")
                         .font(.system(size: 16, weight: .medium))
                         .foregroundColor(.gray)
@@ -103,7 +100,7 @@ struct SignInView: View {
                         .onTapGesture {
                             showForgotPasswordSheet = true
                         }
-                    
+
                     Button(action: handleSubmit) {
                         HStack(spacing: 10) {
                             Text("Sign in")
@@ -115,7 +112,7 @@ struct SignInView: View {
                         .frame(maxWidth: .infinity, minHeight: 35)
                     }
                     .buttonStyle(.borderedProminent)
-                    
+
                     Spacer()
                 }
                 .padding()

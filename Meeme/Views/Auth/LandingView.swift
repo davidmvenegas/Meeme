@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct LandingView: View {
-
     var body: some View {
         NavigationStack {
             ZStack {
@@ -19,9 +18,9 @@ struct LandingView: View {
                             .frame(maxWidth: .infinity, minHeight: 35)
                         }
                         .buttonStyle(.borderedProminent)
-                        
+
                         Text("OR").padding()
-                        
+
                         NavigationLink(destination: SignInView().toolbarRole(.editor)) {
                             HStack(spacing: 10) {
                                 Text("Sign in with existing account")
@@ -31,7 +30,6 @@ struct LandingView: View {
                         }
                         .buttonStyle(.borderedProminent)
                         .tint(Color("grayButton"))
-                        
                     }
                     .navigationTitle("Join Meeme")
                     .navigationBarTitleDisplayMode(.inline)
