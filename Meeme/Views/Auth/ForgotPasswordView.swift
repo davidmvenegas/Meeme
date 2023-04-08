@@ -3,14 +3,13 @@ import SwiftUI
 
 struct ForgotPasswordView: View {
     @Environment(\.presentationMode) var presentationMode
+    
+    @FocusState private var isEmailFocused: Bool
 
     @State private var email: String = ""
-    @State private var isEmailFocused: Bool = false
-    @State private var confirmationMessage: String = ""
-    
+    @State private var isAlert: Bool = false
     @State private var isLoading: Bool = false
-    @State private var isError: Bool = false
-    @State private var errorMessage: String = ""
+    @State private var alertMessage: String = ""
     
     private func handleResetPassword() {
         if email.isEmpty {
@@ -28,25 +27,27 @@ struct ForgotPasswordView: View {
         do {
             let resetResult = try await Amplify.Auth.resetPassword(for: email)
             switch resetResult.nextStep {
-                case .confirmResetPasswordWithCode(let deliveryDetails, let info):
-                    confirmationMessage = "Confirm reset password with code send to - \(deliveryDetails) \(String(describing: info))"
+                case .confirmResetPasswordWithCode:
+                    isAlert = true
+                    isLoading = false
+                    alertMessage = "Confirmation code sent to \(email)"
                 case .done:
                     print("Reset completed")
             }
         } catch let error as AuthError {
-            isError = true
+            isAlert = true
             isLoading = false
 
             switch error.errorDescription {
                 default:
                     print("Unexpected error: \(error.errorDescription)")
-                    errorMessage = "Unexpected error occurred"
+                    alertMessage = "Unexpected error occurred"
             }
 
         } catch {
-            isError = true
+            isAlert = true
             isLoading = false
-            errorMessage = "Unexpected error occurred"
+            alertMessage = "Unexpected error occurred"
         }
     }
     
@@ -97,11 +98,15 @@ struct ForgotPasswordView: View {
                     RoundedRectangle(cornerRadius: 8, style: .continuous)
                         .stroke(isEmailFocused ? Color.blue : Color(UIColor.systemGray4), lineWidth: 2)
                 }
+                .focused($isEmailFocused)
                 
                 Button(action: handleResetPassword) {
                     HStack(spacing: 10) {
                         Text("Send Reset Link")
                             .font(.headline)
+                        if isLoading {
+                            ProgressView()
+                        }
                     }
                     .frame(maxWidth: .infinity, minHeight: 35)
                 }
@@ -113,21 +118,18 @@ struct ForgotPasswordView: View {
             .padding()
             .onSubmit(handleResetPassword)
             .disabled(isLoading)
-            .alert(isPresented: $isError) {
+            .alert(isPresented: $isAlert) {
                 Alert(
-                    title: Text(errorMessage),
+                    title: Text(alertMessage),
                     dismissButton: .default(Text("OK")) {
-                        isError = false
-                        errorMessage = ""
+                        isAlert = false
+                        alertMessage = ""
                     }
                 )
             }
         }
         .onAppear {
             isEmailFocused = true
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                UIApplication.shared.sendAction(#selector(UIResponder.becomeFirstResponder), to: nil, from: nil, for: nil)
-            }
         }
     }
 }
