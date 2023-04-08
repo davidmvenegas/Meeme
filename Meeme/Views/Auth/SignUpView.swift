@@ -18,8 +18,8 @@ struct SignUpView: View {
     @State private var email: String = ""
     @State private var password: String = ""
 
-    @State private var isError: Bool = false
     @State private var isLoading: Bool = false
+    @State private var isError: Bool = false
     @State private var errorMessage: String = ""
 
     private func handleSubmit() {

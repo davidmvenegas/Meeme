@@ -3,16 +3,30 @@ import SwiftUI
 
 struct ForgotPasswordView: View {
     @Environment(\.presentationMode) var presentationMode
-    
-    @FocusState private var isFocused: Bool
 
     @State private var email: String = ""
-    @State private var errorMessage: String = ""
+    @State private var isEmailFocused: Bool = false
     @State private var confirmationMessage: String = ""
+    
+    @State private var isLoading: Bool = false
+    @State private var isError: Bool = false
+    @State private var errorMessage: String = ""
+    
+    private func handleResetPassword() {
+        if email.isEmpty {
+            isEmailFocused = true
+        } else {
+            isEmailFocused = false
+            isLoading = true
+            Task {
+                await resetPassword()
+            }
+        }
+    }
 
-    func resetPassword(username: String) async {
+    func resetPassword() async {
         do {
-            let resetResult = try await Amplify.Auth.resetPassword(for: username)
+            let resetResult = try await Amplify.Auth.resetPassword(for: email)
             switch resetResult.nextStep {
                 case .confirmResetPasswordWithCode(let deliveryDetails, let info):
                     confirmationMessage = "Confirm reset password with code send to - \(deliveryDetails) \(String(describing: info))"
@@ -20,13 +34,18 @@ struct ForgotPasswordView: View {
                     print("Reset completed")
             }
         } catch let error as AuthError {
-            switch error {
-                case .service(let errorDescription, _, _):
-                    errorMessage = errorDescription
+            isError = true
+            isLoading = false
+
+            switch error.errorDescription {
                 default:
+                    print("Unexpected error: \(error.errorDescription)")
                     errorMessage = "Unexpected error occurred"
             }
+
         } catch {
+            isError = true
+            isLoading = false
             errorMessage = "Unexpected error occurred"
         }
     }
@@ -64,20 +83,22 @@ struct ForgotPasswordView: View {
                     .multilineTextAlignment(.leading)
                     .padding(.bottom, 30)
                 
-                TextField("Email", text: $email)
-                    .textContentType(.username)
-                    .keyboardType(.emailAddress)
-                    .autocorrectionDisabled(true)
-                    .focused($isFocused)
-                    .submitLabel(.send)
-                    .padding()
-                    .cornerRadius(8)
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 8, style: .continuous)
-                            .stroke(isFocused ? Color.blue : Color(UIColor.systemGray4), lineWidth: 2)
-                    }
+                TextField("Email", text: $email, onEditingChanged: { focused in
+                    isEmailFocused = focused
+                })
+                .textContentType(.username)
+                .keyboardType(.emailAddress)
+                .autocorrectionDisabled(true)
+                .textInputAutocapitalization(.never)
+                .submitLabel(.send)
+                .padding()
+                .cornerRadius(8)
+                .overlay {
+                    RoundedRectangle(cornerRadius: 8, style: .continuous)
+                        .stroke(isEmailFocused ? Color.blue : Color(UIColor.systemGray4), lineWidth: 2)
+                }
                 
-                Button(action: {}) {
+                Button(action: handleResetPassword) {
                     HStack(spacing: 10) {
                         Text("Send Reset Link")
                             .font(.headline)
@@ -86,11 +107,27 @@ struct ForgotPasswordView: View {
                 }
                 .padding(.top, 16)
                 .buttonStyle(.borderedProminent)
-                .tint(email.isEmpty ? Color(UIColor.systemGray4) : Color.blue)
                 
                 Spacer()
             }
             .padding()
+            .onSubmit(handleResetPassword)
+            .disabled(isLoading)
+            .alert(isPresented: $isError) {
+                Alert(
+                    title: Text(errorMessage),
+                    dismissButton: .default(Text("OK")) {
+                        isError = false
+                        errorMessage = ""
+                    }
+                )
+            }
+        }
+        .onAppear {
+            isEmailFocused = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                UIApplication.shared.sendAction(#selector(UIResponder.becomeFirstResponder), to: nil, from: nil, for: nil)
+            }
         }
     }
 }

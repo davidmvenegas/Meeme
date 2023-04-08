@@ -22,7 +22,7 @@
 		ED46730A29BEA1BC0026ACA1 /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED46730929BEA1BC0026ACA1 /* AuthController.swift */; };
 		ED96281929BE85DC00BE00EB /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED96281829BE85DC00BE00EB /* ForgotPasswordView.swift */; };
 		EDA67E5729B7D69200A8938A /* ImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA67E5629B7D69200A8938A /* ImageController.swift */; };
-		EDA67E6A29BAD1FC00A8938A /* DateFormater.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA67E6929BAD1FC00A8938A /* DateFormater.swift */; };
+		EDA67E6A29BAD1FC00A8938A /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA67E6929BAD1FC00A8938A /* DateFormatter.swift */; };
 		EDCD0CE429C8241D0023CE87 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDCD0CE329C8241D0023CE87 /* CoreData.framework */; };
 		EDCD599F29C84E3800DC098C /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = EDCD599E29C84E3800DC098C /* Amplify */; };
 		EDCD59A129C84E3800DC098C /* AWSAPIPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = EDCD59A029C84E3800DC098C /* AWSAPIPlugin */; };
@@ -53,7 +53,7 @@
 		ED96280E29BE14A100BE00EB /* Meeme.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Meeme.entitlements; sourceTree = "<group>"; };
 		ED96281829BE85DC00BE00EB /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		EDA67E5629B7D69200A8938A /* ImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageController.swift; sourceTree = "<group>"; };
-		EDA67E6929BAD1FC00A8938A /* DateFormater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormater.swift; sourceTree = "<group>"; };
+		EDA67E6929BAD1FC00A8938A /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		EDCD0CE329C8241D0023CE87 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		F32B6A37C9F75A4329A7B505 /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -134,7 +134,7 @@
 		ED0F34FC29B047CD00CB9437 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				EDA67E6929BAD1FC00A8938A /* DateFormater.swift */,
+				EDA67E6929BAD1FC00A8938A /* DateFormatter.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -288,7 +288,7 @@
 				EDA67E5729B7D69200A8938A /* ImageController.swift in Sources */,
 				ED0F350F29B0DE2000CB9437 /* StorageView.swift in Sources */,
 				ED0F34EE29B0472000CB9437 /* MeemeApp.swift in Sources */,
-				EDA67E6A29BAD1FC00A8938A /* DateFormater.swift in Sources */,
+				EDA67E6A29BAD1FC00A8938A /* DateFormatter.swift in Sources */,
 				ED96281929BE85DC00BE00EB /* ForgotPasswordView.swift in Sources */,
 				ED3DC74329C8129800C00565 /* MeemeImageModel.xcdatamodeld in Sources */,
 			);
