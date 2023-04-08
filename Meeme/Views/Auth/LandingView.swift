@@ -1,8 +1,7 @@
 import SwiftUI
 
 struct LandingView: View {
-    @EnvironmentObject var authController: AuthController
-    
+
     var body: some View {
         NavigationStack {
             ZStack {
@@ -20,7 +19,6 @@ struct LandingView: View {
                             .frame(maxWidth: .infinity, minHeight: 35)
                         }
                         .buttonStyle(.borderedProminent)
-                        .environmentObject(authController)
                         
                         Text("OR").padding()
                         
