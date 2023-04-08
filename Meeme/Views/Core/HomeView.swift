@@ -6,8 +6,8 @@ struct HomeView: View {
     @EnvironmentObject var authController: AuthController
     @EnvironmentObject var imageController: ImageController
     
-    @Namespace private var gridNamespace
-    @Namespace private var imageNamespace
+    @Namespace private var gridNamespace: Namespace.ID
+    @Namespace private var imageNamespace: Namespace.ID
     
     @State private var selectedPhotosPickerImages: [PhotosPickerItem] = []
     @State private var focusedImage: MeemeImage? = nil
