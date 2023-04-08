@@ -175,5 +175,8 @@ struct SignUpView: View {
                 }
             }
         }
+        .onAppear {
+            focusedField = .firstName
+        }
     }
 }

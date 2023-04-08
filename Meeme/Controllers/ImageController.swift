@@ -1,7 +1,5 @@
 import Amplify
-import CoreData
 import SwiftUI
-import Vision
 
 struct MeemeImage: Identifiable {
     let id: String
@@ -11,12 +9,25 @@ struct MeemeImage: Identifiable {
     let ownerId: String
 }
 
-extension MeemeImage: Equatable {
-    static func == (lhs: MeemeImage, rhs: MeemeImage) -> Bool {
-        return lhs.id == rhs.id && lhs.id == rhs.id
-    }
-}
-
 class ImageController: ObservableObject {
     @Published var meemeImages: [MeemeImage] = []
+
+    func uploadImageToCloud(imageData: Data) async {
+        do {
+            let timestamp = String(DateFormatter.createTimestamp())
+            let uploadTask = Amplify.Storage.uploadData(
+                key: timestamp,
+                data: imageData
+            )
+            Task {
+                for await progress in await uploadTask.progress {
+                    print("Progress: \(progress)")
+                }
+            }
+            let value = try await uploadTask.value
+            print("Upload completed: \(value)")
+        } catch {
+            print(error)
+        }
+    }
 }

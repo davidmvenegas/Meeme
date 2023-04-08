@@ -136,5 +136,8 @@ struct SignInView: View {
                 }
             }
         }
+        .onAppear {
+            focusedField = .email
+        }
     }
 }

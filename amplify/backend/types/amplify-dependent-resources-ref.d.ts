@@ -11,6 +11,13 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "function": {
+    "S3Triggere85469a2": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    },
     "S3Triggerf0f35bc7": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
@@ -19,10 +26,10 @@ export type AmplifyDependentResourcesAttributes = {
       "Region": "string"
     }
   },
-  "predictions": {
-    "MeemeRekognition": {
-      "region": "string",
-      "type": "string"
+  "storage": {
+    "MeemeImages": {
+      "BucketName": "string",
+      "Region": "string"
     }
   }
 }

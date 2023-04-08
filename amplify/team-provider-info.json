@@ -19,7 +19,14 @@
         "S3Triggerf0f35bc7": {
           "deploymentBucketName": "amplify-meeme-dev-40741-deployment",
           "s3Key": "amplify-builds/S3Triggerf0f35bc7-463845395636554f4177-build.zip"
+        },
+        "S3Triggere85469a2": {
+          "deploymentBucketName": "amplify-meeme-dev-40741-deployment",
+          "s3Key": "amplify-builds/S3Triggere85469a2-2b5436554b4378504264-build.zip"
         }
+      },
+      "storage": {
+        "MeemeImages": {}
       }
     }
   }

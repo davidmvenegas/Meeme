@@ -13,6 +13,17 @@ struct HomeView: View {
     @State private var selectedPhotosPickerImages: [PhotosPickerItem] = []
     @State private var focusedImage: MeemeImage? = nil
     @State private var searchText: String = ""
+
+    func uploadImagesToCloud(imagesSelected: [PhotosPickerItem]) {
+        // TODO: Add progress bar
+        for image in imagesSelected {
+            Task {
+                if let imageData = try? await image.loadTransferable(type: Data.self) {
+                    await imageController.uploadImageToCloud(imageData: imageData)
+                }
+            }
+        }
+    }
     
     var body: some View {
         ZStack {
@@ -68,13 +79,11 @@ struct HomeView: View {
                                     .accentColor(.white.opacity(0.8))
                             }
                         }
-//                        .onChange(of: selectedPhotosPickerImages) { newImages in
-//                            for newImage in newImages {
-//                                Task {
-//                                    // Save the image
-//                                }
-//                            }
-//                        }
+                        .onChange(of: selectedPhotosPickerImages) { newImages in
+                            Task {
+                                uploadImagesToCloud(imagesSelected: newImages)
+                            }
+                        }
                     }
                     .navigationBarTitle("Meeme", displayMode: .large)
                     .toolbar {
