@@ -1,8 +1,7 @@
-import SwiftUI
-import Vision
 import Amplify
 import CoreData
-
+import SwiftUI
+import Vision
 
 struct MeemeImage: Identifiable {
     let id: String
@@ -19,7 +18,5 @@ extension MeemeImage: Equatable {
 }
 
 class ImageController: ObservableObject {
-    
     @Published var meemeImages: [MeemeImage] = []
-
 }

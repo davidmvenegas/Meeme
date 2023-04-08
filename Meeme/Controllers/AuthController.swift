@@ -5,7 +5,7 @@ import Foundation
 class AuthController: ObservableObject {
     @Published var isAuthenticated = false
     @Published var isSessionChecked = false
-    @Published var currentUser: AuthUser?
+    @Published var currentUser: [AuthUserAttributeKey: String] = [:]
 
     init() {
         _ = Amplify.Hub.listen(to: .auth) { payload in
@@ -34,20 +34,38 @@ class AuthController: ObservableObject {
                     DispatchQueue.main.async {
                         self.isAuthenticated = true
                     }
-                    currentUser = try await Amplify.Auth.getCurrentUser()
+                    getUserAttributes()
                 } else {
                     DispatchQueue.main.async {
                         self.isAuthenticated = false
                     }
                 }
             } catch {
-                print("Failed to fetch auth session: \(error)")
+                print("Failed to check session: \(error)")
                 DispatchQueue.main.async {
                     self.isAuthenticated = false
                 }
             }
             DispatchQueue.main.async {
                 self.isSessionChecked = true
+            }
+        }
+    }
+
+    public func getUserAttributes() {
+        Task {
+            do {
+                let attributes = try await Amplify.Auth.fetchUserAttributes()
+                DispatchQueue.main.async {
+                    self.currentUser = attributes.reduce(into: [:]) { result, item in
+                        result[item.key] = item.value
+                    }
+                }
+            } catch {
+                print("Failed to get user attributes: \(error)")
+                DispatchQueue.main.async {
+                    self.isAuthenticated = false
+                }
             }
         }
     }

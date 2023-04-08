@@ -3,8 +3,9 @@ import PhotosUI
 import SwiftUI
 
 struct HomeView: View {
+    @ObservedObject var imageController = ImageController()
+
     @EnvironmentObject var authController: AuthController
-    @EnvironmentObject var imageController: ImageController
     
     @Namespace private var gridNamespace: Namespace.ID
     @Namespace private var imageNamespace: Namespace.ID
@@ -53,27 +54,27 @@ struct HomeView: View {
                                     ProgressView()
                                 }
                             }
+                        }
                             
-                            PhotosPicker(selection: $selectedPhotosPickerImages, maxSelectionCount: 100, matching: .any(of: [.images, .not(.livePhotos)])) {
-                                ZStack {
-                                    RoundedRectangle(cornerRadius: 0)
-                                        .fill(Color(.systemGray4))
-                                        .aspectRatio(contentMode: .fill)
-                                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                                        .clipped()
-                                        .aspectRatio(1, contentMode: .fit)
-                                    Image(systemName: "plus").font(.system(size: 23.5, weight: .medium))
-                                        .accentColor(.white.opacity(0.8))
-                                }
+                        PhotosPicker(selection: $selectedPhotosPickerImages, maxSelectionCount: 100, matching: .any(of: [.images, .not(.livePhotos)])) {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 0)
+                                    .fill(Color(.systemGray4))
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                                    .clipped()
+                                    .aspectRatio(1, contentMode: .fit)
+                                Image(systemName: "plus").font(.system(size: 23.5, weight: .medium))
+                                    .accentColor(.white.opacity(0.8))
                             }
-//                            .onChange(of: selectedPhotosPickerImages) { newImages in
-//                                for newImage in newImages {
-//                                    Task {
-//                                        // Save the image
-//                                    }
+                        }
+//                        .onChange(of: selectedPhotosPickerImages) { newImages in
+//                            for newImage in newImages {
+//                                Task {
+//                                    // Save the image
 //                                }
 //                            }
-                        }
+//                        }
                     }
                     .navigationBarTitle("Meeme", displayMode: .large)
                     .toolbar {
