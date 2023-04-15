@@ -1,29 +1,15 @@
 import Amplify
-import PhotosUI
 import SwiftUI
 
 struct HomeView: View {
-    @ObservedObject var imageController = ImageController()
-
     @EnvironmentObject var authController: AuthController
+    @ObservedObject var imageController = ImageController()
     
     @Namespace private var gridNamespace: Namespace.ID
     @Namespace private var imageNamespace: Namespace.ID
     
-    @State private var selectedPhotosPickerImages: [PhotosPickerItem] = []
     @State private var focusedImage: MeemeImage? = nil
     @State private var searchText: String = ""
-
-    func uploadImagesToCloud(imagesSelected: [PhotosPickerItem]) {
-        // TODO: Add progress bar
-        for image in imagesSelected {
-            Task {
-                if let imageData = try? await image.loadTransferable(type: Data.self) {
-                    await imageController.uploadImageToCloud(imageData: imageData)
-                }
-            }
-        }
-    }
     
     var body: some View {
         ZStack {
@@ -66,24 +52,8 @@ struct HomeView: View {
                                 }
                             }
                         }
-                            
-                        PhotosPicker(selection: $selectedPhotosPickerImages, maxSelectionCount: 100, matching: .any(of: [.images, .not(.livePhotos)])) {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 0)
-                                    .fill(Color(.systemGray4))
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                                    .clipped()
-                                    .aspectRatio(1, contentMode: .fit)
-                                Image(systemName: "plus").font(.system(size: 23.5, weight: .medium))
-                                    .accentColor(.white.opacity(0.8))
-                            }
-                        }
-                        .onChange(of: selectedPhotosPickerImages) { newImages in
-                            Task {
-                                uploadImagesToCloud(imagesSelected: newImages)
-                            }
-                        }
+                        MeemePhotoPicker()
+                            .environmentObject(imageController)
                     }
                     .navigationBarTitle("Meeme", displayMode: .large)
                     .toolbar {

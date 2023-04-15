@@ -21,8 +21,8 @@
 		ED46730A29BEA1BC0026ACA1 /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED46730929BEA1BC0026ACA1 /* AuthController.swift */; };
 		ED96281929BE85DC00BE00EB /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED96281829BE85DC00BE00EB /* ForgotPasswordView.swift */; };
 		EDA67E5729B7D69200A8938A /* ImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA67E5629B7D69200A8938A /* ImageController.swift */; };
-		EDA67E6A29BAD1FC00A8938A /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA67E6929BAD1FC00A8938A /* DateFormatter.swift */; };
-		EDCD0CE429C8241D0023CE87 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDCD0CE329C8241D0023CE87 /* CoreData.framework */; };
+		EDA67E6A29BAD1FC00A8938A /* DateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA67E6929BAD1FC00A8938A /* DateService.swift */; };
+		EDB7F9FE29E225140090F75C /* MeemePhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB7F9FD29E225140090F75C /* MeemePhotoPicker.swift */; };
 		EDCD599F29C84E3800DC098C /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = EDCD599E29C84E3800DC098C /* Amplify */; };
 		EDCD59A129C84E3800DC098C /* AWSAPIPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = EDCD59A029C84E3800DC098C /* AWSAPIPlugin */; };
 		EDCD59A329C84E3800DC098C /* AWSCognitoAuthPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = EDCD59A229C84E3800DC098C /* AWSCognitoAuthPlugin */; };
@@ -32,6 +32,8 @@
 		EDCD59AB29C84E3800DC098C /* AWSPinpointPushNotificationsPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = EDCD59AA29C84E3800DC098C /* AWSPinpointPushNotificationsPlugin */; };
 		EDCD59AD29C84E3800DC098C /* AWSPluginsCore in Frameworks */ = {isa = PBXBuildFile; productRef = EDCD59AC29C84E3800DC098C /* AWSPluginsCore */; };
 		EDCD59AF29C84E3800DC098C /* AWSS3StoragePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = EDCD59AE29C84E3800DC098C /* AWSS3StoragePlugin */; };
+		EDED640A29E235B80044FEB2 /* CheckmarkAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDED640929E235B80044FEB2 /* CheckmarkAnimation.swift */; };
+		EDED640C29E23A130044FEB2 /* LoadingEllipsis.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDED640B29E23A130044FEB2 /* LoadingEllipsis.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,8 +53,10 @@
 		ED96280E29BE14A100BE00EB /* Meeme.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Meeme.entitlements; sourceTree = "<group>"; };
 		ED96281829BE85DC00BE00EB /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		EDA67E5629B7D69200A8938A /* ImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageController.swift; sourceTree = "<group>"; };
-		EDA67E6929BAD1FC00A8938A /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
-		EDCD0CE329C8241D0023CE87 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		EDA67E6929BAD1FC00A8938A /* DateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateService.swift; sourceTree = "<group>"; };
+		EDB7F9FD29E225140090F75C /* MeemePhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeemePhotoPicker.swift; sourceTree = "<group>"; };
+		EDED640929E235B80044FEB2 /* CheckmarkAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkAnimation.swift; sourceTree = "<group>"; };
+		EDED640B29E23A130044FEB2 /* LoadingEllipsis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingEllipsis.swift; sourceTree = "<group>"; };
 		F32B6A37C9F75A4329A7B505 /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -64,7 +68,6 @@
 				EDCD59A729C84E3800DC098C /* AWSLocationGeoPlugin in Frameworks */,
 				EDCD59A129C84E3800DC098C /* AWSAPIPlugin in Frameworks */,
 				EDCD59AD29C84E3800DC098C /* AWSPluginsCore in Frameworks */,
-				EDCD0CE429C8241D0023CE87 /* CoreData.framework in Frameworks */,
 				EDCD59AB29C84E3800DC098C /* AWSPinpointPushNotificationsPlugin in Frameworks */,
 				EDCD59AF29C84E3800DC098C /* AWSS3StoragePlugin in Frameworks */,
 				EDCD599F29C84E3800DC098C /* Amplify in Frameworks */,
@@ -91,7 +94,6 @@
 			children = (
 				ED0F34EC29B0472000CB9437 /* Meeme */,
 				ED0F34EB29B0472000CB9437 /* Products */,
-				EDCD0CE229C8241D0023CE87 /* Frameworks */,
 				226354E3D4A022A3D15BC670 /* AmplifyConfig */,
 			);
 			sourceTree = "<group>";
@@ -110,6 +112,7 @@
 				ED96280E29BE14A100BE00EB /* Meeme.entitlements */,
 				ED7F85E529BDF6A400A33AD9 /* Info.plist */,
 				ED3DC74429C8131B00C00565 /* Controllers */,
+				EDB7F9FC29E224D40090F75C /* Components */,
 				ED0F34FC29B047CD00CB9437 /* Helpers */,
 				ED0F34FB29B047C000CB9437 /* Views */,
 				ED0F34ED29B0472000CB9437 /* MeemeApp.swift */,
@@ -131,7 +134,9 @@
 		ED0F34FC29B047CD00CB9437 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				EDA67E6929BAD1FC00A8938A /* DateFormatter.swift */,
+				EDED640929E235B80044FEB2 /* CheckmarkAnimation.swift */,
+				EDA67E6929BAD1FC00A8938A /* DateService.swift */,
+				EDED640B29E23A130044FEB2 /* LoadingEllipsis.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -174,12 +179,12 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		EDCD0CE229C8241D0023CE87 /* Frameworks */ = {
+		EDB7F9FC29E224D40090F75C /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				EDCD0CE329C8241D0023CE87 /* CoreData.framework */,
+				EDB7F9FD29E225140090F75C /* MeemePhotoPicker.swift */,
 			);
-			name = Frameworks;
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,14 +275,17 @@
 				ED0F350129B0DA8B00CB9437 /* LandingView.swift in Sources */,
 				ED46730A29BEA1BC0026ACA1 /* AuthController.swift in Sources */,
 				ED0F34FF29B0D94F00CB9437 /* SignUpView.swift in Sources */,
+				EDED640C29E23A130044FEB2 /* LoadingEllipsis.swift in Sources */,
 				ED0F350829B0DDCF00CB9437 /* HomeView.swift in Sources */,
 				ED0F351129B0DE2E00CB9437 /* AboutView.swift in Sources */,
 				ED0F350D29B0DE1600CB9437 /* AccountView.swift in Sources */,
 				ED0F350529B0DD6A00CB9437 /* SignInView.swift in Sources */,
+				EDB7F9FE29E225140090F75C /* MeemePhotoPicker.swift in Sources */,
+				EDED640A29E235B80044FEB2 /* CheckmarkAnimation.swift in Sources */,
 				EDA67E5729B7D69200A8938A /* ImageController.swift in Sources */,
 				ED0F350F29B0DE2000CB9437 /* StorageView.swift in Sources */,
 				ED0F34EE29B0472000CB9437 /* MeemeApp.swift in Sources */,
-				EDA67E6A29BAD1FC00A8938A /* DateFormatter.swift in Sources */,
+				EDA67E6A29BAD1FC00A8938A /* DateService.swift in Sources */,
 				ED96281929BE85DC00BE00EB /* ForgotPasswordView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

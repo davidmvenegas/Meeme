@@ -1,12 +1,12 @@
 import Foundation
 
-class DateFormatter {
+class DateService {
     static func createTimestamp() -> Double {
         return NSDate().timeIntervalSince1970
     }
 
     static func getDateFromTimestamp(timestamp: Double) -> NSDate {
-        let myTimeInterval: TimeInterval = TimeInterval(timestamp)
+        let myTimeInterval = TimeInterval(timestamp)
         return NSDate(timeIntervalSince1970: TimeInterval(myTimeInterval))
     }
 }

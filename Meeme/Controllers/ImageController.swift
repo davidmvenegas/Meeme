@@ -12,22 +12,17 @@ struct MeemeImage: Identifiable {
 class ImageController: ObservableObject {
     @Published var meemeImages: [MeemeImage] = []
 
-    func uploadImageToCloud(imageData: Data) async {
+    func uploadImage(imageData: Data) async -> Bool {
         do {
-            let timestamp = String(DateFormatter.createTimestamp())
+            let timestamp = String(DateService.createTimestamp())
             let uploadTask = Amplify.Storage.uploadData(
                 key: timestamp,
                 data: imageData
             )
-            Task {
-                for await progress in await uploadTask.progress {
-                    print("Progress: \(progress)")
-                }
-            }
-            let value = try await uploadTask.value
-            print("Upload completed: \(value)")
+            _ = try await uploadTask.value
+            return true
         } catch {
-            print(error)
+            return false
         }
     }
 }

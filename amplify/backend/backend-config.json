@@ -1,4 +1,24 @@
 {
+  "api": {
+    "MeemeDataStore": {
+      "dependsOn": [],
+      "output": {
+        "authConfig": {
+          "additionalAuthenticationProviders": [],
+          "defaultAuthentication": {
+            "apiKeyConfig": {
+              "apiKeyExpirationDate": "2024-04-08T05:34:39.479Z",
+              "apiKeyExpirationDays": 365,
+              "description": "MeemeAPIKey"
+            },
+            "authenticationType": "API_KEY"
+          }
+        }
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "AppSync"
+    }
+  },
   "auth": {
     "meeme7dc1bb98": {
       "customAuth": false,
