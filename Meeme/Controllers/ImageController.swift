@@ -10,13 +10,21 @@ struct MeemeImage: Identifiable {
 }
 
 class ImageController: ObservableObject {
+    let authController: AuthController
     @Published var meemeImages: [MeemeImage] = []
+
+    init(authController: AuthController) {
+        self.authController = authController
+    }
+
+    // Get user details
 
     func uploadImage(imageData: Data) async -> Bool {
         do {
+            let ownerId = authController.currentUser[.sub]!
             let timestamp = String(DateService.createTimestamp())
             let uploadTask = Amplify.Storage.uploadData(
-                key: timestamp,
+                key: "\(ownerId)_\(timestamp)",
                 data: imageData
             )
             _ = try await uploadTask.value

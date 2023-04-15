@@ -30,8 +30,7 @@ struct MeemeApp: App {
                 ProgressView()
                     .onAppear(perform: authController.checkSession)
             } else if authController.isAuthenticated {
-                HomeView()
-                    .environmentObject(authController)
+                HomeView(authController: authController)
             } else {
                 LandingView()
                     .environmentObject(authController)

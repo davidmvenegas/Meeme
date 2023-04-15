@@ -3,20 +3,24 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var authController: AuthController
-    @ObservedObject var imageController = ImageController()
-    
+    @ObservedObject var imageController: ImageController
+
+    init(authController: AuthController) {
+        self.imageController = ImageController(authController: authController)
+    }
+
     @Namespace private var gridNamespace: Namespace.ID
     @Namespace private var imageNamespace: Namespace.ID
-    
+
     @State private var focusedImage: MeemeImage? = nil
     @State private var searchText: String = ""
-    
+
     var body: some View {
         ZStack {
             GridView
         }
     }
-    
+
     @ViewBuilder
     var GridView: some View {
         ZStack {
