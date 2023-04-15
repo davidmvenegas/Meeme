@@ -1,9 +1,9 @@
-input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
+# input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY
 
 type Meeme @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   ownerId: String!
-  timestamp: Integer!
+  timestamp: String!
   labels: [String!]!
   imageUrl: String!
   localImageUrl: String

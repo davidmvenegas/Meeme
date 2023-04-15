@@ -27,6 +27,9 @@
       },
       "storage": {
         "MeemeImages": {}
+      },
+      "api": {
+        "MeemeDataStore": {}
       }
     }
   }

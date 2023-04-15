@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0BA22C98540DEF32DC30A6BE /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = F32B6A37C9F75A4329A7B505 /* amplifyconfiguration.json */; };
+		3266944FEF39AB9E7879CE9A /* Meeme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32138CCCA2217EFC538EBBD5 /* Meeme.swift */; };
+		6F18F9E9FEEDDA09CB120DDC /* Meeme+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B89E4F385A7461C5EF4DF5 /* Meeme+Schema.swift */; };
+		8D71349CEEA9B4539EA89BFC /* AmplifyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584C0E9CBC3C8E82D553CBEB /* AmplifyModels.swift */; };
 		B3837A018EBD0E4BDEB151A0 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = B1C6100EDEC1E245CC01FE7D /* awsconfiguration.json */; };
 		ED0F34EE29B0472000CB9437 /* MeemeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0F34ED29B0472000CB9437 /* MeemeApp.swift */; };
 		ED0F34F229B0472100CB9437 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED0F34F129B0472100CB9437 /* Assets.xcassets */; };
@@ -37,6 +40,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32138CCCA2217EFC538EBBD5 /* Meeme.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = Meeme.swift; path = amplify/generated/models/Meeme.swift; sourceTree = "<group>"; };
+		584C0E9CBC3C8E82D553CBEB /* AmplifyModels.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = AmplifyModels.swift; path = amplify/generated/models/AmplifyModels.swift; sourceTree = "<group>"; };
 		B1C6100EDEC1E245CC01FE7D /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
 		ED0F34EA29B0472000CB9437 /* Meeme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Meeme.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED0F34ED29B0472000CB9437 /* MeemeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeemeApp.swift; sourceTree = "<group>"; };
@@ -58,6 +63,7 @@
 		EDED640929E235B80044FEB2 /* CheckmarkAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkAnimation.swift; sourceTree = "<group>"; };
 		EDED640B29E23A130044FEB2 /* LoadingEllipsis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingEllipsis.swift; sourceTree = "<group>"; };
 		F32B6A37C9F75A4329A7B505 /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
+		F9B89E4F385A7461C5EF4DF5 /* Meeme+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = "Meeme+Schema.swift"; path = "amplify/generated/models/Meeme+Schema.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,12 +95,23 @@
 			name = AmplifyConfig;
 			sourceTree = "<group>";
 		};
+		E6F7A2E86EFEB989447048E7 /* AmplifyModels */ = {
+			isa = PBXGroup;
+			children = (
+				584C0E9CBC3C8E82D553CBEB /* AmplifyModels.swift */,
+				F9B89E4F385A7461C5EF4DF5 /* Meeme+Schema.swift */,
+				32138CCCA2217EFC538EBBD5 /* Meeme.swift */,
+			);
+			name = AmplifyModels;
+			sourceTree = "<group>";
+		};
 		ED0F34E129B0472000CB9437 = {
 			isa = PBXGroup;
 			children = (
 				ED0F34EC29B0472000CB9437 /* Meeme */,
 				ED0F34EB29B0472000CB9437 /* Products */,
 				226354E3D4A022A3D15BC670 /* AmplifyConfig */,
+				E6F7A2E86EFEB989447048E7 /* AmplifyModels */,
 			);
 			sourceTree = "<group>";
 		};
@@ -287,6 +304,9 @@
 				ED0F34EE29B0472000CB9437 /* MeemeApp.swift in Sources */,
 				EDA67E6A29BAD1FC00A8938A /* DateService.swift in Sources */,
 				ED96281929BE85DC00BE00EB /* ForgotPasswordView.swift in Sources */,
+				8D71349CEEA9B4539EA89BFC /* AmplifyModels.swift in Sources */,
+				6F18F9E9FEEDDA09CB120DDC /* Meeme+Schema.swift in Sources */,
+				3266944FEF39AB9E7879CE9A /* Meeme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

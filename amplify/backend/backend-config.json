@@ -1,17 +1,23 @@
 {
   "api": {
     "MeemeDataStore": {
-      "dependsOn": [],
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "meeme7dc1bb98"
+        }
+      ],
       "output": {
         "authConfig": {
           "additionalAuthenticationProviders": [],
           "defaultAuthentication": {
-            "apiKeyConfig": {
-              "apiKeyExpirationDate": "2024-04-08T05:34:39.479Z",
-              "apiKeyExpirationDays": 365,
-              "description": "MeemeAPIKey"
-            },
-            "authenticationType": "API_KEY"
+            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+            "userPoolConfig": {
+              "userPoolId": "authmeeme7dc1bb98"
+            }
           }
         }
       },

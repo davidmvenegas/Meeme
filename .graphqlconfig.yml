@@ -1,0 +1,12 @@
+projects:
+  MeemeDataStore:
+    schemaPath: graphql/schema.json
+    includes:
+      - ''
+    excludes:
+      - ./amplify/**
+    extensions:
+      amplify:
+        codeGenTarget: swift
+        generatedFileName: ''
+        docsFilePath: .

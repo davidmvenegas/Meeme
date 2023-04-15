@@ -4,15 +4,14 @@
     "apiName": "MeemeDataStore",
     "serviceName": "AppSync",
     "defaultAuthType": {
-      "mode": "API_KEY",
-      "expirationTime": 365,
-      "apiKeyExpirationDate": "2024-04-08T05:34:39.479Z",
-      "keyDescription": "MeemeAPIKey"
+      "mode": "AMAZON_COGNITO_USER_POOLS",
+      "cognitoUserPoolId": "authmeeme7dc1bb98"
     },
     "conflictResolution": {
       "defaultResolutionStrategy": {
         "type": "AUTOMERGE"
       }
-    }
+    },
+    "additionalAuthTypes": []
   }
 }
