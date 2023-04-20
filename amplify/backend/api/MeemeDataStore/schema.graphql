@@ -1,15 +1,28 @@
-# input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY
-
-type Meeme @model @auth(rules: [{ allow: ownerId }]) {
+type User @model @auth(rules: [{ allow: owner }]) {
   id: ID!
-  ownerId: String!
-  timestamp: String!
-  labels: [String!]!
-  imageUrl: String!
-  localImageUrl: String
+  meemes: [Meeme] @connection(keyName: "byUser", fields: ["id"])
+  albums: [Album] @connection(keyName: "byUser", fields: ["id"])
 }
 
-input UpdateMeme {
+type Meeme @model @key(name: "byUser", fields: ["ownerId"]) {
   id: ID!
-  localImageUrl: String
+  ownerId: ID!
+  timestamp: AWSDateTime!
+  url: String!
+  labels: [Label]!
+  localUrl: String
+  album: Album @connection
+}
+
+type Label {
+  name: String!
+  type: String!
+  confidence: Float
+}
+
+type Album @model @key(name: "byUser", fields: ["ownerId"]) {
+  id: ID!
+  ownerId: ID!
+  title: String!
+  meemes: [Meeme] @connection(keyName: "byAlbum", fields: ["id"])
 }
