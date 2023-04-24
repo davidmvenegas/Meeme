@@ -1,0 +1,649 @@
+# this is an auto generated file. This will be overwritten
+subscription OnCreateUser(
+  $filter: ModelSubscriptionUserFilterInput
+  $owner: String
+) {
+  onCreateUser(filter: $filter, owner: $owner) {
+    id
+    meemes {
+      items {
+        id
+        ownerId
+        timestamp
+        url
+        localUrl
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+    albums {
+      items {
+        id
+        ownerId
+        title
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+  }
+}
+subscription OnUpdateUser(
+  $filter: ModelSubscriptionUserFilterInput
+  $owner: String
+) {
+  onUpdateUser(filter: $filter, owner: $owner) {
+    id
+    meemes {
+      items {
+        id
+        ownerId
+        timestamp
+        url
+        localUrl
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+    albums {
+      items {
+        id
+        ownerId
+        title
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+  }
+}
+subscription OnDeleteUser(
+  $filter: ModelSubscriptionUserFilterInput
+  $owner: String
+) {
+  onDeleteUser(filter: $filter, owner: $owner) {
+    id
+    meemes {
+      items {
+        id
+        ownerId
+        timestamp
+        url
+        localUrl
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+    albums {
+      items {
+        id
+        ownerId
+        title
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+  }
+}
+subscription OnCreateAlbum(
+  $filter: ModelSubscriptionAlbumFilterInput
+  $owner: String
+) {
+  onCreateAlbum(filter: $filter, owner: $owner) {
+    id
+    ownerId
+    title
+    user {
+      id
+      meemes {
+        nextToken
+        startedAt
+      }
+      albums {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    albumMeemes {
+      items {
+        id
+        albumId
+        meemeId
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+  }
+}
+subscription OnUpdateAlbum(
+  $filter: ModelSubscriptionAlbumFilterInput
+  $owner: String
+) {
+  onUpdateAlbum(filter: $filter, owner: $owner) {
+    id
+    ownerId
+    title
+    user {
+      id
+      meemes {
+        nextToken
+        startedAt
+      }
+      albums {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    albumMeemes {
+      items {
+        id
+        albumId
+        meemeId
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+  }
+}
+subscription OnDeleteAlbum(
+  $filter: ModelSubscriptionAlbumFilterInput
+  $owner: String
+) {
+  onDeleteAlbum(filter: $filter, owner: $owner) {
+    id
+    ownerId
+    title
+    user {
+      id
+      meemes {
+        nextToken
+        startedAt
+      }
+      albums {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    albumMeemes {
+      items {
+        id
+        albumId
+        meemeId
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+  }
+}
+subscription OnCreateMeeme(
+  $filter: ModelSubscriptionMeemeFilterInput
+  $owner: String
+) {
+  onCreateMeeme(filter: $filter, owner: $owner) {
+    id
+    ownerId
+    user {
+      id
+      meemes {
+        nextToken
+        startedAt
+      }
+      albums {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    timestamp
+    labels {
+      name
+      type
+      confidence
+    }
+    url
+    localUrl
+    albumMeemes {
+      items {
+        id
+        albumId
+        meemeId
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+  }
+}
+subscription OnUpdateMeeme(
+  $filter: ModelSubscriptionMeemeFilterInput
+  $owner: String
+) {
+  onUpdateMeeme(filter: $filter, owner: $owner) {
+    id
+    ownerId
+    user {
+      id
+      meemes {
+        nextToken
+        startedAt
+      }
+      albums {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    timestamp
+    labels {
+      name
+      type
+      confidence
+    }
+    url
+    localUrl
+    albumMeemes {
+      items {
+        id
+        albumId
+        meemeId
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+  }
+}
+subscription OnDeleteMeeme(
+  $filter: ModelSubscriptionMeemeFilterInput
+  $owner: String
+) {
+  onDeleteMeeme(filter: $filter, owner: $owner) {
+    id
+    ownerId
+    user {
+      id
+      meemes {
+        nextToken
+        startedAt
+      }
+      albums {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    timestamp
+    labels {
+      name
+      type
+      confidence
+    }
+    url
+    localUrl
+    albumMeemes {
+      items {
+        id
+        albumId
+        meemeId
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+  }
+}
+subscription OnCreateAlbumMeeme(
+  $filter: ModelSubscriptionAlbumMeemeFilterInput
+) {
+  onCreateAlbumMeeme(filter: $filter) {
+    id
+    albumId
+    meemeId
+    album {
+      id
+      ownerId
+      title
+      user {
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      albumMeemes {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    meeme {
+      id
+      ownerId
+      user {
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      timestamp
+      labels {
+        name
+        type
+        confidence
+      }
+      url
+      localUrl
+      albumMeemes {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateAlbumMeeme(
+  $filter: ModelSubscriptionAlbumMeemeFilterInput
+) {
+  onUpdateAlbumMeeme(filter: $filter) {
+    id
+    albumId
+    meemeId
+    album {
+      id
+      ownerId
+      title
+      user {
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      albumMeemes {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    meeme {
+      id
+      ownerId
+      user {
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      timestamp
+      labels {
+        name
+        type
+        confidence
+      }
+      url
+      localUrl
+      albumMeemes {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteAlbumMeeme(
+  $filter: ModelSubscriptionAlbumMeemeFilterInput
+) {
+  onDeleteAlbumMeeme(filter: $filter) {
+    id
+    albumId
+    meemeId
+    album {
+      id
+      ownerId
+      title
+      user {
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      albumMeemes {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    meeme {
+      id
+      ownerId
+      user {
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      timestamp
+      labels {
+        name
+        type
+        confidence
+      }
+      url
+      localUrl
+      albumMeemes {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}

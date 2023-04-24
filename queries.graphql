@@ -1,0 +1,717 @@
+# this is an auto generated file. This will be overwritten
+query GetUser($id: ID!) {
+  getUser(id: $id) {
+    id
+    meemes {
+      items {
+        id
+        ownerId
+        timestamp
+        url
+        localUrl
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+    albums {
+      items {
+        id
+        ownerId
+        title
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+  }
+}
+query ListUsers(
+  $filter: ModelUserFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      meemes {
+        nextToken
+        startedAt
+      }
+      albums {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncUsers(
+  $filter: ModelUserFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncUsers(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      meemes {
+        nextToken
+        startedAt
+      }
+      albums {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetAlbum($id: ID!) {
+  getAlbum(id: $id) {
+    id
+    ownerId
+    title
+    user {
+      id
+      meemes {
+        nextToken
+        startedAt
+      }
+      albums {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    albumMeemes {
+      items {
+        id
+        albumId
+        meemeId
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+  }
+}
+query ListAlbums(
+  $filter: ModelAlbumFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listAlbums(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      ownerId
+      title
+      user {
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      albumMeemes {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncAlbums(
+  $filter: ModelAlbumFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncAlbums(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      ownerId
+      title
+      user {
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      albumMeemes {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetMeeme($id: ID!) {
+  getMeeme(id: $id) {
+    id
+    ownerId
+    user {
+      id
+      meemes {
+        nextToken
+        startedAt
+      }
+      albums {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    timestamp
+    labels {
+      name
+      type
+      confidence
+    }
+    url
+    localUrl
+    albumMeemes {
+      items {
+        id
+        albumId
+        meemeId
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+  }
+}
+query ListMeemes(
+  $filter: ModelMeemeFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listMeemes(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      ownerId
+      user {
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      timestamp
+      labels {
+        name
+        type
+        confidence
+      }
+      url
+      localUrl
+      albumMeemes {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncMeemes(
+  $filter: ModelMeemeFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncMeemes(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      ownerId
+      user {
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      timestamp
+      labels {
+        name
+        type
+        confidence
+      }
+      url
+      localUrl
+      albumMeemes {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetAlbumMeeme($id: ID!) {
+  getAlbumMeeme(id: $id) {
+    id
+    albumId
+    meemeId
+    album {
+      id
+      ownerId
+      title
+      user {
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      albumMeemes {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    meeme {
+      id
+      ownerId
+      user {
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      timestamp
+      labels {
+        name
+        type
+        confidence
+      }
+      url
+      localUrl
+      albumMeemes {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+query ListAlbumMeemes(
+  $filter: ModelAlbumMeemeFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listAlbumMeemes(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      albumId
+      meemeId
+      album {
+        id
+        ownerId
+        title
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      meeme {
+        id
+        ownerId
+        timestamp
+        url
+        localUrl
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncAlbumMeemes(
+  $filter: ModelAlbumMeemeFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncAlbumMeemes(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      albumId
+      meemeId
+      album {
+        id
+        ownerId
+        title
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      meeme {
+        id
+        ownerId
+        timestamp
+        url
+        localUrl
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query AlbumsByOwnerId(
+  $ownerId: ID!
+  $sortDirection: ModelSortDirection
+  $filter: ModelAlbumFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  albumsByOwnerId(
+    ownerId: $ownerId
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      ownerId
+      title
+      user {
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      albumMeemes {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    nextToken
+    startedAt
+  }
+}
+query MeemesByOwnerId(
+  $ownerId: ID!
+  $sortDirection: ModelSortDirection
+  $filter: ModelMeemeFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  meemesByOwnerId(
+    ownerId: $ownerId
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      ownerId
+      user {
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      timestamp
+      labels {
+        name
+        type
+        confidence
+      }
+      url
+      localUrl
+      albumMeemes {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    nextToken
+    startedAt
+  }
+}
+query AlbumMeemesByAlbumId(
+  $albumId: ID!
+  $sortDirection: ModelSortDirection
+  $filter: ModelAlbumMeemeFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  albumMeemesByAlbumId(
+    albumId: $albumId
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      albumId
+      meemeId
+      album {
+        id
+        ownerId
+        title
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      meeme {
+        id
+        ownerId
+        timestamp
+        url
+        localUrl
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query AlbumMeemesByMeemeId(
+  $meemeId: ID!
+  $sortDirection: ModelSortDirection
+  $filter: ModelAlbumMeemeFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  albumMeemesByMeemeId(
+    meemeId: $meemeId
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      albumId
+      meemeId
+      album {
+        id
+        ownerId
+        title
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      meeme {
+        id
+        ownerId
+        timestamp
+        url
+        localUrl
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}

@@ -3,16 +3,16 @@ type User @model @auth(rules: [{allow: owner}]) {
   meemes: [Meeme] @hasMany(indexName: "byUser", fields: ["id"])
   albums: [Album] @hasMany(indexName: "byUser", fields: ["id"])
 }
-type Album @model @auth(rules: [{allow: owner}]) @key(name: "byUser", fields: ["ownerId"]) {
+type Album @model @auth(rules: [{allow: owner}]) {
   id: ID!
-  ownerId: ID!
+  ownerId: ID! @index(name: "byUser")
   title: String!
   user: User! @belongsTo(fields: ["ownerId"])
   albumMeemes: [AlbumMeeme] @hasMany(indexName: "byAlbum", fields: ["id"])
 }
-type Meeme @model @auth(rules: [{allow: owner}]) @key(name: "byUser", fields: ["ownerId"]) {
+type Meeme @model @auth(rules: [{allow: owner}]) {
   id: ID!
-  ownerId: ID!
+  ownerId: ID! @index(name: "byUser")
   user: User! @belongsTo(fields: ["ownerId"])
   timestamp: String!
   labels: [Label]!
@@ -20,10 +20,15 @@ type Meeme @model @auth(rules: [{allow: owner}]) @key(name: "byUser", fields: ["
   localUrl: String
   albumMeemes: [AlbumMeeme] @hasMany(indexName: "byMeeme", fields: ["id"])
 }
-type AlbumMeeme @model @key(name: "byAlbum", fields: ["albumId"]) @key(name: "byMeeme", fields: ["meemeId"]) {
+type AlbumMeeme
+  @model
+  @auth(rules: [
+    {allow: owner, operations: [create, read, update, delete], ownerField: "album.ownerId"},
+    {allow: owner, operations: [create, read, update, delete], ownerField: "meeme.ownerId"}
+  ]) {
   id: ID!
-  albumId: ID!
-  meemeId: ID!
+  albumId: ID! @index(name: "byAlbum")
+  meemeId: ID! @index(name: "byMeeme")
   album: Album! @belongsTo(fields: ["albumId"])
   meeme: Meeme! @belongsTo(fields: ["meemeId"])
 }

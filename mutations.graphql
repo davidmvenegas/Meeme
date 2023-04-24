@@ -1,0 +1,652 @@
+# this is an auto generated file. This will be overwritten
+mutation CreateUser(
+  $input: CreateUserInput!
+  $condition: ModelUserConditionInput
+) {
+  createUser(input: $input, condition: $condition) {
+    id
+    meemes {
+      items {
+        id
+        ownerId
+        timestamp
+        url
+        localUrl
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+    albums {
+      items {
+        id
+        ownerId
+        title
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+  }
+}
+mutation UpdateUser(
+  $input: UpdateUserInput!
+  $condition: ModelUserConditionInput
+) {
+  updateUser(input: $input, condition: $condition) {
+    id
+    meemes {
+      items {
+        id
+        ownerId
+        timestamp
+        url
+        localUrl
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+    albums {
+      items {
+        id
+        ownerId
+        title
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+  }
+}
+mutation DeleteUser(
+  $input: DeleteUserInput!
+  $condition: ModelUserConditionInput
+) {
+  deleteUser(input: $input, condition: $condition) {
+    id
+    meemes {
+      items {
+        id
+        ownerId
+        timestamp
+        url
+        localUrl
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+    albums {
+      items {
+        id
+        ownerId
+        title
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+  }
+}
+mutation CreateAlbum(
+  $input: CreateAlbumInput!
+  $condition: ModelAlbumConditionInput
+) {
+  createAlbum(input: $input, condition: $condition) {
+    id
+    ownerId
+    title
+    user {
+      id
+      meemes {
+        nextToken
+        startedAt
+      }
+      albums {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    albumMeemes {
+      items {
+        id
+        albumId
+        meemeId
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+  }
+}
+mutation UpdateAlbum(
+  $input: UpdateAlbumInput!
+  $condition: ModelAlbumConditionInput
+) {
+  updateAlbum(input: $input, condition: $condition) {
+    id
+    ownerId
+    title
+    user {
+      id
+      meemes {
+        nextToken
+        startedAt
+      }
+      albums {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    albumMeemes {
+      items {
+        id
+        albumId
+        meemeId
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+  }
+}
+mutation DeleteAlbum(
+  $input: DeleteAlbumInput!
+  $condition: ModelAlbumConditionInput
+) {
+  deleteAlbum(input: $input, condition: $condition) {
+    id
+    ownerId
+    title
+    user {
+      id
+      meemes {
+        nextToken
+        startedAt
+      }
+      albums {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    albumMeemes {
+      items {
+        id
+        albumId
+        meemeId
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+  }
+}
+mutation CreateMeeme(
+  $input: CreateMeemeInput!
+  $condition: ModelMeemeConditionInput
+) {
+  createMeeme(input: $input, condition: $condition) {
+    id
+    ownerId
+    user {
+      id
+      meemes {
+        nextToken
+        startedAt
+      }
+      albums {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    timestamp
+    labels {
+      name
+      type
+      confidence
+    }
+    url
+    localUrl
+    albumMeemes {
+      items {
+        id
+        albumId
+        meemeId
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+  }
+}
+mutation UpdateMeeme(
+  $input: UpdateMeemeInput!
+  $condition: ModelMeemeConditionInput
+) {
+  updateMeeme(input: $input, condition: $condition) {
+    id
+    ownerId
+    user {
+      id
+      meemes {
+        nextToken
+        startedAt
+      }
+      albums {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    timestamp
+    labels {
+      name
+      type
+      confidence
+    }
+    url
+    localUrl
+    albumMeemes {
+      items {
+        id
+        albumId
+        meemeId
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+  }
+}
+mutation DeleteMeeme(
+  $input: DeleteMeemeInput!
+  $condition: ModelMeemeConditionInput
+) {
+  deleteMeeme(input: $input, condition: $condition) {
+    id
+    ownerId
+    user {
+      id
+      meemes {
+        nextToken
+        startedAt
+      }
+      albums {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    timestamp
+    labels {
+      name
+      type
+      confidence
+    }
+    url
+    localUrl
+    albumMeemes {
+      items {
+        id
+        albumId
+        meemeId
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+  }
+}
+mutation CreateAlbumMeeme(
+  $input: CreateAlbumMeemeInput!
+  $condition: ModelAlbumMeemeConditionInput
+) {
+  createAlbumMeeme(input: $input, condition: $condition) {
+    id
+    albumId
+    meemeId
+    album {
+      id
+      ownerId
+      title
+      user {
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      albumMeemes {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    meeme {
+      id
+      ownerId
+      user {
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      timestamp
+      labels {
+        name
+        type
+        confidence
+      }
+      url
+      localUrl
+      albumMeemes {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation UpdateAlbumMeeme(
+  $input: UpdateAlbumMeemeInput!
+  $condition: ModelAlbumMeemeConditionInput
+) {
+  updateAlbumMeeme(input: $input, condition: $condition) {
+    id
+    albumId
+    meemeId
+    album {
+      id
+      ownerId
+      title
+      user {
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      albumMeemes {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    meeme {
+      id
+      ownerId
+      user {
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      timestamp
+      labels {
+        name
+        type
+        confidence
+      }
+      url
+      localUrl
+      albumMeemes {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation DeleteAlbumMeeme(
+  $input: DeleteAlbumMeemeInput!
+  $condition: ModelAlbumMeemeConditionInput
+) {
+  deleteAlbumMeeme(input: $input, condition: $condition) {
+    id
+    albumId
+    meemeId
+    album {
+      id
+      ownerId
+      title
+      user {
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      albumMeemes {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    meeme {
+      id
+      ownerId
+      user {
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      timestamp
+      labels {
+        name
+        type
+        confidence
+      }
+      url
+      localUrl
+      albumMeemes {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
