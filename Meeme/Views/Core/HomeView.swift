@@ -15,6 +15,7 @@ struct HomeView: View {
     @State private var focusedImage: MeemeImage? = nil
     @State private var searchText: String = ""
 
+
     var body: some View {
         ZStack {
             GridView

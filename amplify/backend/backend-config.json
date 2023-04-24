@@ -12,7 +12,16 @@
       ],
       "output": {
         "authConfig": {
-          "additionalAuthenticationProviders": [],
+          "additionalAuthenticationProviders": [
+            {
+              "apiKeyConfig": {
+                "apiKeyExpirationDate": "2024-04-19T04:05:47.038Z",
+                "apiKeyExpirationDays": 365,
+                "description": "development"
+              },
+              "authenticationType": "API_KEY"
+            }
+          ],
           "defaultAuthentication": {
             "authenticationType": "AMAZON_COGNITO_USER_POOLS",
             "userPoolConfig": {
@@ -63,40 +72,6 @@
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
-    }
-  },
-  "parameters": {
-    "AMPLIFY_function_S3Triggere85469a2_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "S3Triggere85469a2"
-        }
-      ]
-    },
-    "AMPLIFY_function_S3Triggere85469a2_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "S3Triggere85469a2"
-        }
-      ]
-    },
-    "AMPLIFY_function_S3Triggerf0f35bc7_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "S3Triggerf0f35bc7"
-        }
-      ]
-    },
-    "AMPLIFY_function_S3Triggerf0f35bc7_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "S3Triggerf0f35bc7"
-        }
-      ]
     }
   },
   "predictions": {},

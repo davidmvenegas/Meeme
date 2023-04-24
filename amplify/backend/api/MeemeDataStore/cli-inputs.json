@@ -12,6 +12,13 @@
         "type": "AUTOMERGE"
       }
     },
-    "additionalAuthTypes": []
+    "additionalAuthTypes": [
+      {
+        "mode": "API_KEY",
+        "expirationTime": 365,
+        "apiKeyExpirationDate": "2024-04-19T04:05:47.038Z",
+        "keyDescription": "development"
+      }
+    ]
   }
 }

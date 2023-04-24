@@ -1,28 +1,34 @@
-type User @model @auth(rules: [{ allow: owner }]) {
+type User @model @auth(rules: [{allow: owner}]) {
   id: ID!
-  meemes: [Meeme] @connection(keyName: "byUser", fields: ["id"])
-  albums: [Album] @connection(keyName: "byUser", fields: ["id"])
+  meemes: [Meeme] @hasMany(indexName: "byUser", fields: ["id"])
+  albums: [Album] @hasMany(indexName: "byUser", fields: ["id"])
 }
-
-type Meeme @model @key(name: "byUser", fields: ["ownerId"]) {
+type Album @model @auth(rules: [{allow: owner}]) @key(name: "byUser", fields: ["ownerId"]) {
   id: ID!
   ownerId: ID!
-  timestamp: AWSDateTime!
-  url: String!
-  labels: [Label]!
-  localUrl: String
-  album: Album @connection
+  title: String!
+  user: User! @belongsTo(fields: ["ownerId"])
+  albumMeemes: [AlbumMeeme] @hasMany(indexName: "byAlbum", fields: ["id"])
 }
-
+type Meeme @model @auth(rules: [{allow: owner}]) @key(name: "byUser", fields: ["ownerId"]) {
+  id: ID!
+  ownerId: ID!
+  user: User! @belongsTo(fields: ["ownerId"])
+  timestamp: String!
+  labels: [Label]!
+  url: String!
+  localUrl: String
+  albumMeemes: [AlbumMeeme] @hasMany(indexName: "byMeeme", fields: ["id"])
+}
+type AlbumMeeme @model @key(name: "byAlbum", fields: ["albumId"]) @key(name: "byMeeme", fields: ["meemeId"]) {
+  id: ID!
+  albumId: ID!
+  meemeId: ID!
+  album: Album! @belongsTo(fields: ["albumId"])
+  meeme: Meeme! @belongsTo(fields: ["meemeId"])
+}
 type Label {
   name: String!
   type: String!
   confidence: Float
-}
-
-type Album @model @key(name: "byUser", fields: ["ownerId"]) {
-  id: ID!
-  ownerId: ID!
-  title: String!
-  meemes: [Meeme] @connection(keyName: "byAlbum", fields: ["id"])
 }
