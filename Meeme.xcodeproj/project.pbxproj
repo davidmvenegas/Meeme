@@ -19,7 +19,6 @@
 		ED0F350529B0DD6A00CB9437 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0F350429B0DD6A00CB9437 /* SignInView.swift */; };
 		ED0F350829B0DDCF00CB9437 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0F350729B0DDCF00CB9437 /* HomeView.swift */; };
 		ED0F350D29B0DE1600CB9437 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0F350C29B0DE1600CB9437 /* AccountView.swift */; };
-		ED0F350F29B0DE2000CB9437 /* StorageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0F350E29B0DE2000CB9437 /* StorageView.swift */; };
 		ED0F351129B0DE2E00CB9437 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0F351029B0DE2E00CB9437 /* AboutView.swift */; };
 		ED46730A29BEA1BC0026ACA1 /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED46730929BEA1BC0026ACA1 /* AuthController.swift */; };
 		ED96281929BE85DC00BE00EB /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED96281829BE85DC00BE00EB /* ForgotPasswordView.swift */; };
@@ -40,8 +39,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		32138CCCA2217EFC538EBBD5 /* Meeme.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = Meeme.swift; path = amplify/generated/models/Meeme.swift; sourceTree = "<group>"; };
-		584C0E9CBC3C8E82D553CBEB /* AmplifyModels.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = AmplifyModels.swift; path = amplify/generated/models/AmplifyModels.swift; sourceTree = "<group>"; };
+		32138CCCA2217EFC538EBBD5 /* Meeme.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Meeme.swift; path = amplify/generated/models/Meeme.swift; sourceTree = "<group>"; };
+		584C0E9CBC3C8E82D553CBEB /* AmplifyModels.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifyModels.swift; path = amplify/generated/models/AmplifyModels.swift; sourceTree = "<group>"; };
 		B1C6100EDEC1E245CC01FE7D /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
 		ED0F34EA29B0472000CB9437 /* Meeme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Meeme.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED0F34ED29B0472000CB9437 /* MeemeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeemeApp.swift; sourceTree = "<group>"; };
@@ -51,7 +50,6 @@
 		ED0F350429B0DD6A00CB9437 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		ED0F350729B0DDCF00CB9437 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		ED0F350C29B0DE1600CB9437 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
-		ED0F350E29B0DE2000CB9437 /* StorageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageView.swift; sourceTree = "<group>"; };
 		ED0F351029B0DE2E00CB9437 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		ED46730929BEA1BC0026ACA1 /* AuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthController.swift; sourceTree = "<group>"; };
 		ED7F85E529BDF6A400A33AD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -63,7 +61,7 @@
 		EDED640929E235B80044FEB2 /* CheckmarkAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkAnimation.swift; sourceTree = "<group>"; };
 		EDED640B29E23A130044FEB2 /* LoadingEllipsis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingEllipsis.swift; sourceTree = "<group>"; };
 		F32B6A37C9F75A4329A7B505 /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
-		F9B89E4F385A7461C5EF4DF5 /* Meeme+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = "Meeme+Schema.swift"; path = "amplify/generated/models/Meeme+Schema.swift"; sourceTree = "<group>"; };
+		F9B89E4F385A7461C5EF4DF5 /* Meeme+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Meeme+Schema.swift"; path = "amplify/generated/models/Meeme+Schema.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +103,13 @@
 			name = AmplifyModels;
 			sourceTree = "<group>";
 		};
+		ED034C0C29F61B1800B42463 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		ED0F34E129B0472000CB9437 = {
 			isa = PBXGroup;
 			children = (
@@ -142,7 +147,8 @@
 			isa = PBXGroup;
 			children = (
 				ED0F34FD29B0D93300CB9437 /* Auth */,
-				ED0F350629B0DD9000CB9437 /* Core */,
+				ED0F350629B0DD9000CB9437 /* Library */,
+				ED034C0C29F61B1800B42463 /* Search */,
 				ED0F350B29B0DDF900CB9437 /* Settings */,
 			);
 			path = Views;
@@ -151,9 +157,7 @@
 		ED0F34FC29B047CD00CB9437 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				EDED640929E235B80044FEB2 /* CheckmarkAnimation.swift */,
 				EDA67E6929BAD1FC00A8938A /* DateService.swift */,
-				EDED640B29E23A130044FEB2 /* LoadingEllipsis.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -169,19 +173,18 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
-		ED0F350629B0DD9000CB9437 /* Core */ = {
+		ED0F350629B0DD9000CB9437 /* Library */ = {
 			isa = PBXGroup;
 			children = (
 				ED0F350729B0DDCF00CB9437 /* HomeView.swift */,
 			);
-			path = Core;
+			path = Library;
 			sourceTree = "<group>";
 		};
 		ED0F350B29B0DDF900CB9437 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
 				ED0F350C29B0DE1600CB9437 /* AccountView.swift */,
-				ED0F350E29B0DE2000CB9437 /* StorageView.swift */,
 				ED0F351029B0DE2E00CB9437 /* AboutView.swift */,
 			);
 			path = Settings;
@@ -199,7 +202,9 @@
 		EDB7F9FC29E224D40090F75C /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				EDED640B29E23A130044FEB2 /* LoadingEllipsis.swift */,
 				EDB7F9FD29E225140090F75C /* MeemePhotoPicker.swift */,
+				EDED640929E235B80044FEB2 /* CheckmarkAnimation.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -300,7 +305,6 @@
 				EDB7F9FE29E225140090F75C /* MeemePhotoPicker.swift in Sources */,
 				EDED640A29E235B80044FEB2 /* CheckmarkAnimation.swift in Sources */,
 				EDA67E5729B7D69200A8938A /* ImageController.swift in Sources */,
-				ED0F350F29B0DE2000CB9437 /* StorageView.swift in Sources */,
 				ED0F34EE29B0472000CB9437 /* MeemeApp.swift in Sources */,
 				EDA67E6A29BAD1FC00A8938A /* DateService.swift in Sources */,
 				ED96281929BE85DC00BE00EB /* ForgotPasswordView.swift in Sources */,
